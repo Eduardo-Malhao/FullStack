@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './helper/renderWithRouter';
 import fetch from '../../cypress/mocks/fetch';
-import MealsProvider from '../Context/MealsProvider';
-import HeaderProvider from '../Context/HeaderProvider';
-import DrinksProvider from '../Context/DrinksProvider';
+import MealsProvider from '../context/MealsProvider';
+import HeaderProvider from '../context/HeaderProvider';
+import DrinksProvider from '../context/DrinksProvider';
 
 describe('testando a pagina recipes', () => {
   let history2;

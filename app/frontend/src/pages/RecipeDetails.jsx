@@ -1,15 +1,15 @@
 import { useParams, useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect, useContext, useCallback } from 'react';
 import copy from 'clipboard-copy';
-import Header from '../Components/Header';
-import SearchBar from '../Components/SearchBar';
+import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
 import './recipeDetails.css';
-import RecommendationCarousel from '../Components/RecommendationCarousel';
-import HeaderContext from '../Context/HeaderContext';
+import RecommendationCarousel from '../components/RecommendationCarousel';
+import HeaderContext from '../context/HeaderContext';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
-import { UseGetItem, UseSetItem } from '../Hooks/UseLocalStorage';
+import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 
 export default function RecipeDetails() {
   const location = useLocation();

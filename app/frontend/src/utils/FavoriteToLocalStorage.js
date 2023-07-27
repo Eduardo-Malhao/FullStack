@@ -1,4 +1,4 @@
-import { UseGetItem, UseSetItem } from '../Hooks/UseLocalStorage';
+import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 
 export default function handleFavorite(
   { mealObject, drinkObject },

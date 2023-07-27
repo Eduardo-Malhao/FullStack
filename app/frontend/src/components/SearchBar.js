@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import HeaderContext from '../Context/HeaderContext';
+import HeaderContext from '../context/HeaderContext';
 
 export default function SearchBar() {
   const history = useHistory();

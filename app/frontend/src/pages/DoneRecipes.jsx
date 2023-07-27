@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
-import Header from '../Components/Header';
+import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
-import SearchBar from '../Components/SearchBar';
+import SearchBar from '../components/SearchBar';
 import favoriteBtn from '../images/blackHeartIcon.svg';
 
 function DoneRecipes() {

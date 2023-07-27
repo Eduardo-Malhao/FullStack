@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import Footer from '../Components/Footer';
-import Header from '../Components/Header';
-import SearchBar from '../Components/SearchBar';
-import MealsContext from '../Context/MealsContext';
-import DrinksContext from '../Context/DrinksContext';
-import HeaderContext from '../Context/HeaderContext';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
+import MealsContext from '../context/MealsContext';
+import DrinksContext from '../context/DrinksContext';
+import HeaderContext from '../context/HeaderContext';
 
 export default function Recipes() {
   const location = useLocation();
@@ -146,6 +146,7 @@ export default function Recipes() {
     setFlag('generic');
     pathRenderCards();
   }
+
 
   function masterRender() {
     if (flag === 'generic') {

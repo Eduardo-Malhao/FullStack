@@ -1,12 +1,12 @@
 import React from 'react';
 import { screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// import Recipes from '../Pages/Recipes';
+// import Recipes from '../pages/Recipes';
 import renderWithRouter from './helper/renderWithRouter';
 import fetch from '../../cypress/mocks/fetch';
-import MealsProvider from '../Context/MealsProvider';
-import HeaderProvider from '../Context/HeaderProvider';
-import DrinksProvider from '../Context/DrinksProvider';
+import MealsProvider from '../context/MealsProvider';
+import HeaderProvider from '../context/HeaderProvider';
+import DrinksProvider from '../context/DrinksProvider';
 import App from '../App';
 
 describe('testando a pagina recipes', () => {

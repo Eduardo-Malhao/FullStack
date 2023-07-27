@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import Login from '../Pages/Login';
+import Login from '../pages/Login';
 
 describe('Login', () => {
   it('desativa o botão quando o e-mail e a senha forem inválidos', () => {

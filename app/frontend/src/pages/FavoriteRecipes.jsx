@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import copy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
-import Header from '../Components/Header';
+import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import favoriteBtn from '../images/blackHeartIcon.svg';
 

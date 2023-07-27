@@ -1,17 +1,17 @@
 import copy from 'clipboard-copy';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import Header from '../Components/Header';
-import SearchBar from '../Components/SearchBar';
+import Header from '../components/Header';
+import SearchBar from '../components/SearchBar';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import {
   getDrinkIngredientsAndMeasures, getMealIngredientsAndMeasures,
-} from '../Utils/Ingredients&Measures';
-import handleFavorite from '../Utils/FavoriteToLocalStorage';
+} from '../utils/Ingredients&Measures';
+import handleFavorite from '../utils/FavoriteToLocalStorage';
 import './recipeInProgress.css';
-import { UseGetItem, UseSetItem } from '../Hooks/UseLocalStorage';
+import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 
 function RecipesInProgress() {
   const location = useLocation();

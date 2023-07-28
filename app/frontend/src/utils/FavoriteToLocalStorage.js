@@ -25,3 +25,4 @@ export default function handleFavorite(
   UseSetItem('favoriteRecipes', newFavoriteRecipes);
   setIsFavorite(!isRecipeFavorite);
 }
+//git

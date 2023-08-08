@@ -1,0 +1,1 @@
+// gerar url dincamicas com env utilizando o mesmo nome de variavel.

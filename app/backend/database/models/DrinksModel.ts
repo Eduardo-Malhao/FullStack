@@ -14,7 +14,7 @@ InferCreationAttributes<DrinkSequelize>> {
   declare drink_category: string;
   declare drink_glass: string;
   declare alcoholic: string;
-  declare drink_Instructions: string;
+  declare drink_instructions: string;
   declare drink_image: string;
   declare drink_tag: string;
   declare drink_video: string;
@@ -47,7 +47,7 @@ DrinkSequelize.init({
       type: DataTypes.STRING,
       allowNull: false,
   },
-  drink_Instructions: {
+  drink_instructions: {
       type: DataTypes.STRING,
       allowNull: false,
   },

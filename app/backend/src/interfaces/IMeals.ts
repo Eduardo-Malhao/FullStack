@@ -5,7 +5,7 @@ export interface IMeals {
     meal_name: string;
     meal_category: string;
     meal_area: string;
-    meal_Instructions: string;
+    meal_instructions: string;
     meal_image: string;
     meal_tag: string;
     meal_video: string;

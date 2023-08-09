@@ -1,9 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-// import Controller from '../controller/index';
-// const controller = new Controller();
+const index_1 = __importDefault(require("../controller/index"));
+const controller = new index_1.default();
 const router = (0, express_1.Router)();
-// router.get('/', (req: Request, res: Response) => controller.findByFilter(req, res));
+router.get('/', (req, res) => controller.findByFilter(req, res));
 exports.default = router;
 //# sourceMappingURL=MealsRouter.js.map

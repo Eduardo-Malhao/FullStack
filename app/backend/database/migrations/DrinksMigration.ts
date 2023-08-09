@@ -26,7 +26,7 @@ export default {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        drink_Instructions: {
+        drink_instructions: {
             type: DataTypes.STRING,
             allowNull: false,
         },

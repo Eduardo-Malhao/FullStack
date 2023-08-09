@@ -1,6 +1,6 @@
 // gerar url dincamicas com env utilizando o mesmo nome de variavel.
 
-import * as express from 'express';
+import express from 'express';
 import router from './router/index';
 
 class App {
@@ -9,6 +9,8 @@ class App {
   constructor() {
     this.app = express();
     this.config();
+    this.app.use(express.json());
+    this.routes();
   }
 
   private config():void {
@@ -19,9 +21,7 @@ class App {
       next();
     };
 
-    this.app.use(express.json());
     this.app.use(accessControl);
-    this.routes();
   }
 
   private routes():void { this.app.use(router); }
@@ -31,4 +31,4 @@ class App {
   }
 }
 
-export const { app } = new App();
+export default App;

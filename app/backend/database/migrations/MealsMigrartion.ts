@@ -22,7 +22,7 @@ export default {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        meal_Instructions: {
+        meal_instructions: {
             type: DataTypes.STRING,
             allowNull: false,
         },

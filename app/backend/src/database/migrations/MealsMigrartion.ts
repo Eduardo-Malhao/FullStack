@@ -1,54 +1,50 @@
 import { Model, QueryInterface, DataTypes } from 'sequelize';
-import { IDrinks } from '../../src/interfaces/IDrinks';
+import { IMeals } from '../../interfaces/IMeals';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable<Model<IDrinks>>('drinks', {
+    return queryInterface.createTable<Model<IMeals>>('meals', {
         id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         },
-        drink_name: {
+        meal_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        drink_category: {
+        meal_category: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        drink_glass: {
+        meal_area: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        alcoholic: {
+        meal_instructions: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        drink_instructions: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        drink_image: {
+        meal_image: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        drink_tag: {
+        meal_tag: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        drink_video: {
+        meal_video: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        drink_ingredients: {
+        meal_ingredients: {
             type: DataTypes.JSON,
             allowNull: true,
         },
     });
   },
   down(queryInterface: QueryInterface) {
-    return queryInterface.dropTable('drinks');
+    return queryInterface.dropTable('meals');
   },
 };

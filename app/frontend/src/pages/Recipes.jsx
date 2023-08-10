@@ -83,7 +83,7 @@ export default function Recipes() {
               src={ eachMeal.strMealThumb }
               alt={ eachMeal.strMeal }
               data-testid={ `${index}-card-img` }
-              style={ { width: '10px', height: '10px' } }
+              style={ { width: '1000px', height: '10px' } }
             />
             <p data-testid={ `${index}-card-name` }>{eachMeal.strMeal}</p>
           </button>

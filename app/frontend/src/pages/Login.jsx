@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './login.css';
+import Header from '../components/Header';
 
 function Login() {
   const history = useHistory();
@@ -35,6 +36,7 @@ function Login() {
 
   return (
     <div className="meals">
+      <Header />
       <form>
         <label htmlFor="Email">
           Email

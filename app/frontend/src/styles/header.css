@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /*gradiente*/
+
+  --cor01:#DBE2EC;
+  --cor02: #0E23E5;
+  --cor03: #a12323;
+  --cor04:#052858;
+
+
+  --fonte-primary: 'League Gothic', sans-serif;
+  --font-second: 'Lekton', sans-serif;
+  --font-recipes: 'Marcellus', serif;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.container-header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    height: 15%;
+    /* background-color: red; */
+  }
+  
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    /* background-color: #23a181; */
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1600px;
+    justify-content: space-around;
+    padding-left: 0px;
+    padding-bottom: 16px;
+    color: #0E23E5;
+    font-size: 1.2em;
+    /* background-color: rgb(218, 176, 176); */
+  }
+  
+  .storagerecipe {
+    color: #0E23E5;
+    font-size: 1.7em;
+    word-spacing: 0.5em;
+    /* background-color: var(--cor03); */
+  }
+
+  .header-line {
+    z-index: 1;
+    width: 1090px;
+    height: 2px;
+    background-color: #0E23E5;
+  }
+
+  .a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1px;
+    /* background-color: aqua; */  
+  }
+  
+  /*estiliza o estado UP*/
+  a:link {
+    font-family: var(--bs-body-font-family);
+    text-decoration: none;
+    color: #0E23E5;
+  }
+  
+  /*estiliza o estado VISITED*/
+  a:visited {
+    z-index: 10;
+    width: 100px;
+    height: 70px;
+    background-color: #a1232333;
+    font-family: var(--bs-body-font-family);
+    text-decoration: none;
+    color: #5f5c5fbc;
+  }
+  
+  /*estiliza o estado OVER*/
+  a:hover {
+    width: 100px;
+    height: 70px;
+    background-color: #a123233f;
+    font-family: var(--bs-body-font-family);
+    text-decoration: none;
+    color: #0E23E5;
+  }
+  
+  /*estiliza o estado ATIVO*/
+  a:active {
+    text-decoration: none;
+    color: #ffffffbc;
+  }
+  

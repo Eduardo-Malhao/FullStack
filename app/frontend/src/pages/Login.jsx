@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import './login.css';
+import '../styles/login.css';
 import Header from '../components/Header';
+import logoImage from '../images/mystoragerecipepng.png';
+
 
 function Login() {
   const history = useHistory();
@@ -35,43 +37,62 @@ function Login() {
   };
 
   return (
-    <div className="meals">
+    <div className="all-login-page">
       <Header />
-      <form>
-        <label htmlFor="Email">
-          Email
-          <input
-            data-testid="email-input"
-            name="emailLogin"
-            id="Email"
-            type="email"
-            size="30"
-            placeholder="Digite seu Email"
-            value={ emailLogin }
-            onChange={ emailChange }
+      <div className="login-page-container">
+        {/* <Header /> */}
+        <div className="logo-image-container">
+          <img
+            src={logoImage}
+            alt="Logo"
+            className="logo-full-image "
           />
-        </label>
-        <label htmlFor="Senha">
-          Senha
-          <input
-            data-testid="password-input"
-            type="text"
-            id="Senha"
-            name="passwordLogin"
-            value={ password }
-            onChange={ passwordChange }
-          />
-        </label>
-        <button
-          data-testid="login-submit-btn"
-          type="button"
-          name="buttonLogin"
-          disabled={ buttonDisabled }
-          onClick={ submitForm }
-        >
-          Entrar
-        </button>
-      </form>
+        </div>
+        <form className="form-content">
+          <div className="input-container">
+            <h5>login</h5>
+            <label htmlFor="Email">
+              <input
+                className="input"
+                name="emailLogin"
+                id="Email"
+                type="email"
+                size="30"
+                placeholder="email"
+                value={ emailLogin }
+                onChange={ emailChange }
+              />
+            </label>
+          </div>
+          <div className="input-container">
+            <h5>password</h5>
+            <label htmlFor="Senha">
+              <input
+                className="input"
+                type="text"
+                id="Senha"
+                size="30"
+                name="passwordLogin"
+                value={ password }
+                onChange={ passwordChange }
+              />
+            </label>
+          </div>
+          <div  className="login-button-container">
+            <button
+              className="login-button"
+              type="button"
+              name="buttonLogin"
+              disabled={ buttonDisabled }
+              onClick={ submitForm }
+            >
+              Entrar
+            </button>
+          </div>
+        </form>
+        <div className="foot-line"></div>
+        <p className="credits">site desenvolvido por Livia Boechat e Eduardo Malhão  * 2023</p>
+      </div>
     </div>
   );
 }

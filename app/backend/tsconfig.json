@@ -1,4 +1,4 @@
-{
+  {
     "compilerOptions": {
       "target": "ES6",             // Versão do ECMAScript alvo
       "module": "CommonJS",        // Sistema de módulo (CommonJS, ES6, etc.)

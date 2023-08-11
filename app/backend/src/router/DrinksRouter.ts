@@ -1,11 +1,10 @@
 import { Request, Response, Router } from 'express';
-// import Controller from '../controller/index';
+import DrinksController from '../controller/DrinksController';
 
-// const controller = new Controller();
+const controller = new DrinksController();
 
 const router = Router();
 
-// router.get('/', (req: Request, res: Response) => controller.findByFilter(req, res));
-
+router.get('/', (req: Request, res: Response) => controller.getDrinks(req, res));
 
 export default router;

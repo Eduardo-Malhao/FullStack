@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../styles/login.css';
 import Header from '../components/Header';
 import logoImage from '../images/mystoragerecipepng.png';
+import Footer from '../components/Footer';
 
 
 function Login() {
@@ -40,7 +41,6 @@ function Login() {
     <div className="all-login-page">
       <Header />
       <div className="login-page-container">
-        {/* <Header /> */}
         <div className="logo-image-container">
           <img
             src={logoImage}
@@ -86,12 +86,12 @@ function Login() {
               disabled={ buttonDisabled }
               onClick={ submitForm }
             >
-              Entrar
+              Enter
             </button>
           </div>
         </form>
         <div className="foot-line"></div>
-        <p className="credits">site desenvolvido por Livia Boechat e Eduardo Malhão  * 2023</p>
+        <Footer/>
       </div>
     </div>
   );

@@ -13,10 +13,9 @@
   /*gradiente*/
 
   --cor01:#DBE2EC;
-  --cor01: #0E23E5;
-  --cor03:#052858;
+  --cor02: #0E23E5;
   --cor04: #a12323;
-
+  --cor04:#052858de;
 
   --fonte-primary: 'League Gothic', sans-serif;
   --font-second: 'Lekton', sans-serif;
@@ -35,7 +34,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #DBE2EC;
+  background-color: var(--cor01);
 }
 
 .login-page-container {
@@ -142,6 +141,14 @@
 /* .login-submit-btn:enabled {
   color: #fbfbfb;
 } */
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 10x;
+  /* background-color: var(--cor03) */
+}
 
 .foot-line {
   margin-top: 3%;

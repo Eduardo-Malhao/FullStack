@@ -2,8 +2,6 @@ import { useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import HeaderContext from '../context/HeaderContext';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
 import '../styles/header.css';
 
 export default function Header() {
@@ -12,12 +10,9 @@ export default function Header() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const { inputSearchText, setInputSearchText } = useContext(HeaderContext);
 
-  const handleOpenSearchClick = () => {
-    setIsSearchVisible(!isSearchVisible);
-  };
 
   return (
-    <header className="container-header">
+    <header className="container-header">    
       <div className="nav-container">
         <div className="nav">
           <Link to="/" data-testid="link-to-search" className="a">HOME</Link>
@@ -32,3 +27,4 @@ export default function Header() {
 
   );
 }
+

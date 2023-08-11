@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /*gradiente*/
+
+  --cor01:#DBE2EC;
+  --cor02: #0E23E5;
+  --cor04: #a12323;
+  --cor04:#052858de;
+
+  --fonte-primary: 'League Gothic', sans-serif;
+  --font-second: 'Lekton', sans-serif;
+  --font-recipes: 'Marcellus', serif;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.all-recipes-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--cor01);
+}
+
+.recipe-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100vh;
+  /* background-color: #4985da; */
+}
+
+.categories-btn-all {
+  display: flex;
+  justify-content: center;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid var(--cor02);
+  outline-color: #516774;
+  width: 45px;
+  height: 25px;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--cor02);
+}
+
+.categories-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  width: 400px;
+  height: 70px;
+  padding-top: 12px;
+  text-align: center;
+  /* background-color: white; */
+}
+
+.eachCategory-btn {
+  justify-content: center;
+  align-items: space-around;
+  align-content: space-around;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid var(--cor02);
+  outline-color: #516774;
+  width: 75px;
+  height: 35px;
+  text-align: center;
+  background-color: var(--cor02);
+}
+
+.recipes-list {
+
+}

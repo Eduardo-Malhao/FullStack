@@ -112,7 +112,7 @@ export default function Recipes() {
   }
 
   function pathRenderCards() {
-    const twelve = 12;
+    const twelve = 9;
     let data;
     if (filteredDrinksData || filteredMealsData) {
       data = location.pathname === '/meals' ? filteredMealsData : filteredDrinksData;
@@ -128,6 +128,7 @@ export default function Recipes() {
           onClick={ () => history.push(
             `${location.pathname}/${item.idMeal || item.idDrink}`,
           ) }
+          className="eachRecipe"
         >
           <img
             data-testid={ `${index}-card-img` }
@@ -170,6 +171,7 @@ export default function Recipes() {
       <Header />
       <div className="recipe-page-container">
         <SearchBar />
+        <div className="categories-container">
         <button
         className="categories-btn-all"
           data-testid="All-category-filter"
@@ -179,11 +181,10 @@ export default function Recipes() {
         >
           All
         </button>
-        <div className="categories-container">
           {apiMealsCategoryData && apiDrinksCategoryData ? (
            pathRenderCategorys()) : (<h4>Carregando...</h4>)}
         </div>
-        <div className="recipes-list">
+        <div className="recipes-container">
           { apiMealsNameData && apiDrinksNameData
             ? (masterRender()) : (<h4>Carregando...</h4>)}
         </div>

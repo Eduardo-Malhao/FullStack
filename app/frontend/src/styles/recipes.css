@@ -34,7 +34,9 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: var(--cor01);
+  background-image: url("../images//PAPEL\ PAREDE\ FOLHAS.png"); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
 }
 
 .recipe-page-container {
@@ -47,6 +49,18 @@
   /* background-color: #4985da; */
 }
 
+.categories-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  width: 500px;
+  height: 70px;
+  padding-top: 12px;
+  text-align: center;
+  /* background-color: white; */
+}
+
 .categories-btn-all {
   display: flex;
   justify-content: center;
@@ -54,23 +68,10 @@
   border-radius: 20px;
   border: 1px solid var(--cor02);
   outline-color: #516774;
-  width: 45px;
-  height: 25px;
-  padding: 20px;
+  width: 75px;
+  height: 35px;
   text-align: center;
   background-color: var(--cor02);
-}
-
-.categories-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  color: white;
-  width: 400px;
-  height: 70px;
-  padding-top: 12px;
-  text-align: center;
-  /* background-color: white; */
 }
 
 .eachCategory-btn {
@@ -87,6 +88,35 @@
   background-color: var(--cor02);
 }
 
-.recipes-list {
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Duas colunas de igual largura */
+  gap: 9px; /* Espaçamento entre colunas e linhas */
+  color: white;
+  width: 85%;
+  padding: 40px;
+  text-align: center;
+  background-color: rgb(99, 72, 72);
+}
 
+.eachRecipe {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  padding: 12px;
+  
+}
+
+.eachRecipe img {
+  width: 500px;
+  height: 500px;
+}
+
+.eachRecipe p {
+  color: var(--cor02);
+  font-size: 1.7em;
+  font-family: var(--font-recipes);
+  width: 500px;
+  height: 80px;
 }

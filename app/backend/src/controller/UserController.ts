@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { Request, Response } from 'express';
 import Service from '../service/UserService';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
@@ -18,9 +18,8 @@ export default class UserController {
     }
 
     public async singIn(req: Request, res: Response) {
-        const { email, password } = req.body;
+        const { email, password } = req.body
         const encodedPassword = await bcrypt.hash(password, 10);
-
         const { status, data } = await this.service.singIn(email, encodedPassword);
 
         if (status !== 'SUCCESS') return res.status(mapStatusHTTP(status)).json({data});

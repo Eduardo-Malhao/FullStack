@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import Model from '../model/UserModel';
 import Jwt from '../utils/jwt';
 import { IServiceUser } from '../interfaces/IServiceUser';

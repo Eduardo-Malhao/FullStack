@@ -28,7 +28,9 @@
 }
 
 .all-searchbar {
+  position: fixed;
   display: flex;
+  margin-top: -800px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -44,14 +46,10 @@
   flex-direction: row;
   width: 108%;
   height: 100%;
-  /* background-color: #a12323; */
-}
-
-.category-input-container  {
   color: var(--cor02);
   font-size: 1.2em;
   word-spacing: 0.5em;
-  /* background-color: var(--cor03); */
+  /* background-color: #a12323; */
 }
 
 .input-text {

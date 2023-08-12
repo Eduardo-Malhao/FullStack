@@ -40,23 +40,27 @@
 }
 
 .recipe-page-container {
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
-  height: 100vh;
+  width: 75%;
+  min-height: 100vh; 
   /* background-color: #4985da; */
 }
 
+
 .categories-container {
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: -552px;
   color: white;
   width: 500px;
-  height: 70px;
-  padding-top: 12px;
+  height: 80px;
+  padding-top: 24px;
   text-align: center;
   /* background-color: white; */
 }
@@ -64,6 +68,7 @@
 .categories-btn-all {
   display: flex;
   justify-content: center;
+  align-items: center;
   color: white;
   border-radius: 20px;
   border: 1px solid var(--cor02);
@@ -76,8 +81,6 @@
 
 .eachCategory-btn {
   justify-content: center;
-  align-items: space-around;
-  align-content: space-around;
   color: white;
   border-radius: 20px;
   border: 1px solid var(--cor02);
@@ -89,34 +92,39 @@
 }
 
 .recipes-container {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Duas colunas de igual largura */
-  gap: 9px; /* Espaçamento entre colunas e linhas */
-  color: white;
-  width: 85%;
-  padding: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+  width: 55%;
+  padding: 20px;
+  margin: auto;
+  margin-top: 400px; /* Define a distância do topo */
   text-align: center;
-  background-color: rgb(99, 72, 72);
+  /* background-color: rgb(99, 72, 72); */
 }
+
 
 .eachRecipe {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  color: white;
-  padding: 12px;
-  
+  justify-content: flex-start;
+  align-items: center; /* Alinhar verticalmente no centro */
+  margin: 5px;
+ border-color: #DBE2EC;
 }
 
 .eachRecipe img {
-  width: 500px;
-  height: 500px;
+  max-width: 20%; /* Evitar que a imagem ultrapasse o container */
+  height: auto; /* Manter proporção original */
 }
 
 .eachRecipe p {
+  flex-wrap: wrap;
   color: var(--cor02);
-  font-size: 1.7em;
+  font-size: 1.6rem;
   font-family: var(--font-recipes);
-  width: 500px;
-  height: 80px;
+  margin-left: 30px; /* Adicionar margem entre a imagem e o texto */
+  text-align: left; 
+  /* background-color: aqua; */
 }

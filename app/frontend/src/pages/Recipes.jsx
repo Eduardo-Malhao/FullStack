@@ -85,7 +85,6 @@ export default function Recipes() {
               src={ eachMeal.strMealThumb }
               alt={ eachMeal.strMeal }
               data-testid={ `${index}-card-img` }
-              style={ { width: '10px', height: '10px' } }
             />
             <p data-testid={ `${index}-card-name` }>{eachMeal.strMeal}</p>
           </button>
@@ -103,7 +102,6 @@ export default function Recipes() {
             src={ eachDrink.strDrinkThumb }
             alt={ eachDrink.strDrink }
             data-testid={ `${index}-card-img` }
-            style={ { width: '10px', height: '10px' } }
           />
           <p data-testid={ `${index}-card-name` }>{eachDrink.strDrink}</p>
         </button>
@@ -112,7 +110,7 @@ export default function Recipes() {
   }
 
   function pathRenderCards() {
-    const twelve = 9;
+    const twelve = 12;
     let data;
     if (filteredDrinksData || filteredMealsData) {
       data = location.pathname === '/meals' ? filteredMealsData : filteredDrinksData;
@@ -134,7 +132,6 @@ export default function Recipes() {
             data-testid={ `${index}-card-img` }
             src={ item.strMealThumb || item.strDrinkThumb }
             alt={ item.strMeal || item.strDrink }
-            style={ { width: '10px', height: '10px' } }
           />
           <p data-testid={ `${index}-card-name` }>{item.strMeal || item.strDrink}</p>
         </button>
@@ -168,28 +165,26 @@ export default function Recipes() {
 
   return (
     <div className="all-recipes-page">
-      <Header />
       <div className="recipe-page-container">
+        <Header />
         <SearchBar />
         <div className="categories-container">
-        <button
-        className="categories-btn-all"
-          data-testid="All-category-filter"
-          type="button"
-          onClick={ () => allRender() }
-          style={ { flexDirection: 'column', alignItems: 'center' } }
-        >
-          All
-        </button>
-          {apiMealsCategoryData && apiDrinksCategoryData ? (
-           pathRenderCategorys()) : (<h4>Carregando...</h4>)}
+          <button
+          className="categories-btn-all"
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ () => allRender() }
+          >
+            All
+          </button>
+            {apiMealsCategoryData && apiDrinksCategoryData ? (
+            pathRenderCategorys()) : (<h4>Carregando...</h4>)}
         </div>
         <div className="recipes-container">
           { apiMealsNameData && apiDrinksNameData
             ? (masterRender()) : (<h4>Carregando...</h4>)}
         </div>
-        <Footer />
-            </div>
       </div>
+    </div>
   );
 }

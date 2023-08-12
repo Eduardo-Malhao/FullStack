@@ -29,14 +29,19 @@
 }
 
 .container-header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 70%;
-    height: 16%;
-    /* background-color: red; */
-  }
+  position: fixed;
+  top: 0;
+  left: 50%; /* Centralizar horizontalmente */
+  transform: translateX(-50%); /* Centralizar horizontalmente */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+  height: 16%;
+  /* background-color: var(--cor01); */
+  z-index: 1000; /* Certifique-se de que o cabeçalho esteja acima do conteúdo */
+}
   
   .nav-container {
     display: flex;

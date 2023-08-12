@@ -99,7 +99,7 @@
   width: 55%;
   padding: 20px;
   margin: auto;
-  margin-top: 400px; /* Define a distância do topo */
+  margin-top: 400px; 
   text-align: center;
   /* background-color: rgb(99, 72, 72); */
 }
@@ -111,12 +111,18 @@
   justify-content: flex-start;
   align-items: center; /* Alinhar verticalmente no centro */
   margin: 5px;
- border-color: #DBE2EC;
+  border-top-left-radius: 20%;
+  border-bottom-left-radius: 20%;
+  border-color: #DBE2EC;
+  background-color: rgba(205, 208, 223, 0);
+  
 }
 
 .eachRecipe img {
-  max-width: 20%; /* Evitar que a imagem ultrapasse o container */
+  max-width: 23%; /* Evitar que a imagem ultrapasse o container */
   height: auto; /* Manter proporção original */
+  border-radius: 50%;
+  margin-left: -10px;
 }
 
 .eachRecipe p {
@@ -126,5 +132,6 @@
   font-family: var(--font-recipes);
   margin-left: 30px; /* Adicionar margem entre a imagem e o texto */
   text-align: left; 
+  font-size: 1.8rem;
   /* background-color: aqua; */
 }

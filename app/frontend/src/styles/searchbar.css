@@ -61,6 +61,7 @@
   height: 35px;
   padding: 10px;
   text-align: center;
+  font-size: 1.2rem;
 }
 
 .radio-btn-container {
@@ -70,6 +71,7 @@
   flex-direction: row;
   width: 108%;
   height: 100%;
+  font-size: 1.2rem;
   /* background-color: #23a13e; */
 }
 

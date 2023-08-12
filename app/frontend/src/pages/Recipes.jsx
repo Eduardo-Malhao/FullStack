@@ -53,7 +53,7 @@ export default function Recipes() {
       <div key={ index }>
         <label htmlFor={ `${item.strCategory}` }>
           <button
-          className="eachCategory-btn"
+            className="eachCategory-btn"
             data-testid={ `${item.strCategory}-category-filter` }
             type="button"
             onClick={ () => onClickFilter(item.strCategory) }
@@ -77,6 +77,7 @@ export default function Recipes() {
       return mealFromFetch.map((eachMeal, index) => (
         <div key={ eachMeal.idMeal } data-testid={ `${index}-recipe-card` }>
           <button
+            className="eachRecipe"
             onClick={ () => history.push(
               `${location.pathname}/${eachMeal.idMeal}`,
             ) }
@@ -94,6 +95,7 @@ export default function Recipes() {
     return mealFromFetch.map((eachDrink, index) => (
       <div key={ eachDrink.idDrink } data-testid={ `${index}-recipe-card` }>
         <button
+          className="eachRecipe"
           onClick={ () => history.push(
             `${location.pathname}/${eachDrink.idDrink}`,
           ) }

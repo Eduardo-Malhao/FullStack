@@ -1,3 +1,4 @@
+import { ParsedQs } from 'qs';
 import Model from '../model/DrinksModel';
 import { IServiceDrinks } from '../interfaces/IServiceDrinks';
 
@@ -6,28 +7,36 @@ export default class DrinksService {
     private model: Model = new Model(),
   ) { }
 
-  public async getDrinks(search: string | null | undefined)
-    : Promise<IServiceDrinks> {
-        try {
-            if(search.name) {
-                const response = await this.model.findByName(search.name);
-                if (response) return { status: 'SUCCESS', data: response };
-                return { status: 'NOT_FOUND', data: 'Not Found' };
-            }
-            if (search.first) {
-                const response = await this.model.findByLetter(search.first);
-                if (response) return { status: 'SUCCESS', data: response };
-                return { status: 'NOT_FOUND', data: 'Not Found' };
-            }
-            if (search.ingredient) {
-                const response = await this.model.findByIngredient(search.ingredient);
-                if (response) return { status: 'SUCCESS', data: response };
-                return { status: 'NOT_FOUND', data: 'Not Found' };
-            }
-            const response = await this.model.findAll();
-            return { status: 'SUCCESS', data: response };
-        } catch (error) {
-            return { status: 'CONFLICT', data: 'Internal error' };
+  public async getDrinks(search: ParsedQs | null | undefined): Promise<IServiceDrinks> {
+    try {
+      if (search) {
+        if (typeof search === 'string') {
+          // Handle the case where search is a string
+          // For example, you might want to search for a specific drink by ID
+        } else if (typeof search === 'object') {
+          if (search.ingredient) {
+            const response = await this.model.findByIngredient(search.ingredient as string);
+            if (response) return { status: 'SUCCESS', data: response };
+            return { status: 'NOT_FOUND', data: 'Not Found' };
+          }
+          if (search.name) {
+            const response = await this.model.findByName(search.name as string);
+            if (response) return { status: 'SUCCESS', data: response };
+            return { status: 'NOT_FOUND', data: 'Not Found' };
+          }
+          if (search.first) {
+            const response = await this.model.findByLetter(search.first as string);
+            if (response) return { status: 'SUCCESS', data: response };
+            return { status: 'NOT_FOUND', data: 'Not Found' };
+          }
         }
+      }
+
+      // If no specific search parameters are provided, fetch all drinks
+      const response = await this.model.findAll();
+      return { status: 'SUCCESS', data: response };
+    } catch (error) {
+      return { status: 'CONFLICT', data: 'Internal error' };
+    }
   }
 }

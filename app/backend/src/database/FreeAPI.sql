@@ -1,6 +1,18 @@
 CREATE DATABASE  IF NOT EXISTS `Meals&Drinks` ;
 USE `Meals&Drinks`;
 
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `favorites` varchar(255),
+
+
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 DROP TABLE IF EXISTS `drinks`;
 
 CREATE TABLE `drinks` (

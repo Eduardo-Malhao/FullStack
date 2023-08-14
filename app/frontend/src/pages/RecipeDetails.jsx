@@ -3,7 +3,7 @@ import { useState, useEffect, useContext, useCallback } from 'react';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import './recipeDetails.css';
+import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
 import shareIcon from '../images/shareIcon.svg';
@@ -117,118 +117,112 @@ export default function RecipeDetails() {
   }, [getId, location.pathname]);
 
   return (
-    <div className="recipeDetails-container">
+    <div className="all-recipeDetails-page">
       <Header />
-      <SearchBar />
-      <h1>Recipe Details</h1>
-      <button
-        data-testid="share-btn"
-        src={ shareIcon }
-        onClick={ () => {
-          copy(`http://localhost:3000${location.pathname}`);
-          setWasCopied(true);
-          const time = 2000;
-          setTimeout(() => setWasCopied(false), time);
-        } }
-      >
-        Compartilhar
-      </button>
-      { wasCopied && <p>Link copied!</p>}
-      <button
-        data-testid="favorite-btn"
-        src={ isFavorite ? blackHeart : whiteHeart }
-        onClick={ () => handleFavorite() }
-      >
-        Favoritar
-      </button>
-      <div>
-        { location.pathname === `/meals/${getId.id}` ? (
+        <div className="recipeDetail-page-container ">
+          <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
+          <button
+            data-testid="share-btn"
+            src={ shareIcon }
+            onClick={ () => {
+              copy(`http://localhost:3000${location.pathname}`);
+              setWasCopied(true);
+              const time = 2000;
+              setTimeout(() => setWasCopied(false), time);
+            } }
+          >
+            Compartilhar
+          </button>
+          { wasCopied && <p>Link copied!</p>}
+          <button
+            data-testid="favorite-btn"
+            src={ isFavorite ? blackHeart : whiteHeart }
+            onClick={ () => handleFavorite() }
+          >
+            Favoritar
+          </button>
           <div>
-            {videoUrl && (
-              <video controls data-testid="video">
-                <source src={ mealObject.strYoutube } type="video/mp4" />
-                <track
-                  kind="captions"
-                  label="English"
-                  srcLang="en"
-                  src={ mealObject.strMeal }
+            { location.pathname === `/meals/${getId.id}` ? (
+              <div>
+                <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
+                 <img
+                  className="recipeDetails-image"
+                  data-testid="recipe-photo"
+                  src={ mealObject.strMealThumb }
+                  alt={ mealObject.strMeal }
                 />
-                Seu navegador não suporta o elemento de vídeo.
-              </video>
-            )}
-            <img
-              className="recipeDetails-image"
-              data-testid="recipe-photo"
-              src={ mealObject.strMealThumb }
-              alt={ mealObject.strMeal }
-            />
-            <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
-            <h4>Category</h4>
-            <p data-testid="recipe-category">{mealObject.strCategory}</p>
-            <h4>Ingredients</h4>
-            {mealsIngredients.map((eachMealIngredient, index) => (
-              <p
-                data-testid={ `${index}-ingredient-name-and-measure` }
-                key={ eachMealIngredient }
-              >
-                { `${eachMealIngredient} : ${mealsMeasures[index]}` }
-              </p>
-            ))}
-            <h4>Instructions</h4>
-            <p data-testid="instructions">{mealObject.strInstructions}</p>
-          </div>)
-          : (
-            <div>
-              {videoUrl && (
-                <video controls data-testid="video">
-                  <source src={ drinkObject.strVideo } type="video/mp4" />
-                  <track
-                    kind="captions"
-                    label="English"
-                    srcLang="en"
-                    src={ drinkObject.strDrink }
+                {videoUrl && (
+                  <video controls data-testid="video">
+                    <source src={ mealObject.strYoutube } type="video/mp4" />
+                    <track
+                      kind="captions"
+                      label="English"
+                      srcLang="en"
+                      src={ mealObject.strMeal }
+                    />
+                    Seu navegador não suporta o elemento de vídeo.
+                  </video>
+                )}
+                <h4>Category</h4>
+                <p data-testid="recipe-category">{mealObject.strCategory}</p>
+                <h4>Ingredients</h4>
+                {mealsIngredients.map((eachMealIngredient, index) => (
+                  <p
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                    key={ eachMealIngredient }
+                  >
+                    { `${eachMealIngredient} : ${mealsMeasures[index]}` }
+                  </p>
+                ))}
+                <h4>Instructions</h4>
+                <p data-testid="instructions">{mealObject.strInstructions}</p>
+              </div>)
+              : (
+                <div>
+                  <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
+                  <img
+                    className="recipeDetails-image"
+                    data-testid="recipe-photo"
+                    src={ drinkObject.strDrinkThumb }
+                    alt={ drinkObject.strDrink }
                   />
-                  Seu navegador não suporta o elemento de vídeo.
-                </video>
-              )}
-              <img
-                className="recipeDetails-image"
-                data-testid="recipe-photo"
-                src={ drinkObject.strDrinkThumb }
-                alt={ drinkObject.strDrink }
-              />
-              <p data-testid="recipe-title">{drinkObject.strDrink}</p>
-              <h4>Category</h4>
-              <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
-              <p data-testid="recipe-category">{drinkObject.strCategory}</p>
-              <h4>Ingredients</h4>
-              {drinksIngredients.map((eachDrinkIngredient, index) => (
-                <p
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ eachDrinkIngredient }
-                >
-                  { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
-                </p>
-              ))}
-              <h4>Instructions</h4>
-              <p data-testid="instructions">{drinkObject.strInstructions}</p>
-            </div>)}
-      </div>
-      {recommendations.length > 0 && (
-        <>
-          <h2>Recommended</h2>
-          <RecommendationCarousel
-            recommendations={ recommendations }
-          />
-        </>
-      )}
-      <button
-        className="start-btn"
-        data-testid="start-recipe-btn"
-        onClick={ checkStartedRecipe }
-      >
-        { localStart() ? 'Continue Recipe' : 'Start Recipe' }
-      </button>
+                  {videoUrl && (
+                    <video controls data-testid="video">
+                      <source src={ drinkObject.strVideo } type="video/mp4" />
+                      <track
+                        kind="captions"
+                        label="English"
+                        srcLang="en"
+                        src={ drinkObject.strDrink }
+                      />
+                      Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                  )}
+                <h4>Category</h4>
+                <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
+                <p data-testid="recipe-category">{drinkObject.strCategory}</p>
+                <h4>Ingredients</h4>
+                {drinksIngredients.map((eachDrinkIngredient, index) => (
+                  <p
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                    key={ eachDrinkIngredient }
+                  >
+                    { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
+                  </p>
+                ))}
+                <h4>Instructions</h4>
+                <p data-testid="instructions">{drinkObject.strInstructions}</p>
+              </div>)}
+                </div>
+                {recommendations.length > 0 && (
+          <>
+            <h2>Recommended</h2>
+            <RecommendationCarousel
+              recommendations={ recommendations }
+            />
+          </>
+                )}
+        </div>
     </div>
   );
 }

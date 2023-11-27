@@ -1,16 +1,20 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import HeaderContext from '../context/HeaderContext';
+import searchIcon from '../images/red heart.png'
+import '../styles/searchbar.css';
 
 export default function SearchBar() {
   const history = useHistory();
   const location = useLocation();
+  
   const {
     mealFromFetch,
     setMeal,
     radioChoice,
     setRadio,
     inputSearchText,
+    setInputSearchText,
     setFlag,
   } = useContext(HeaderContext);
 
@@ -61,50 +65,72 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
-      <label htmlFor="ingredient">
-        <input
-          data-testid="ingredient-search-radio"
-          id="ingredient"
-          type="radio"
-          name="RadioBtn"
-          value="Ingredient"
-          label="Ingredient"
-          onClick={ ({ target }) => setRadio(target.value) }
-        />
-        Ingredient
-      </label>
-      <label htmlFor="name">
-        <input
-          data-testid="name-search-radio"
-          type="radio"
-          name="RadioBtn"
-          value="Name"
-          id="name"
-          label="Name"
-          onClick={ ({ target }) => setRadio(target.value) }
-        />
-        Name
-      </label>
-      <label htmlFor="firstLetter">
-        <input
-          data-testid="first-letter-search-radio"
-          type="radio"
-          name="RadioBtn"
-          value="FirstLetter"
-          label="FirstLetter"
-          onClick={ ({ target }) => setRadio(target.value) }
-        />
-        First Letter
-      </label>
-      <button
-        data-testid="exec-search-btn"
-        type="button"
-        onClick={ () => handleExecuteSearchClick() }
-        src="../../src/images/searchIcon.svg"
-      >
-        SEARCH
-      </button>
+    <div className="all-searchbar">
+      <div className="serachbar-container">
+        <div className="category-input-container">
+          <h1> { location.pathname === '/meals' ? 'MEALS' : 'DRINKS' } </h1>
+          <input
+          className="input-text"
+              type="text"
+              value={ inputSearchText }
+              placeholder="Search"
+              data-testid="search-input"
+              onChange={ ({ target }) => setInputSearchText(target.value) }
+            />
+        </div>
+        <div className="radio-btn-container">
+          <label htmlFor="ingredient">
+            <input
+            className="radio"
+              data-testid="ingredient-search-radio"
+              id="ingredient"
+              type="radio"
+              name="RadioBtn"
+              value="Ingredient"
+              label="Ingredient"
+              onClick={ ({ target }) => setRadio(target.value) }
+            />
+            Ingredient
+          </label>
+          <label htmlFor="name">
+            <input
+             className="radio"
+              data-testid="name-search-radio"
+              type="radio"
+              name="RadioBtn"
+              value="Name"
+              id="name"
+              label="Name"
+              onClick={ ({ target }) => setRadio(target.value) }
+            />
+            Name
+          </label>
+          <label htmlFor="firstLetter">
+            <input
+             className="radio"
+              data-testid="first-letter-search-radio"
+              type="radio"
+              name="RadioBtn"
+              value="FirstLetter"
+              label="FirstLetter"
+              onClick={ ({ target }) => setRadio(target.value) }
+            />
+            First Letter
+          </label>
+          <button
+          data-testid="exec-search-btn"
+          type="button"
+          onClick={ () => handleExecuteSearchClick() }
+          src="../../src/images/searchIcon.svg"
+          >
+            SEARCH
+            {/* <img
+              src={searchIcon}
+              alt="Search Icon"
+            /> */}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

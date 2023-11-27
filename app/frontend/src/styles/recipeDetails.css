@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+
+  /*gradiente*/
+
+  --cor01:#DBE2EC;
+  --cor02: #0E23E5;
+  --cor04: #a12323;
+  --cor04:#052858de;
+
+  --fonte-primary: 'League Gothic', sans-serif;
+  --font-second: 'Lekton', sans-serif;
+  --font-recipes: 'Marcellus', serif;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.all-recipeDetails-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images//PAPEL\ PAREDE\ FOLHAS.png"); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+}
+
+.recipeDetail-page-container {
+  display: flex;
+  flex-shrink: 1;
+  flex-grow: 0;
+  flex-basis: auto;
+  position: fixed;
+  order: 0;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  width: 75%;
+  min-height: 100vh; 
+  background-color: #4985da;
+}
+
+.recipeDetail-title {
+  color: var(--cor02);
+  font-size: 1.7em;
+  word-spacing: 0.5em;
+  /* background-color: var(--cor03); */
+}
+
+.heart-input {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #490733;
+  display: inline-block;
+  height: 3px;
+  width: 6px;
+}
+
+.recipeDetails-mediaContainer {
+  align-items: center;
+  background-color: #490733;
+  display: flex;
+}
+
+.recipeDetails-image {
+  height: 10%;
+  width: 10%;
+}
+

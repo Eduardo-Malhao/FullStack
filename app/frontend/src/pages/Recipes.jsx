@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import MealsContext from '../context/MealsContext';
 import DrinksContext from '../context/DrinksContext';
 import HeaderContext from '../context/HeaderContext';
+import '../styles/recipes.css';
 
 export default function Recipes() {
   const location = useLocation();
@@ -52,6 +53,7 @@ export default function Recipes() {
       <div key={ index }>
         <label htmlFor={ `${item.strCategory}` }>
           <button
+            className="eachCategory-btn"
             data-testid={ `${item.strCategory}-category-filter` }
             type="button"
             onClick={ () => onClickFilter(item.strCategory) }
@@ -75,6 +77,7 @@ export default function Recipes() {
       return mealFromFetch.map((eachMeal, index) => (
         <div key={ eachMeal.idMeal } data-testid={ `${index}-recipe-card` }>
           <button
+            className="eachRecipe"
             onClick={ () => history.push(
               `${location.pathname}/${eachMeal.idMeal}`,
             ) }
@@ -83,7 +86,6 @@ export default function Recipes() {
               src={ eachMeal.strMealThumb }
               alt={ eachMeal.strMeal }
               data-testid={ `${index}-card-img` }
-              style={ { width: '10px', height: '10px' } }
             />
             <p data-testid={ `${index}-card-name` }>{eachMeal.strMeal}</p>
           </button>
@@ -93,6 +95,7 @@ export default function Recipes() {
     return mealFromFetch.map((eachDrink, index) => (
       <div key={ eachDrink.idDrink } data-testid={ `${index}-recipe-card` }>
         <button
+          className="eachRecipe"
           onClick={ () => history.push(
             `${location.pathname}/${eachDrink.idDrink}`,
           ) }
@@ -101,7 +104,6 @@ export default function Recipes() {
             src={ eachDrink.strDrinkThumb }
             alt={ eachDrink.strDrink }
             data-testid={ `${index}-card-img` }
-            style={ { width: '10px', height: '10px' } }
           />
           <p data-testid={ `${index}-card-name` }>{eachDrink.strDrink}</p>
         </button>
@@ -126,12 +128,12 @@ export default function Recipes() {
           onClick={ () => history.push(
             `${location.pathname}/${item.idMeal || item.idDrink}`,
           ) }
+          className="eachRecipe"
         >
           <img
             data-testid={ `${index}-card-img` }
             src={ item.strMealThumb || item.strDrinkThumb }
             alt={ item.strMeal || item.strDrink }
-            style={ { width: '10px', height: '10px' } }
           />
           <p data-testid={ `${index}-card-name` }>{item.strMeal || item.strDrink}</p>
         </button>
@@ -164,34 +166,27 @@ export default function Recipes() {
   }
 
   return (
-    <div
-      style={
-        { display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center' }
-      }
-    >
-      <Header />
-      <SearchBar />
-      <button
-        data-testid="All-category-filter"
-        type="button"
-        onClick={ () => allRender() }
-        style={ { flexDirection: 'column', alignItems: 'center' } }
-      >
-        All
-      </button>
-      <div style={ { display: 'flex', flexWrap: 'wrap', justifyContent: 'center' } }>
-        {apiMealsCategoryData && apiDrinksCategoryData ? (
-          pathRenderCategorys()) : (<h4>Carregando...</h4>)}
+    <div className="all-recipes-page">
+      <div className="recipe-page-container">
+        <Header />
+        <SearchBar />
+        <div className="categories-container">
+          <button
+          className="categories-btn-all"
+            data-testid="All-category-filter"
+            type="button"
+            onClick={ () => allRender() }
+          >
+            All
+          </button>
+            {apiMealsCategoryData && apiDrinksCategoryData ? (
+            pathRenderCategorys()) : (<h4>Carregando...</h4>)}
+        </div>
+        <div className="recipes-container">
+          { apiMealsNameData && apiDrinksNameData
+            ? (masterRender()) : (<h4>Carregando...</h4>)}
+        </div>
       </div>
-
-      <div style={ { display: 'flex', flexWrap: 'wrap', justifyContent: 'center' } }>
-        { apiMealsNameData && apiDrinksNameData
-          ? (masterRender()) : (<h4>Carregando...</h4>)}
-      </div>
-      <Footer style={ { marginTop: 'auto' } } />
     </div>
   );
 }

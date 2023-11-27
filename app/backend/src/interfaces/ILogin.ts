@@ -1,7 +1,7 @@
-export interface IUsers {
+export interface ILogin {
     id?: number;
     email: string;
     password: string;
     username: string;
-    role: string;
+    role?: string;
 }

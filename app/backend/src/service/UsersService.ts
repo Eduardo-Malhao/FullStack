@@ -1,17 +1,18 @@
 import Model from '../model/UsersModel';
 import { IUsers } from '../interfaces/IUsers';
 import { IServiceUsers } from '../interfaces/IServiceUsers';
+import { ILogin } from '../interfaces/ILogin';
 
 export default class UsersService {
   constructor(
     private model: Model = new Model(),
   ) { }
 
-  public async createUser(user: IUsers): Promise<IServiceUsers> {
+  public async register(user: IUsers): Promise<IServiceUsers> {
     try {
-        const getUsersResult = await this.getUsers(user);
+        const checkUser = await this.getUsers(user);
 
-        if (getUsersResult.status === 'SUCCESS') {
+        if (checkUser.status === 'SUCCESS') {
             return { status: 'CONFLICT', data: 'User already exists' };
         }
 
@@ -42,5 +43,15 @@ export default class UsersService {
         } catch (error) {
             return { status: 'CONFLICT', data: 'Internal error' };
         }
+  }
+
+  public async login(user : ILogin)
+    : Promise<IServiceUsers> {
+        try {
+            const findUser = await this.model.findByEmail(user);
+
+            if (!findUser) return { status: 'NOT_FOUND', data: 'Invalid email or password' };
+              
+
   }
 }

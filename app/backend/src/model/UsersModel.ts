@@ -5,18 +5,18 @@ import { IUsers } from '../interfaces/IUsers';
 export default class UsersModel {
   private model = Model;
 
-    async createUser(user: IUsers)
+    public async createUser(user: IUsers)
         : Promise<IUsers> {
             const response = await this.model.create({
                 email: user.email,
                 password: user.password,
-                username: user.username
+                username: user.username,
                 role: user.role,
             });
             return response;
         }
 
-        async findByName(user: IUsers)
+        public async findByName(user: IUsers)
         : Promise<IUsers | null> {
             const response = await this.model.findOne({
                 where: { username: { [Op.like]: `%${user.username}%` } } 
@@ -25,7 +25,7 @@ export default class UsersModel {
             return response;
         }
     
-        async findByEmail(user: IUsers)
+        public async findByEmail(user: IUsers)
         : Promise<IUsers | null> {
             const response = await this.model.findOne({
                 where: { email: { [Op.like]: `${user.email}%` } } 

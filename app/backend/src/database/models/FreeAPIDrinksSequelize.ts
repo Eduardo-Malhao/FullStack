@@ -18,7 +18,7 @@ import {
     declare drink_category: string;
     declare alcoholic: string;
     declare drink_glass: string;
-    declare drink_instructions: string;
+    declare drink_instructions: Text;
     declare drink_image: string;
     declare drink_ingredient_01: string;
     declare drink_ingredient_02: string;
@@ -91,7 +91,7 @@ import {
         type: DataTypes.STRING,
       },
       drink_instructions: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       drink_image: {

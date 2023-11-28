@@ -35,7 +35,7 @@ Drinks.init({
         type: sequelize_1.DataTypes.STRING,
     },
     drink_instructions: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.TEXT,
         allowNull: false,
     },
     drink_image: {

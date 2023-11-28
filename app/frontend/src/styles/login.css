@@ -142,25 +142,3 @@
   color: #fbfbfb;
 } */
 
-.footer-container {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  height: 10x;
-  /* background-color: var(--cor03) */
-}
-
-.foot-line {
-  margin-top: 3%;
-  z-index: 1;
-  width: 90%;
-  height: 1.8px;
-  background-color: var(--cor03);
-}
-
-.credits {
-  font-size: 1rem;
-  padding: 0.6%;
-  color: var(--cor03);
-  font-family: var(--font-second);
-}

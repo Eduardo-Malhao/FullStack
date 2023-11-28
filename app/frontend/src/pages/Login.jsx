@@ -90,7 +90,6 @@ function Login() {
             </button>
           </div>
         </form>
-        <div className="foot-line"></div>
         <Footer/>
       </div>
     </div>

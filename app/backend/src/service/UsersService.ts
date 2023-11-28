@@ -2,6 +2,8 @@ import Model from '../model/UsersModel';
 import { IUsers } from '../interfaces/IUsers';
 import { IServiceUsers } from '../interfaces/IServiceUsers';
 import { ILogin } from '../interfaces/ILogin';
+import * as bcrypt from 'bcryptjs';
+import JwtUtils from '../utils/JWTutils';
 
 export default class UsersService {
   constructor(
@@ -47,11 +49,20 @@ export default class UsersService {
 
   public async login(user : ILogin)
     : Promise<IServiceUsers> {
-        try {
-            const findUser = await this.model.findByEmail(user);
+      try {
+        const findUser = await this.model.findByEmail(user);
 
-            if (!findUser) return { status: 'NOT_FOUND', data: 'Invalid email or password' };
-              
+        if (!findUser) return { status: 'NOT_FOUND', data: 'Invalid email or password' };
+             
+        if (!bcrypt.compareSync(user.password, findUser.password)) {
+          return { status: 'NOT_FOUND', data: 'Invalid email or password' };
+        }
 
+        const tokenGenerated = JwtUtils.sign({ id: findUser.id });
+        return { status: 'SUCCESS', data: tokenGenerated };
+
+      } catch (error) {
+        return { status: 'CONFLICT', data: 'Internal error' };
+      }
   }
 }

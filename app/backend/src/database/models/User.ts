@@ -25,6 +25,7 @@ import {
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
+        unique: true,
       },
       email: {
         type: DataTypes.STRING,

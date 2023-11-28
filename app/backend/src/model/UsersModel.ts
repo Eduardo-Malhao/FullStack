@@ -1,6 +1,7 @@
 import { Op } from 'sequelize';
 import Model from '../database/models/User';
 import { IUsers } from '../interfaces/IUsers';
+import { ILogin } from '../interfaces/ILogin';
 
 export default class UsersModel {
   private model = Model;
@@ -16,7 +17,7 @@ export default class UsersModel {
             return response;
         }
 
-        public async findByName(user: IUsers)
+        public async findByName(user: IUsers | ILogin)
         : Promise<IUsers | null> {
             const response = await this.model.findOne({
                 where: { username: { [Op.like]: `%${user.username}%` } } 
@@ -25,7 +26,7 @@ export default class UsersModel {
             return response;
         }
     
-        public async findByEmail(user: IUsers)
+        public async findByEmail(user: IUsers | ILogin)
         : Promise<IUsers | null> {
             const response = await this.model.findOne({
                 where: { email: { [Op.like]: `${user.email}%` } } 

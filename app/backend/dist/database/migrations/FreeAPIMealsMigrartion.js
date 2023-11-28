@@ -21,7 +21,7 @@ exports.default = {
                 type: sequelize_1.DataTypes.STRING,
             },
             meal_instructions: {
-                type: sequelize_1.DataTypes.STRING,
+                type: sequelize_1.DataTypes.TEXT,
                 allowNull: false,
             },
             meal_image: {

@@ -6,7 +6,7 @@ export interface IDrinks {
     drink_category: string;
     drink_glass: string;
     alcoholic: string;
-    drink_instructions: string;
+    drink_instructions: Text;
     drink_image: string;
     drink_tag: string;
     drink_video: string;

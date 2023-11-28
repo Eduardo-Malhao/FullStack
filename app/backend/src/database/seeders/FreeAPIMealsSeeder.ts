@@ -6,7 +6,7 @@ export default {
       'meals',
       [
         {
-            idMeal: '52977',
+            id: '52977',
             meal_name: 'Corba',
             meal_category: 'Side',
             meal_area: 'Turkish',
@@ -42,7 +42,7 @@ export default {
             meal_measure_13: 'Pinch',
           },
           {
-            idMeal: '53060',
+            id: '53060',
             meal_name: 'Burek',
             meal_category: 'Side',
             meal_area: 'Croatian',
@@ -64,7 +64,7 @@ export default {
             meal_measure_06: 'Dash',
           },
            {
-          idMeal: '53065',
+          id: '53065',
           meal_name: 'Sushi',
           meal_category: 'Seafood',
           meal_area: 'Japanese',
@@ -87,7 +87,7 @@ export default {
           meal_measure_07: '1',
         },
         {
-          idMeal: '52978',
+          id: '52978',
           meal_name: 'Kumpir',
           meal_category: 'Side',
           meal_area: 'Turkish',
@@ -109,7 +109,7 @@ export default {
           meal_measure_06: 'Pinch',
         },
         {
-          idMeal: '53069',
+          id: '53069',
           meal_name: 'Bistek',
           meal_category: 'Beef',
           meal_area: 'Filipino',
@@ -134,7 +134,7 @@ export default {
           meal_measure_08: '1 pinch',
         },
         {
-            idMeal: '53026',
+            id: '53026',
             meal_name: 'Tamiya',
             meal_category: 'Vegetarian',
             meal_area: 'Egyptian',
@@ -161,7 +161,7 @@ export default {
             meal_measure_09: 'As required',
           },
           {
-            idMeal: '52971',
+            id: '52971',
             meal_name: 'Kafteji',
             meal_category: 'Vegetarian',
             meal_area: 'Tunisian',
@@ -188,7 +188,7 @@ export default {
             meal_measure_09: 'Pinch',
           },
           {
-            idMeal: '52844',
+            id: '52844',
             meal_name: 'Lasagne',
             meal_category: 'Pasta',
             meal_area: 'Italian',
@@ -227,7 +227,7 @@ export default {
             meal_measure_15: 'Topping',
           },
           {
-            idMeal: '52785',
+            id: '52785',
             meal_name: 'Dal Fry',
             meal_category: 'Vegetarian',
             meal_area: 'Indian',

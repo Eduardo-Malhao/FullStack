@@ -4,6 +4,7 @@ const config = {
     password: '123456',
     database: 'Meals&Drinks',
     host: 'localhost',
+    // (pode ser db nome do servico)
     port: 3306,
     dialect: 'mysql',
     dialectOptions: {

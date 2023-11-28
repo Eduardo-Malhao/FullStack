@@ -15,7 +15,7 @@ import {
     declare meal_name: string;
     declare meal_category: string;
     declare meal_area: string;
-    declare meal_instructions: string;
+    declare meal_instructions: Text;
     declare meal_image: string;
     declare meal_tag: string;
     declare meal_video: string;
@@ -80,7 +80,7 @@ import {
         type: DataTypes.STRING,
       },
       meal_instructions: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       meal_image: {

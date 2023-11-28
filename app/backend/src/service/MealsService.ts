@@ -1,12 +1,13 @@
 import Model from '../model/MealsModel';
 import { IServiceMeals } from '../interfaces/IServiceMeals';
+import { ISearch } from '../interfaces/ISearch';
 
 export default class DrinksService {
   constructor(
     private model: Model = new Model(),
   ) { }
 
-  public async getMeals(search: string | null | undefined)
+  public async getMeals(search: ISearch)
     : Promise<IServiceMeals> {
         try {
           if(search.name) {

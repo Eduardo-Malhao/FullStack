@@ -96,7 +96,7 @@
 .recipes-container {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1%;
   width: 100%;
   height: 55%;
@@ -122,12 +122,13 @@
  /*  border-bottom-left-radius: 20%; */
   width: 70%;
 /*   border-color: #dbe2ec3a; */
-/*   background-color: rgba(161, 150, 89, 0); */
+border-color: #a1232300;
+  background-color: rgba(161, 150, 89, 0);
 }
 
 .eachRecipe img {
-  max-height: 45%;
-  max-width: 45%; /* Evitar que a imagem ultrapasse o container */
+  max-height: 55%;
+  max-width: 55%; /* Evitar que a imagem ultrapasse o container */
   height: auto; /* Manter proporção original */
   border-radius: 50%;
   /* margin-left: -10px; */

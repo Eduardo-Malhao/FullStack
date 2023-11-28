@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import HeaderContext from '../context/HeaderContext';
-import searchIcon from '../images/red heart.png'
+import searchIcon from '../../src/images/searchIcon.svg';
 import '../styles/searchbar.css';
 
 export default function SearchBar() {
@@ -118,16 +118,16 @@ export default function SearchBar() {
             First Letter
           </label>
           <button
+          className="search-btn"
           data-testid="exec-search-btn"
           type="button"
           onClick={ () => handleExecuteSearchClick() }
-          src="../../src/images/searchIcon.svg"
+          src="../../src/images/lupa.png"
           >
-            SEARCH
-            {/* <img
+            {<img
               src={searchIcon}
               alt="Search Icon"
-            /> */}
+            /> }
           </button>
         </div>
       </div>

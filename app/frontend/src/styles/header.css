@@ -46,21 +46,23 @@
   .nav-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 1300px;
-    /* background-color: #23a181; */
+/*     background-color: #23a181;  */
   }
 
   .nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 1780px;
+    width: 90%;
     justify-content: space-around;
     padding-left: 0px;
     padding-bottom: 11px;
     color: var(--cor02);
     font-size: 1.3em;
-    /* background-color: rgb(218, 176, 176); */
+  /*   background-color: rgb(218, 176, 176); */
   }
   
   .storagerecipe {

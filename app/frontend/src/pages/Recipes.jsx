@@ -167,8 +167,8 @@ export default function Recipes() {
 
   return (
     <div className="all-recipes-page">
+      <Header />
       <div className="recipe-page-container">
-        <Header />
         <SearchBar />
         <div className="categories-container">
           <button

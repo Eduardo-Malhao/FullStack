@@ -15,6 +15,7 @@ function Footer() {
 
   return (
     <footer className="footer-container">
+      <div className= "foot-line"></div>
       <p className="credits">site desenvolvido por Livia Boechat e Eduardo Malhão  *  2023</p>
     </footer>
   );

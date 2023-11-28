@@ -31,29 +31,34 @@ function Profile({ history }) {
         >
           { userEmail.email }
         </h2>
-        <Button
-          type="button"
-          data-testid="profile-done-btn"
-          as={ Link }
-          to="/done-recipes"
-        >
-          Done Recipes
-        </Button>
-        <Button
-          type="button"
-          data-testid="profile-favorite-btn"
-          as={ Link }
-          to="/favorite-recipes"
-        >
-          Favorite Recipes
-        </Button>
-        <Button
-          type="button"
-          data-testid="profile-logout-btn"
-          onClick={ logout }
-        >
-          Logout
-        </Button>
+        <div className= "profile-btn-container">
+          <Button
+            className= "done-btn"
+            type="button"
+            data-testid="profile-done-btn"
+            as={ Link }
+            to="/done-recipes"
+          >
+            Done Recipes
+          </Button>
+          <Button
+            className= "favorite-btn"
+            type="button"
+            data-testid="profile-favorite-btn"
+            as={ Link }
+            to="/favorite-recipes"
+          >
+            Favorite Recipes
+          </Button>
+          <Button
+            className= "logout-btn"
+            type="button"
+            data-testid="profile-logout-btn"
+            onClick={ logout }
+          >
+            Logout
+          </Button>
+        </div>
       </div>
       <Footer />
     </div>

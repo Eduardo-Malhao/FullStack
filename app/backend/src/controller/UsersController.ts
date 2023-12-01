@@ -9,9 +9,9 @@ export default class UsersControllers {
     constructor() { this.service = new Service() }
 
     public async register(req: Request, res: Response) {
+        const body = UserDto.BodyToUser(req.body);
         const adminEmailRegex = /@admin\.com$/i;
 
-        const body = UserDto.BodyToUser(req.body);
         body.role = adminEmailRegex.test(body.email) ? 'ADMIN' : 'USER';
         
         const { status, data } = await this.service.register(body);

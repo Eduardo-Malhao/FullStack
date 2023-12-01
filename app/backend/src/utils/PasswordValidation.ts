@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcryptjs';
-import { ILogin } from '../interfaces/ILogin';
+import { ILogin } from '../interfaces/User/ILogin';
 
 export default class PasswordValidation {
 

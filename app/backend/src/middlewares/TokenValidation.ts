@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import JwtUtils from '../utils/JWTutils';
-import { IUsers } from '../interfaces/IUsers';
+import { IUsers } from '../interfaces/User/IUsers';
 
 export default class TokenValidation {
   public static validateToken(req: Request, res: Response, next: NextFunction) {

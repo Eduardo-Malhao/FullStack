@@ -1,9 +1,14 @@
 import Model from '../model/UsersModel';
-import { IUsers } from '../interfaces/IUsers';
-import { IServiceUsers } from '../interfaces/IServiceUsers';
-import { ILogin } from '../interfaces/ILogin';
+import { IUsers } from '../interfaces/User/IUsers';
+import { ILogin } from '../interfaces/User/ILogin';
+import { IServiceLoginUsers } from '../interfaces/User/IServiceLoginUsers';
+import { IServiceGetAllUsers } from '../interfaces/User/IServiceGetAllUsers';
+import { IServiceCreateUsers } from '../interfaces/User/IServiceCreateUsers';
+import { IServiceGetUsers } from '../interfaces/User/IServiceGetUsers';
 import JwtUtils from '../utils/JWTutils';
 import PasswordValidation from '../utils/PasswordValidation';
+import UserDto from '../controller/UserDto';
+
 
 export default class UsersService {
   constructor(
@@ -11,7 +16,7 @@ export default class UsersService {
   ) { }
 
   public async register(user: IUsers)
-  : Promise<IServiceUsers> {
+  : Promise<IServiceCreateUsers> {
     try {
       const checkUser = await this.getUsers(user);
         
@@ -20,8 +25,9 @@ export default class UsersService {
       }
       
       const response = await this.model.createUser(user);
+      const treatedResponse = UserDto.UserToBody(response);
         
-      return { status: 'SUCCESS', data: response };
+      return { status: 'SUCCESS', data: treatedResponse };
         
     } catch (error) {
         return { status: 'CONFLICT', data: 'Internal error' };
@@ -29,12 +35,11 @@ export default class UsersService {
 }
 
   public async login(user : ILogin)
-  : Promise<IServiceUsers> {
+  : Promise<IServiceLoginUsers> {
     try {
       const findUser = await this.model.findByEmail(user) || await this.model.findByName(user) as IUsers;
         
       if (findUser) {
-        console.log('123');
         const passwordValidation = PasswordValidation.validatePassword(user, findUser);
         
         const tokenGenerated = JwtUtils.sign({ id: findUser.id });
@@ -49,7 +54,7 @@ export default class UsersService {
   }
 
   public async getAllUsers()
-  : Promise<IServiceUsers> {
+  : Promise<IServiceGetAllUsers> {
     try {
     const response = await this.model.getAllUsers();
       
@@ -61,7 +66,7 @@ export default class UsersService {
   }
 
   public async getUsers(user: IUsers)
-  : Promise<IServiceUsers> {
+  : Promise<IServiceGetUsers> {
     try {
       if(user.username !== null) {
       const response = await this.model.findByName(user);

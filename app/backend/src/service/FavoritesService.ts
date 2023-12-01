@@ -1,5 +1,7 @@
 import Model from '../model/FavoritesModel';
 import { IBodyFavorites } from '../interfaces/IBodyFavorites';
+import { IFavorites } from '../interfaces/IFavorites';
+import FavoriteChecker from '../utils/FavoriteChecker';
 
 export default class FavoritesService {
   constructor(
@@ -8,13 +10,19 @@ export default class FavoritesService {
 
   public async favorite(ids: IBodyFavorites): Promise<any> {
     try {
+      const getAllFavoritesIds: IFavorites[] = await this.model.getAllFavoritesIds(ids.user_id);
+      Promise.all(getAllFavoritesIds);
+      const isFavorite: boolean = FavoriteChecker.checkFavorite(getAllFavoritesIds, ids.meal_id, ids.drink_id);
+      
+      if (isFavorite) {
+        const response = await this.model.unfavorite(ids);
+        return { status: 'SUCCESS', data: response };
+      }
       if(ids.drink_id) {
         const response = await this.model.favorite(ids);
         return { status: 'SUCCESS', data: response };
       }
       if (ids.meal_id) {
-        console.log('qqq');
-        
         const response = await this.model.favorite(ids);
         return { status: 'SUCCESS', data: response };
       }
@@ -24,31 +32,31 @@ export default class FavoritesService {
     } catch (error) {
       return { status: 'CONFLICT', data: 'Internal error' };
     }
-    }
+  }
 
 
   public async getAllFavorites(id: number): Promise<any> {
-      try {
-        const response = await this.model.getAllFavorites(id);
-        if (response !== null) return { status: 'SUCCESS', data: response };
+    try {
+      const response = await this.model.getAllFavorites(id);
+      if (response !== null) return { status: 'SUCCESS', data: response };
 
-        return { status: 'NOT_FOUND', data: `You don't have favorites` };
-        
-			} catch (error) {
-        return { status: 'CONFLICT', data: 'Internal error' };
-      }
+      return { status: 'NOT_FOUND', data: `You don't have favorites` };
+      
+		} catch (error) {
+      return { status: 'CONFLICT', data: 'Internal error' };
+    }
   }
 
   public async getAllMealsFavorites(id: number): Promise<any> {
-      try {
-        const response = await this.model.getAllMealsFavorites(id);
-        if (response !== null) return { status: 'SUCCESS', data: response };
+    try {
+      const response = await this.model.getAllMealsFavorites(id);
+      if (response !== null) return { status: 'SUCCESS', data: response };
 
-        return { status: 'NOT_FOUND', data: `You don't have Meals favorites` };
-        
-			} catch (error) {
-        return { status: 'CONFLICT', data: 'Internal error' };
-      }
+      return { status: 'NOT_FOUND', data: `You don't have Meals favorites` };
+      
+		} catch (error) {
+      return { status: 'CONFLICT', data: 'Internal error' };
+    }
 	}
 
   public async getAllDrinksFavorites(id: number): Promise<any> {

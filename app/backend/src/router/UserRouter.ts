@@ -7,10 +7,10 @@ const router = Router();
 const controller = new Controller();
 
 router.post('/register',
-RegisterValidation.validateFields,
-RegisterValidation.validateEmail,
-RegisterValidation.validateUsername,
-RegisterValidation.validatePassword,
+// RegisterValidation.validateFields,
+// RegisterValidation.validateEmail,
+// RegisterValidation.validateUsername,
+// RegisterValidation.validatePassword,
 (req: Request, res: Response) => controller.register(req, res));
 
 router.post('/login',

@@ -20,46 +20,62 @@ export default class UsersModel {
 		return response;
 	}
 		
-		public async getAllFavorites(id: number)
-		: Promise<any> {
-			const response = await this.model.findAll({ where: { user_id: id } })
+	public async getAllFavorites(id: number)
+	: Promise<any> {
+		const response = await this.model.findAll({
+			where: { user_id: id }, attributes: { exclude: ['id', 'user_id', 'meal_id', 'drink_id'] },
+			include: [ 
+				{ model: FreeAPIMealsSequelize, as: 'meal' },
+				{ model: FreeAPIDrinksSequelize, as: 'drink' } 
+			]
+		})
 
-			return response;
-		}
+		return response;
+	}
 
-		public async getAllMealsFavorites(id: number)
-		: Promise<any> {
-			const response = await this.model.findAll({
-				where: { user_id: id },
-				include: [ { model: FreeAPIMealsSequelize, as: 'meal', attributes: { exclude: ['id'] } } ]
-						// where: { user_id: userId, meal_id: {[this.Sequelize.Op.ne]: null} },
-			})
+	public async getAllMealsFavorites(id: number)
+	: Promise<any> {
+		const response = await this.model.findAll({
+			where: { user_id: id }, attributes: { exclude: ['id', 'user_id', 'meal_id', 'drink_id'] },
+			include: [ { model: FreeAPIMealsSequelize, as: 'meal' } ]
+		})
 
-			return response;
-		}
+		return response;
+	}
 
 
-		public async getAllDrinksFavorites(id: number)
-		: Promise<any> {
-					const response = await this.model.findAll({
-						where: { user_id: id },
-						include: [ { model: FreeAPIDrinksSequelize, as: 'drink', attributes: { exclude: ['id'] } } ]
-										// where: { user_id: userId, meal_id: {[this.Sequelize.Op.ne]: null} },
-				})
+	public async getAllDrinksFavorites(id: number)
+	: Promise<any> {
+		const response = await this.model.findAll({
+			where: { user_id: id }, attributes: { exclude: ['id', 'user_id', 'meal_id', 'drink_id'] },
+			include: [ { model: FreeAPIDrinksSequelize, as: 'drink' } ]
+		})
 
-				return response;
-		}
+		return response;
+	}
 	
-		public async unfavorite(ids: IBodyFavorites)
-		: Promise<any> {
-					const response = await this.model.destroy({
-						where: {
-							user_id: ids.user_id,
-							meal_id: ids?.meal_id,
-							drink_id: ids?.drink_id
-						}
-					})
+	public async unfavorite(ids: IBodyFavorites)
+	: Promise<any> {
+		const whereConditions: any = { user_id: ids.user_id };
 
-					return response;
-		}
+  if (ids.meal_id !== undefined) {
+    whereConditions.meal_id = ids.meal_id;
+  } else if (ids.drink_id !== undefined) {
+    whereConditions.drink_id = ids.drink_id;
+  }
+
+  const response = await this.model.destroy({
+    where: whereConditions,
+  });
+		
+		return response;
+	}
+
+	public async getAllFavoritesIds(id: number)
+	: Promise<any> {
+		const response = await this.model.findAll({ where: { user_id: id } });
+
+		return response;
+	}
+
 }

@@ -1,5 +1,3 @@
-import { IIngredients } from './IIngredients';
-
 export interface IDrinks {
     id: number;
     drink_name: string;

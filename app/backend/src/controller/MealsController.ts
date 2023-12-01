@@ -11,8 +11,7 @@ export default class MealsController {
         const search: ISearch = req.query;
         const { status, data } = await this.service.getMeals(search);
 
-        if (status !== 'SUCCESS') return res.status(mapStatusHTTP(status)).json({data});
-        return res.status(mapStatusHTTP(status)).json({data});
+        return res.status(mapStatusHTTP(status)).json(data);
     }
 }
 

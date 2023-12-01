@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { IUsers } from '../interfaces/IUsers';
 import UserDto from '../controller/UserDto';
+import { log } from 'console';
 
 export default class UsersMdws {
 
@@ -10,7 +11,7 @@ export default class UsersMdws {
         const adminEmailRegex = /@admin\.com$/i;
 
         user.role = adminEmailRegex.test(user.email) ? 'ADMIN' : 'USER';
-
+        
         next();
     }
 

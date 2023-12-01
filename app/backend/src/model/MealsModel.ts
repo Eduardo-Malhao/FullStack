@@ -2,7 +2,7 @@ import { Op } from 'sequelize';
 import Model from '../database/models/FreeAPIMealsSequelize';
 import { IMeals } from '../interfaces/IMeals';
 
-export default class DrinksModel {
+export default class MealsModel {
   private model = Model;
 
     async findAll()

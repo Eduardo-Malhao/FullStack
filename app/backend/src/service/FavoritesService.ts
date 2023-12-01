@@ -1,19 +1,20 @@
 import Model from '../model/FavoritesModel';
-import { IFavorites } from '../interfaces/IFavorites';
-import { IBodyFavoites } from '../interfaces/IBodyFavorites';
+import { IBodyFavorites } from '../interfaces/IBodyFavorites';
 
 export default class FavoritesService {
   constructor(
     private model: Model = new Model(),
   ) { }
 
-  public async favorite(ids: IBodyFavoites): Promise<any> {
+  public async favorite(ids: IBodyFavorites): Promise<any> {
     try {
-      if(ids.drinkId) {
+      if(ids.drink_id) {
         const response = await this.model.favorite(ids);
         return { status: 'SUCCESS', data: response };
       }
-      if (ids.mealId) {
+      if (ids.meal_id) {
+        console.log('qqq');
+        
         const response = await this.model.favorite(ids);
         return { status: 'SUCCESS', data: response };
       }
@@ -63,7 +64,7 @@ export default class FavoritesService {
   }
 
 
-  public async unfavorite(ids: IBodyFavoites)
+  public async unfavorite(ids: IBodyFavorites)
 	: Promise<any> {
 		try{
 			const response = await this.model.unfavorite(ids);

@@ -12,8 +12,8 @@ import FreeAPIDrinksSequelize from './FreeAPIDrinksSequelize';
 import { IFavorites } from '../../interfaces/IFavorites';
 
   class Favorites extends Model<
-    InferAttributes<IFavorites>,
-    InferCreationAttributes<IFavorites>
+    InferAttributes<any>,
+    InferCreationAttributes<any>
     > {
         declare id: CreationOptional<number>;
         declare user_id: number;

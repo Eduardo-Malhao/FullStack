@@ -6,7 +6,7 @@ export default {
       'drinks',
       [
         {
-            id: 15997,
+            id: 1,
             drink_name: 'GG',
             drink_tag: null,
             drink_video: null,
@@ -21,7 +21,7 @@ export default {
             drink_measure_01: '2 1/2 shots',
           },
           {
-            id: 17222,
+            id: 2,
             drink_name: 'A1',
             drink_tag: null,
             drink_video: null,
@@ -40,7 +40,7 @@ export default {
             drink_measure_04: '1/8 Shot',
           },
           {
-            id: 17225,
+            id: 3,
             drink_name: 'Ace',
             drink_tag: null,
             drink_video: null,
@@ -61,7 +61,7 @@ export default {
             drink_measure_05: '1/2 Fresh',
           },
           {
-            id: 14229,
+            id: 4,
             drink_name: '747',
             drink_tag: null,
             drink_video: null,
@@ -78,7 +78,7 @@ export default {
             drink_measure_03: '1/3 part',
           },
           {
-            id: 17203,
+            id: 5,
             drink_name: 'Kir',
             drink_tag: 'IBA,ContemporaryClassic',
             drink_video: null,
@@ -93,7 +93,7 @@ export default {
             drink_measure_02: '5 parts',
           },
           {
-            id: 52948,
+            id: 6,
             drink_name: 'Wontons',
             drink_category: 'Pork',
             drink_instructions: 'Combine pork, garlic, ginger, soy sauce, sesame oil, and vegetables in a bowl. Separate wonton skins. Place a heaping teaspoon of filling in the center of the wonton. Brush water on 2 borders of the skin, covering 1/4 inch from the edge. Fold skin over to form a triangle, sealing edges. Pinch the two long outside points together. Heat oil to 450 degrees and fry 4 to 5 at a time until golden. Drain and serve with sauce.',
@@ -124,7 +124,7 @@ export default {
             drink_measure_11: 'Bottle',
            },
            {
-            id: 52804,
+            id: 7,
             drink_name: 'Poutine',
             drink_category: 'Miscellaneous',
             drink_instructions: 'Heat oil in a deep fryer or deep heavy skillet to 365°F (185°C). Warm gravy in saucepan or microwave. Place the fries into the hot oil, and cook until light brown, about 5 minutes. Remove to a paper towel lined plate to drain. Place the fries on a serving platter, and sprinkle the cheese over them. Ladle gravy over the fries and cheese, and serve immediately.',
@@ -141,7 +141,7 @@ export default {
             drink_measure_04: '2 cups',
            },
            {
-            id: 52929,
+            id: 8,
             drink_name: 'Timbits',
             drink_category: 'Dessert',
             drink_instructions: 'Sift together dry ingredients. Mix together wet ingredients and incorporate into dry. Stir until smooth. Drop by teaspoonfuls (no bigger) into hot oil (365 degrees, no hotter), turning after a few moments until golden brown on all sides. Remove and drain. Roll in cinnamon sugar while still warm and serve.',
@@ -168,7 +168,7 @@ export default {
             drink_measure_09: 'garnish',
            },
            {
-            id: 53027,
+            id: 9,
             drink_name: 'Koshari',
             drink_category: 'Vegetarian',
             drink_instructions: 'Cook the lentils. Bring lentils and 4 cups of water to a boil in a medium pot or saucepan over high heat. Reduce the heat to low and cook until lentils are just tender (15-17 minutes). Drain from water and season with a little salt. (Note: when the lentils are ready, they should not be fully cooked. They should be only par-cooked and still have a bite to them as they need to finish cooking with the rice). Now, for the rice. Drain the rice from its soaking water. Combine the par-cooked lentils and the rice in the saucepan over medium-high heat with 1 tbsp cooking oil, salt, pepper, and coriander. Cook for 3 minutes, stirring regularly. Add warm water to cover the rice and lentil mixture by about 1 1/2 inches (you’ll probably use about 3 cups of water here). Bring to a boil; the water should reduce a bit. Now cover and cook until all the liquid has been absorbed and both the rice and lentils are well cooked through (about 20 minutes). Keep covered and undisturbed for 5 minutes or so. Now make the pasta. While the rice and lentils are cooking, make the pasta according to package instructions by adding the elbow pasta to boiling water with a dash of salt and a little oil. Cook until the pasta is al dente. Drain. Cover the chickpeas and warm in the microwave briefly before serving. Make the crispy onion topping. Sprinkle the onion rings with salt, then toss them in the flour to coat. Shake off excess flour. In a large skillet, heat the cooking oil over medium-high heat, cook the onion rings, stirring often, until they turn a nice caramelized brown. Onions must be crispy, but not burned (15-20 minutes).',
@@ -193,7 +193,7 @@ export default {
             drink_measure_08: '1/2 cup',
           },
           {
-            id: "13501",
+            id: 10,
             drink_name: "ABC",
             drink_category: "Shot",
             drink_instructions: "Layered in a shot glass.",
@@ -207,7 +207,7 @@ export default {
             drink_measure_03: "1/3 ",
         },
         {
-            id: "15288",
+            id: 11,
             drink_name: "252",
             drink_category: "Shot",
             drink_instructions: "Add both ingredients to shot glass, shoot, and get drunk quick",
@@ -219,7 +219,7 @@ export default {
             drink_measure_02: "1/2 shot ",
         },        
         {
-            id: "13938",
+            id: 12,
             drink_name: "AT&T",
             drink_category: "Ordinary Drink",
             drink_instructions: "Pour Vodka and Gin over ice, add Tonic and Stir",
@@ -233,7 +233,7 @@ export default {
             drink_measure_03: "4 oz ",
         },
         {
-            id: "17141",
+            id: 13,
             drink_name: "Smut",
             drink_category: "Punch / Party Drink",
             drink_instructions: "Throw it all together and serve real cold.",

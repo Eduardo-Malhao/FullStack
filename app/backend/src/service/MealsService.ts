@@ -2,7 +2,7 @@ import Model from '../model/MealsModel';
 import { IServiceMeals } from '../interfaces/IServiceMeals';
 import { ISearch } from '../interfaces/ISearch';
 
-export default class DrinksService {
+export default class MealsService {
   constructor(
     private model: Model = new Model(),
   ) { }

@@ -1,12 +1,12 @@
-import { IBodyFavoites } from "../interfaces/IBodyFavorites";
+import { IBodyFavorites } from "../interfaces/IBodyFavorites";
 
 export default class FavoritesDto{
     
-    public static BodyToFavorites(body: any, id: number) : IBodyFavoites {
+    public static BodyToFavorites(body: any, id: number) : IBodyFavorites {
         return {
-            userId: id,
-            mealId: body?.mealId,
-            drinkId: body?.drinkId
+            user_id: id,
+            meal_id: body?.mealId,
+            drink_id: body?.drinkId
         };
     }
 }

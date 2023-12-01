@@ -11,6 +11,6 @@ userMiddlewares.setRoleBasedOnEmail,
 
 router.post('/login', (req: Request, res: Response) => controller.login(req, res));
 
-router.get('/user', (req: Request, res: Response) => controller.getUsers(req, res));
+router.get('/', (req: Request, res: Response) => controller.getAllUsers(req, res));
 
 export default router;

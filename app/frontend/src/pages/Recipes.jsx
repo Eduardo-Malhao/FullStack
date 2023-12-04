@@ -187,6 +187,7 @@ export default function Recipes() {
             ? (masterRender()) : (<h4>Carregando...</h4>)}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

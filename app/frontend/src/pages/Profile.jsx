@@ -33,15 +33,6 @@ function Profile({ history }) {
         </h2>
         <div className= "profile-btn-container">
           <Button
-            className= "done-btn"
-            type="button"
-            data-testid="profile-done-btn"
-            as={ Link }
-            to="/done-recipes"
-          >
-            Done Recipes
-          </Button>
-          <Button
             className= "favorite-btn"
             type="button"
             data-testid="profile-favorite-btn"

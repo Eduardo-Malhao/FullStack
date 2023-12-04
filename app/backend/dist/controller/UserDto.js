@@ -9,6 +9,13 @@ class UserDto {
             role: body.role
         };
     }
+    static UserToBody(user) {
+        return {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+        };
+    }
 }
 exports.default = UserDto;
 //# sourceMappingURL=UserDto.js.map

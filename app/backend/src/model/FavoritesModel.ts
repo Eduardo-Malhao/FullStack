@@ -1,4 +1,3 @@
-import { Op } from 'sequelize';
 import Model from '../database/models/Favorites';
 import { IBodyFavorites } from '../interfaces/IBodyFavorites';
 import { IFavorites } from '../interfaces/IFavorites';
@@ -21,7 +20,7 @@ export default class UsersModel {
 	}
 		
 	public async getAllFavorites(id: number)
-	: Promise<any> {
+	: Promise<IFavorites[]> {
 		const response = await this.model.findAll({
 			where: { user_id: id }, attributes: { exclude: ['id', 'user_id', 'meal_id', 'drink_id'] },
 			include: [ 
@@ -34,7 +33,7 @@ export default class UsersModel {
 	}
 
 	public async getAllMealsFavorites(id: number)
-	: Promise<any> {
+	: Promise<IFavorites[]> {
 		const response = await this.model.findAll({
 			where: { user_id: id }, attributes: { exclude: ['id', 'user_id', 'meal_id', 'drink_id'] },
 			include: [ { model: FreeAPIMealsSequelize, as: 'meal' } ]
@@ -45,7 +44,7 @@ export default class UsersModel {
 
 
 	public async getAllDrinksFavorites(id: number)
-	: Promise<any> {
+	: Promise<IFavorites[]> {
 		const response = await this.model.findAll({
 			where: { user_id: id }, attributes: { exclude: ['id', 'user_id', 'meal_id', 'drink_id'] },
 			include: [ { model: FreeAPIDrinksSequelize, as: 'drink' } ]
@@ -55,7 +54,7 @@ export default class UsersModel {
 	}
 	
 	public async unfavorite(ids: IBodyFavorites)
-	: Promise<any> {
+	: Promise<number> {
 		const whereConditions: any = { user_id: ids.user_id };
 
   if (ids.meal_id !== undefined) {
@@ -72,10 +71,9 @@ export default class UsersModel {
 	}
 
 	public async getAllFavoritesIds(id: number)
-	: Promise<any> {
+	: Promise<IFavorites[]> {
 		const response = await this.model.findAll({ where: { user_id: id } });
 
 		return response;
 	}
-
 }

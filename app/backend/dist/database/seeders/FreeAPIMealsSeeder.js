@@ -13,7 +13,7 @@ exports.default = {
     up: (queryInterface) => __awaiter(void 0, void 0, void 0, function* () {
         yield queryInterface.bulkInsert('meals', [
             {
-                id: '52977',
+                id: 1,
                 meal_name: 'Corba',
                 meal_category: 'Side',
                 meal_area: 'Turkish',
@@ -49,7 +49,7 @@ exports.default = {
                 meal_measure_13: 'Pinch',
             },
             {
-                id: '53060',
+                id: 2,
                 meal_name: 'Burek',
                 meal_category: 'Side',
                 meal_area: 'Croatian',
@@ -71,7 +71,7 @@ exports.default = {
                 meal_measure_06: 'Dash',
             },
             {
-                id: '53065',
+                id: 3,
                 meal_name: 'Sushi',
                 meal_category: 'Seafood',
                 meal_area: 'Japanese',
@@ -94,7 +94,7 @@ exports.default = {
                 meal_measure_07: '1',
             },
             {
-                id: '52978',
+                id: 4,
                 meal_name: 'Kumpir',
                 meal_category: 'Side',
                 meal_area: 'Turkish',
@@ -116,7 +116,7 @@ exports.default = {
                 meal_measure_06: 'Pinch',
             },
             {
-                id: '53069',
+                id: 5,
                 meal_name: 'Bistek',
                 meal_category: 'Beef',
                 meal_area: 'Filipino',
@@ -141,7 +141,7 @@ exports.default = {
                 meal_measure_08: '1 pinch',
             },
             {
-                id: '53026',
+                id: 6,
                 meal_name: 'Tamiya',
                 meal_category: 'Vegetarian',
                 meal_area: 'Egyptian',
@@ -168,7 +168,7 @@ exports.default = {
                 meal_measure_09: 'As required',
             },
             {
-                id: '52971',
+                id: 7,
                 meal_name: 'Kafteji',
                 meal_category: 'Vegetarian',
                 meal_area: 'Tunisian',
@@ -195,7 +195,7 @@ exports.default = {
                 meal_measure_09: 'Pinch',
             },
             {
-                id: '52844',
+                id: 8,
                 meal_name: 'Lasagne',
                 meal_category: 'Pasta',
                 meal_area: 'Italian',
@@ -234,7 +234,7 @@ exports.default = {
                 meal_measure_15: 'Topping',
             },
             {
-                id: '52785',
+                id: 9,
                 meal_name: 'Dal Fry',
                 meal_category: 'Vegetarian',
                 meal_area: 'Indian',

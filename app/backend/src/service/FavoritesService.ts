@@ -1,6 +1,7 @@
 import Model from '../model/FavoritesModel';
 import { IBodyFavorites } from '../interfaces/IBodyFavorites';
 import { IFavorites } from '../interfaces/IFavorites';
+import { IServiceFavorites } from '../interfaces/IServiceFavorites';
 import FavoriteChecker from '../utils/FavoriteChecker';
 
 export default class FavoritesService {
@@ -8,7 +9,8 @@ export default class FavoritesService {
     private model: Model = new Model(),
   ) { }
 
-  public async favorite(ids: IBodyFavorites): Promise<any> {
+  public async favorite(ids: IBodyFavorites)
+  : Promise<IServiceFavorites> {
     try {
       const getAllFavoritesIds: IFavorites[] = await this.model.getAllFavoritesIds(ids.user_id);
       Promise.all(getAllFavoritesIds);
@@ -16,7 +18,7 @@ export default class FavoritesService {
       
       if (isFavorite) {
         const response = await this.model.unfavorite(ids);
-        return { status: 'SUCCESS', data: response };
+        return { status: 'SUCCESS', data: 'Desfavoritado' };
       }
       if(ids.drink_id) {
         const response = await this.model.favorite(ids);
@@ -35,7 +37,8 @@ export default class FavoritesService {
   }
 
 
-  public async getAllFavorites(id: number): Promise<any> {
+  public async getAllFavorites(id: number)
+  : Promise<IServiceFavorites> {
     try {
       const response = await this.model.getAllFavorites(id);
       if (response !== null) return { status: 'SUCCESS', data: response };
@@ -47,7 +50,8 @@ export default class FavoritesService {
     }
   }
 
-  public async getAllMealsFavorites(id: number): Promise<any> {
+  public async getAllMealsFavorites(id: number)
+  : Promise<IServiceFavorites> {
     try {
       const response = await this.model.getAllMealsFavorites(id);
       if (response !== null) return { status: 'SUCCESS', data: response };
@@ -59,7 +63,8 @@ export default class FavoritesService {
     }
 	}
 
-  public async getAllDrinksFavorites(id: number): Promise<any> {
+  public async getAllDrinksFavorites(id: number)
+  : Promise<IServiceFavorites> {
     try {
       const response = await this.model.getAllDrinksFavorites(id);
       if (response !== null) return { status: 'SUCCESS', data: response };
@@ -73,7 +78,7 @@ export default class FavoritesService {
 
 
   public async unfavorite(ids: IBodyFavorites)
-	: Promise<any> {
+	: Promise<IServiceFavorites> {
 		try{
 			const response = await this.model.unfavorite(ids);
 			if (response !== null) return { status: 'SUCCESS', data: `Favorite deleted` };

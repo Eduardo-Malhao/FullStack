@@ -3,7 +3,7 @@ const config = {
     username: 'root',
     password: '123456',
     database: 'Meals&Drinks',
-    host: 'localhost',
+    host: 'db',
     // (pode ser db nome do servico)
     port: 3306,
     dialect: 'mysql',

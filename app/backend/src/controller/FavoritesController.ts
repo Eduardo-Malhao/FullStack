@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import Service from '../service/FavoritesService';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
-import { IBodyFavorites } from '../interfaces/IBodyFavorites';
 import FavoritesDto from './FavoritesDto';
+import { IBodyFavorites } from '../interfaces/IBodyFavorites';
 
 export default class FavoritesControllers {
     private service: Service;

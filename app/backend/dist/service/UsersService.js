@@ -1,23 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32,8 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const UsersModel_1 = __importDefault(require("../model/UsersModel"));
-const bcrypt = __importStar(require("bcryptjs"));
 const JWTutils_1 = __importDefault(require("../utils/JWTutils"));
+const PasswordValidation_1 = __importDefault(require("../utils/PasswordValidation"));
+const UserDto_1 = __importDefault(require("../controller/UserDto"));
 class UsersService {
     constructor(model = new UsersModel_1.default()) {
         this.model = model;
@@ -46,6 +28,35 @@ class UsersService {
                     return { status: 'CONFLICT', data: 'User already exists' };
                 }
                 const response = yield this.model.createUser(user);
+                const treatedResponse = UserDto_1.default.UserToBody(response);
+                return { status: 'SUCCESS', data: treatedResponse };
+            }
+            catch (error) {
+                return { status: 'CONFLICT', data: 'Internal error' };
+            }
+        });
+    }
+    login(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const findUser = (yield this.model.findByEmail(user)) || (yield this.model.findByName(user));
+                if (findUser) {
+                    const passwordValidation = PasswordValidation_1.default.validatePassword(user, findUser);
+                    const tokenGenerated = JWTutils_1.default.sign({ id: findUser.id });
+                    if (passwordValidation)
+                        return { status: 'SUCCESS', data: tokenGenerated };
+                }
+                return { status: 'NOT_FOUND', data: 'Invalid email or password' };
+            }
+            catch (error) {
+                return { status: 'CONFLICT', data: 'Internal error' };
+            }
+        });
+    }
+    getAllUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield this.model.getAllUsers();
                 return { status: 'SUCCESS', data: response };
             }
             catch (error) {
@@ -67,23 +78,6 @@ class UsersService {
                         return { status: 'SUCCESS', data: response };
                 }
                 return { status: 'NOT_FOUND', data: 'Not Found' };
-            }
-            catch (error) {
-                return { status: 'CONFLICT', data: 'Internal error' };
-            }
-        });
-    }
-    login(user) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const findUser = yield this.model.findByEmail(user);
-                if (!findUser)
-                    return { status: 'NOT_FOUND', data: 'Invalid email or password' };
-                if (!bcrypt.compareSync(user.password, findUser.password)) {
-                    return { status: 'NOT_FOUND', data: 'Invalid email or password' };
-                }
-                const tokenGenerated = JWTutils_1.default.sign({ id: findUser.id });
-                return { status: 'SUCCESS', data: tokenGenerated };
             }
             catch (error) {
                 return { status: 'CONFLICT', data: 'Internal error' };

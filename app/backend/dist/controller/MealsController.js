@@ -20,9 +20,7 @@ class MealsController {
         return __awaiter(this, void 0, void 0, function* () {
             const search = req.query;
             const { status, data } = yield this.service.getMeals(search);
-            if (status !== 'SUCCESS')
-                return res.status((0, mapStatusHTTP_1.default)(status)).json({ data });
-            return res.status((0, mapStatusHTTP_1.default)(status)).json({ data });
+            return res.status((0, mapStatusHTTP_1.default)(status)).json(data);
         });
     }
 }

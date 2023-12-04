@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
-import DrinksController from '../controller/DrinksController';
+import Controller from '../controller/DrinksController';
 
-const controller = new DrinksController();
+const controller = new Controller();
 
 const router = Router();
 

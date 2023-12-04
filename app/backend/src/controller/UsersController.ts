@@ -9,24 +9,27 @@ export default class UsersControllers {
     constructor() { this.service = new Service() }
 
     public async register(req: Request, res: Response) {
-        const user = UserDto.BodyToUser(req.body);
-        const { status, data } = await this.service.register(user);
+        const body = UserDto.BodyToUser(req.body);
+        
+        const adminEmailRegex = /@admin\.com$/i;
+        body.role = adminEmailRegex.test(body.email) ? 'ADMIN' : 'USER';
+        
+        const { status, data } = await this.service.register(body);
 
-        return res.status(mapStatusHTTP(status)).json({data});
+        return res.status(mapStatusHTTP(status)).json(data);
     }
 
     public async login(req: Request, res: Response) {
         const user = (req.body);
         const { status, data } = await this.service.login(user);
 
-        return res.status(mapStatusHTTP(status)).json({data});
+        return res.status(mapStatusHTTP(status)).json(data);
     }
 
-    public async getUsers(req: Request, res: Response) {
-        const user = UserDto.BodyToUser(req.body);
-        const { status, data } = await this.service.getUsers(user);
+    public async getAllUsers(req: Request, res: Response) {
+        const { status, data } = await this.service.getAllUsers();
 
-        return res.status(mapStatusHTTP(status)).json({data});
+        return res.status(mapStatusHTTP(status)).json(data);
     }
 }
 

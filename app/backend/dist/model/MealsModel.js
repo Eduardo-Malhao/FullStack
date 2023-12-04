@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const FreeAPIMealsSequelize_1 = __importDefault(require("../database/models/FreeAPIMealsSequelize"));
-class DrinksModel {
+class MealsModel {
     constructor() {
         this.model = FreeAPIMealsSequelize_1.default;
     }
@@ -78,5 +78,5 @@ class DrinksModel {
         });
     }
 }
-exports.default = DrinksModel;
+exports.default = MealsModel;
 //# sourceMappingURL=MealsModel.js.map

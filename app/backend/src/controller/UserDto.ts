@@ -1,4 +1,5 @@
-import { IUsers } from "../interfaces/IUsers";
+import { IResponseUser } from "../interfaces/User/IResponseUser";
+import { IUsers } from "../interfaces/User/IUsers";
 
 export default class UserDto{
     
@@ -8,6 +9,14 @@ export default class UserDto{
             password: body.password,
             username: body.username,
             role: body.role
+        };
+    }
+
+    public static UserToBody(user: IUsers) : IResponseUser {
+        return {
+            id: user.id,
+            email: user.email,
+            username: user.username,
         };
     }
 }

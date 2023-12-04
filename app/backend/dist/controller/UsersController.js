@@ -19,23 +19,24 @@ class UsersControllers {
     constructor() { this.service = new UsersService_1.default(); }
     register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = UserDto_1.default.BodyToUser(req.body);
-            const { status, data } = yield this.service.register(user);
-            return res.status((0, mapStatusHTTP_1.default)(status)).json({ data });
+            const body = UserDto_1.default.BodyToUser(req.body);
+            const adminEmailRegex = /@admin\.com$/i;
+            body.role = adminEmailRegex.test(body.email) ? 'ADMIN' : 'USER';
+            const { status, data } = yield this.service.register(body);
+            return res.status((0, mapStatusHTTP_1.default)(status)).json(data);
         });
     }
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = (req.body);
             const { status, data } = yield this.service.login(user);
-            return res.status((0, mapStatusHTTP_1.default)(status)).json({ data });
+            return res.status((0, mapStatusHTTP_1.default)(status)).json(data);
         });
     }
-    getUsers(req, res) {
+    getAllUsers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = UserDto_1.default.BodyToUser(req.body);
-            const { status, data } = yield this.service.getUsers(user);
-            return res.status((0, mapStatusHTTP_1.default)(status)).json({ data });
+            const { status, data } = yield this.service.getAllUsers();
+            return res.status((0, mapStatusHTTP_1.default)(status)).json(data);
         });
     }
 }

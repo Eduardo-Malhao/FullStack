@@ -1,5 +1,3 @@
-// gerar url dincamicas com env utilizando o mesmo nome de variavel.
-
 import express from 'express';
 import router from './router/index';
 

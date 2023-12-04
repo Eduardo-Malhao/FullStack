@@ -112,3 +112,48 @@
     color: #ffffffbc;
   } */
   
+  @media all and (max-width: 1366px) {
+    
+    .container-header {
+      position: fixed;
+      top: 0;
+      left: 50%; /* Centralizar horizontalmente */
+      transform: translateX(-50%); /* Centralizar horizontalmente */
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 96%;
+      height: 16%;
+      /* background-color: var(--cor01); */
+      z-index: 1000; /* Certifique-se de que o cabeçalho esteja acima do conteúdo */
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 80%;
+      justify-content: space-around;
+      padding-bottom: 11px;
+      color: var(--cor02);
+      font-size: 1.3em;
+    }
+
+    .storagerecipe {
+      color: var(--cor02);
+      font-size: 1.7em;
+      word-spacing: 0.5em;
+      padding-left: 5%;
+      /* background-color: var(--cor03); */
+    }
+
+
+    .header-line {
+      z-index: 1;
+      width: 1090px;
+      height: 2px;
+      background-color: var(--cor02)
+    }
+    
+    }

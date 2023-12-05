@@ -120,63 +120,64 @@ export default function RecipeDetails() {
     <div className="all-recipeDetails-page">
         <div className="recipeDetail-page-container ">
           <Header />
-          <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
-          <button
-            data-testid="share-btn"
-            src={ shareIcon }
-            onClick={ () => {
-              copy(`http://localhost:3000${location.pathname}`);
-              setWasCopied(true);
-              const time = 2000;
-              setTimeout(() => setWasCopied(false), time);
-            } }
-          >
-            Compartilhar
-          </button>
-          { wasCopied && <p>Link copied!</p>}
-          <button
-            data-testid="favorite-btn"
-            src={ isFavorite ? blackHeart : whiteHeart }
-            onClick={ () => handleFavorite() }
-          >
-            Favoritar
-          </button>
-          <div>
-            { location.pathname === `/meals/${getId.id}` ? (
-              <div>
-                <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
-                 <img
-                  className="recipeDetails-image"
-                  data-testid="recipe-photo"
-                  src={ mealObject.strMealThumb }
-                  alt={ mealObject.strMeal }
-                />
-                {videoUrl && (
-                  <video controls data-testid="video">
-                    <source src={ mealObject.strYoutube } type="video/mp4" />
-                    <track
-                      kind="captions"
-                      label="English"
-                      srcLang="en"
-                      src={ mealObject.strMeal }
-                    />
-                    Seu navegador não suporta o elemento de vídeo.
-                  </video>
-                )}
-                <h4>Category</h4>
-                <p data-testid="recipe-category">{mealObject.strCategory}</p>
-                <h4>Ingredients</h4>
-                {mealsIngredients.map((eachMealIngredient, index) => (
-                  <p
-                    data-testid={ `${index}-ingredient-name-and-measure` }
-                    key={ eachMealIngredient }
-                  >
-                    { `${eachMealIngredient} : ${mealsMeasures[index]}` }
-                  </p>
-                ))}
-                <h4>Instructions</h4>
-                <p data-testid="instructions">{mealObject.strInstructions}</p>
-              </div>)
+          <div className= "recipeDetailTitle-btns">
+            <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
+            <button
+                  data-testid="share-btn"
+                  src={ shareIcon }
+                  onClick={ () => {
+                    copy(`http://localhost:3000${location.pathname}`);
+                    setWasCopied(true);
+                    const time = 2000;
+                    setTimeout(() => setWasCopied(false), time);
+                  } }
+            >
+              Compartilhar
+            </button>
+            { wasCopied && <p>Link copied!</p>}
+            <button
+              data-testid="favorite-btn"
+              src={ isFavorite ? blackHeart : whiteHeart }
+              onClick={ () => handleFavorite() }
+            >
+              Favoritar
+            </button>
+          </div>
+          { location.pathname === `/meals/${getId.id}` ? (
+            <div>
+              <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
+              <img
+                className="recipeDetails-image"
+                data-testid="recipe-photo"
+                src={ mealObject.strMealThumb }
+                alt={ mealObject.strMeal }
+              />
+              {videoUrl && (
+                <video controls data-testid="video">
+                  <source src={ mealObject.strYoutube } type="video/mp4" />
+                  <track
+                    kind="captions"
+                    label="English"
+                    srcLang="en"
+                    src={ mealObject.strMeal }
+                  />
+                  Seu navegador não suporta o elemento de vídeo.
+                </video>
+              )}
+              <h4>Category</h4>
+              <p data-testid="recipe-category">{mealObject.strCategory}</p>
+              <h4>Ingredients</h4>
+              {mealsIngredients.map((eachMealIngredient, index) => (
+                <p
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                  key={ eachMealIngredient }
+                >
+                  { `${eachMealIngredient} : ${mealsMeasures[index]}` }
+                </p>
+              ))}
+              <h4>Instructions</h4>
+              <p data-testid="instructions">{mealObject.strInstructions}</p>
+            </div>)
               : (
                 <div>
                   <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
@@ -213,7 +214,7 @@ export default function RecipeDetails() {
                 <h4>Instructions</h4>
                 <p data-testid="instructions">{drinkObject.strInstructions}</p>
               </div>)}
-                </div>
+        
                 {recommendations.length > 0 && (
           <>
             <h2>Recommended</h2>

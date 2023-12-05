@@ -165,6 +165,7 @@ export default function RecipeDetails() {
                 </video>
               )}
               <h4>Category</h4>
+              
               <p data-testid="recipe-category">{mealObject.strCategory}</p>
               <h4>Ingredients</h4>
               {mealsIngredients.map((eachMealIngredient, index) => (

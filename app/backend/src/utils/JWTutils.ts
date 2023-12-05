@@ -5,7 +5,9 @@ export default class JwtUtils {
   static jwtSecret = process.env.JWT_SECRET || 'secret';
 
   static sign(payload: IToken): string {
-    return jwt.sign(payload, JwtUtils.jwtSecret);
+    const token = jwt.sign(payload, JwtUtils.jwtSecret);
+    localStorage.setItem('token', token);
+    return token;
   }
 
   static verify(token: string): IToken | undefined {

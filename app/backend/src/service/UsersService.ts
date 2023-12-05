@@ -1,4 +1,5 @@
 import Model from '../model/UsersModel';
+import { Request, Response } from 'express';
 import { IUsers } from '../interfaces/User/IUsers';
 import { ILogin } from '../interfaces/User/ILogin';
 import { IServiceLoginUsers } from '../interfaces/User/IServiceLoginUsers';
@@ -34,11 +35,11 @@ export default class UsersService {
     }
 }
 
-  public async login(user : ILogin)
+  public async login(res: Response, user : ILogin)
   : Promise<IServiceLoginUsers> {
     try {
       const findUser = await this.model.findByEmail(user) || await this.model.findByName(user) as IUsers;
-        
+      
       if (findUser) {
         const passwordValidation = PasswordValidation.validatePassword(user, findUser);
         
@@ -47,6 +48,18 @@ export default class UsersService {
       }
 
       return { status: 'NOT_FOUND', data: 'Invalid email or password' };
+
+    } catch (error) {
+      return { status: 'CONFLICT', data: 'Internal error' };
+    }
+  }
+
+  public async logout(res: Response) {
+    try {
+      localStorage.removeItem('token');
+      res.locals.user = null;
+
+      return { status: 'SUCCESS', data: 'User logged out successfully' };
 
     } catch (error) {
       return { status: 'CONFLICT', data: 'Internal error' };

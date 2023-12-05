@@ -17,6 +17,9 @@ router.post('/login',
 LoginValidation.validateFields,
 (req: Request, res: Response) => controller.login(req, res));
 
+// router.post('/logout',
+// (req: Request, res: Response) => controller.logout(req, res));
+
 router.get('/', (req: Request, res: Response) => controller.getAllUsers(req, res));
 
 export default router;

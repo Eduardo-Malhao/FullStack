@@ -4,32 +4,38 @@ import mapStatusHTTP from '../utils/mapStatusHTTP';
 import UserDto from './UserDto';
 
 export default class UsersControllers {
-    private service: Service;
+	private service: Service;
 
-    constructor() { this.service = new Service() }
+	constructor() { this.service = new Service() }
 
-    public async register(req: Request, res: Response) {
-        const body = UserDto.BodyToUser(req.body);
-        
-        const adminEmailRegex = /@admin\.com$/i;
-        body.role = adminEmailRegex.test(body.email) ? 'ADMIN' : 'USER';
-        
-        const { status, data } = await this.service.register(body);
+	public async register(req: Request, res: Response) {
+		const body = UserDto.BodyToUser(req.body);
+				
+		const adminEmailRegex = /@admin\.com$/i;
+		body.role = adminEmailRegex.test(body.email) ? 'ADMIN' : 'USER';
+				
+		const { status, data } = await this.service.register(body);
 
-        return res.status(mapStatusHTTP(status)).json(data);
-    }
+		return res.status(mapStatusHTTP(status)).json(data);
+	}
 
-    public async login(req: Request, res: Response) {
-        const user = (req.body);
-        const { status, data } = await this.service.login(user);
+	public async login(req: Request, res: Response) {
+		const user = (req.body);
+		const { status, data } = await this.service.login(res, user);
 
-        return res.status(mapStatusHTTP(status)).json(data);
-    }
+		return res.status(mapStatusHTTP(status)).json(data);
+	}
 
-    public async getAllUsers(req: Request, res: Response) {
-        const { status, data } = await this.service.getAllUsers();
+	// public async logout(req: Request, res: Response) {
+	// 	const { status, data } = await this.service.logout();
 
-        return res.status(mapStatusHTTP(status)).json(data);
-    }
+	// 	return res.status(mapStatusHTTP(status)).json(data);
+	// }
+
+	public async getAllUsers(req: Request, res: Response) {
+		const { status, data } = await this.service.getAllUsers();
+
+		return res.status(mapStatusHTTP(status)).json(data);
+	}
 }
 

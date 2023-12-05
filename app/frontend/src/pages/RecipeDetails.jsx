@@ -2,14 +2,12 @@ import { useParams, useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect, useContext, useCallback } from 'react';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
-import SearchBar from '../components/SearchBar';
 import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
 import shareIcon from '../../src/images/shareIcon.svg';
 import whiteHeart from '../../src/images/whiteHeartIcon.svg';
 import blackHeart from '../../src/images/blackHeartIcon.svg';
-/* import shareIcon from '../../src/images/'; */
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 import Footer from '../components/Footer';
 
@@ -158,7 +156,7 @@ export default function RecipeDetails() {
                   alt={ mealObject.strMeal }
                 />
                 {videoUrl && (
-                  <video controls data-testid="video">
+                  <video controls data-testid="video" className= "recipeDetail-video">
                     <source src={ mealObject.strYoutube } type="video/mp4" />
                     <track
                       kind="captions"
@@ -184,6 +182,13 @@ export default function RecipeDetails() {
                 ))}
                 <h4>Instructions</h4>
                 <p data-testid="instructions">{mealObject.strInstructions}</p>
+                {recommendations.length > 0 && (
+                <>
+                  <h2>Recommended</h2>
+                  <RecommendationCarousel
+                    recommendations={ recommendations }
+                  />
+                </>)}
               </div>
             </div>)
               : (
@@ -222,7 +227,7 @@ export default function RecipeDetails() {
                   alt={ drinkObject.strDrink }
                 />
                 {videoUrl && (
-                  <video controls data-testid="video">
+                  <video controls data-testid="video" className= "recipeDetail-video">
                     <source src={ drinkObject.strVideo } type="video/mp4" />
                     <track
                       kind="captions"
@@ -249,16 +254,16 @@ export default function RecipeDetails() {
                 ))}
                 <h4>Instructions</h4>
                 <p data-testid="instructions">{drinkObject.strInstructions}</p>
-                </div>
-              </div>)}
+                {recommendations.length > 0 && (
+                <>
+                  <h2>Recommended</h2>
+                  <RecommendationCarousel
+                    recommendations={ recommendations }
+                  />
+                </>)}
+              </div>
+            </div>)}
 
-              {recommendations.length > 0 && (
-            <>
-              <h2>Recommended</h2>
-              <RecommendationCarousel
-                recommendations={ recommendations }
-              />
-            </>)}
         </div>
         <Footer />
     </div>

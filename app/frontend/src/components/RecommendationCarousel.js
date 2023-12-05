@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // import { useState } from 'react';
-import './recommendationCarousel.css';
+import '../styles/recommendationCarousel.css';
 
 function RecommendationCarousel({ recommendations = [] }) {
   // const [position, setposition] = useState(0);

@@ -34,7 +34,6 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  margin-top: 8%;
   background-image: url("../images//PAPEL\ PAREDE\ FOLHAS.png"); 
   background-size: cover; 
   background-repeat: no-repeat; 
@@ -42,17 +41,11 @@
 
 .recipeDetail-page-container {
   display: flex;
-  flex-shrink: 1;
-  flex-grow: 0;
-  flex-basis: auto;
-  position: fixed;
-  order: 0;
   flex-direction: column;
-
-  /* justify-content: center;
-  align-items: center; */
+  flex-basis: auto;
+  margin-top: 4%;
   width: 65%;
-  min-height: 100vh; 
+  height: 75%; 
   background-color: #4985da;
 }
 
@@ -64,6 +57,29 @@
   width: 35%;
   background-color: #a12323;
 }
+
+.allDescripition-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    overflow-y: scroll;
+    background-color: #23a13e;
+}
+
+.name-image-video {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: aquamarine;
+}
+
+.text-details {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+}
+
 
 .recipeDetail-title {
   color: var(--cor02);

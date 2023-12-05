@@ -6,10 +6,12 @@ import SearchBar from '../components/SearchBar';
 import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeart from '../images/whiteHeartIcon.svg';
-import blackHeart from '../images/blackHeartIcon.svg';
+import shareIcon from '../../src/images/shareIcon.svg';
+import whiteHeart from '../../src/images/whiteHeartIcon.svg';
+import blackHeart from '../../src/images/blackHeartIcon.svg';
+/* import shareIcon from '../../src/images/'; */
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
+import Footer from '../components/Footer';
 
 export default function RecipeDetails() {
   const location = useLocation();
@@ -144,43 +146,47 @@ export default function RecipeDetails() {
             </button>
           </div>
           { location.pathname === `/meals/${getId.id}` ? (
-            <div>
-              <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
-              <img
-                className="recipeDetails-image"
-                data-testid="recipe-photo"
-                src={ mealObject.strMealThumb }
-                alt={ mealObject.strMeal }
-              />
-              {videoUrl && (
-                <video controls data-testid="video">
-                  <source src={ mealObject.strYoutube } type="video/mp4" />
-                  <track
-                    kind="captions"
-                    label="English"
-                    srcLang="en"
-                    src={ mealObject.strMeal }
-                  />
-                  Seu navegador não suporta o elemento de vídeo.
-                </video>
-              )}
-              <h4>Category</h4>
-              
-              <p data-testid="recipe-category">{mealObject.strCategory}</p>
-              <h4>Ingredients</h4>
-              {mealsIngredients.map((eachMealIngredient, index) => (
-                <p
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                  key={ eachMealIngredient }
-                >
-                  { `${eachMealIngredient} : ${mealsMeasures[index]}` }
-                </p>
-              ))}
-              <h4>Instructions</h4>
-              <p data-testid="instructions">{mealObject.strInstructions}</p>
+            <div className= "allDescripition-container">
+              <div className= "name-image-video">
+                <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
+                <img
+                  className="recipeDetails-image"
+                  data-testid="recipe-photo"
+                  src={ mealObject.strMealThumb }
+                  alt={ mealObject.strMeal }
+                />
+                {videoUrl && (
+                  <video controls data-testid="video">
+                    <source src={ mealObject.strYoutube } type="video/mp4" />
+                    <track
+                      kind="captions"
+                      label="English"
+                      srcLang="en"
+                      src={ mealObject.strMeal }
+                    />
+                    Seu navegador não suporta o elemento de vídeo.
+                  </video>
+                )}
+              </div>
+              <div className= "text-details">
+                <h4>Category</h4>
+                <p data-testid="recipe-category">{mealObject.strCategory}</p>
+                <h4>Ingredients</h4>
+                {mealsIngredients.map((eachMealIngredient, index) => (
+                  <p
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                    key={ eachMealIngredient }
+                  >
+                    { `${eachMealIngredient} : ${mealsMeasures[index]}` }
+                  </p>
+                ))}
+                <h4>Instructions</h4>
+                <p data-testid="instructions">{mealObject.strInstructions}</p>
+              </div>
             </div>)
               : (
-                <div>
+              <div>
+                <div className="name-image-video">
                   <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
                   <img
                     className="recipeDetails-image"
@@ -200,31 +206,34 @@ export default function RecipeDetails() {
                       Seu navegador não suporta o elemento de vídeo.
                     </video>
                   )}
-                <h4>Category</h4>
-                <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
-                <p data-testid="recipe-category">{drinkObject.strCategory}</p>
-                <h4>Ingredients</h4>
-                {drinksIngredients.map((eachDrinkIngredient, index) => (
-                  <p
-                    data-testid={ `${index}-ingredient-name-and-measure` }
-                    key={ eachDrinkIngredient }
-                  >
-                    { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
-                  </p>
-                ))}
-                <h4>Instructions</h4>
-                <p data-testid="instructions">{drinkObject.strInstructions}</p>
-              </div>)}
-        
+                </div>
+                <div className= "text-details">
+                  <h4>Category</h4>
+                  <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
+                  <p data-testid="recipe-category">{drinkObject.strCategory}</p>
+                  <h4>Ingredients</h4>
+                  {drinksIngredients.map((eachDrinkIngredient, index) => (
+                    <p
+                      data-testid={ `${index}-ingredient-name-and-measure` }
+                      key={ eachDrinkIngredient }
+                    >
+                      { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
+                    </p>
+                  ))}
+                  <h4>Instructions</h4>
+                  <p data-testid="instructions">{drinkObject.strInstructions}</p>
+                  </div>
+                </div>)}
+
                 {recommendations.length > 0 && (
-          <>
-            <h2>Recommended</h2>
-            <RecommendationCarousel
-              recommendations={ recommendations }
-            />
-          </>
-                )}
+              <>
+                <h2>Recommended</h2>
+                <RecommendationCarousel
+                  recommendations={ recommendations }
+                />
+              </>)}
         </div>
+        <Footer />
     </div>
   );
 }

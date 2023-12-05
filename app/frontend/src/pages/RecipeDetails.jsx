@@ -120,35 +120,37 @@ export default function RecipeDetails() {
 
   return (
     <div className="all-recipeDetails-page">
-        <div className="recipeDetail-page-container ">
+        <div className="recipeDetail-page-container">
           <Header />
-          <div className= "recipeDetailTitle-btns">
-            <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
-            <button
-                  data-testid="share-btn"
-                  src={ shareIcon }
-                  onClick={ () => {
-                    copy(`http://localhost:3000${location.pathname}`);
-                    setWasCopied(true);
-                    const time = 2000;
-                    setTimeout(() => setWasCopied(false), time);
-                  } }
-            >
-              Compartilhar
-            </button>
-            { wasCopied && <p>Link copied!</p>}
-            <button
-              data-testid="favorite-btn"
-              src={ isFavorite ? blackHeart : whiteHeart }
-              onClick={ () => handleFavorite() }
-            >
-              Favoritar
-            </button>
-          </div>
           { location.pathname === `/meals/${getId.id}` ? (
             <div className= "allDescripition-container">
-              <div className= "name-image-video">
-                <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
+              <div className= "name-image-video-container">
+                 <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
+                  <div className= "recipeDetailTitle-btns">
+                    <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
+                    <div className= "only-btns">
+                      <button
+                        data-testid="share-btn"
+                        src={ shareIcon }
+                        onClick={ () => {
+                          copy(`http://localhost:3000${location.pathname}`);
+                          setWasCopied(true);
+                          const time = 2000;
+                          setTimeout(() => setWasCopied(false), time);
+                        } }
+                      >
+                        Compartilhar
+                      </button>
+                      { wasCopied && <p>Link copied!</p>}
+                      <button
+                        data-testid="favorite-btn"
+                        src={ isFavorite ? blackHeart : whiteHeart }
+                        onClick={ () => handleFavorite() }
+                      >
+                        Favoritar
+                      </button>
+                    </div>
+                </div>
                 <img
                   className="recipeDetails-image"
                   data-testid="recipe-photo"
@@ -185,53 +187,78 @@ export default function RecipeDetails() {
               </div>
             </div>)
               : (
-              <div>
-                <div className="name-image-video">
-                  <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
-                  <img
-                    className="recipeDetails-image"
-                    data-testid="recipe-photo"
-                    src={ drinkObject.strDrinkThumb }
-                    alt={ drinkObject.strDrink }
-                  />
-                  {videoUrl && (
-                    <video controls data-testid="video">
-                      <source src={ drinkObject.strVideo } type="video/mp4" />
-                      <track
-                        kind="captions"
-                        label="English"
-                        srcLang="en"
-                        src={ drinkObject.strDrink }
-                      />
-                      Seu navegador não suporta o elemento de vídeo.
-                    </video>
-                  )}
-                </div>
-                <div className= "text-details">
-                  <h4>Category</h4>
-                  <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
-                  <p data-testid="recipe-category">{drinkObject.strCategory}</p>
-                  <h4>Ingredients</h4>
-                  {drinksIngredients.map((eachDrinkIngredient, index) => (
-                    <p
-                      data-testid={ `${index}-ingredient-name-and-measure` }
-                      key={ eachDrinkIngredient }
-                    >
-                      { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
-                    </p>
-                  ))}
-                  <h4>Instructions</h4>
-                  <p data-testid="instructions">{drinkObject.strInstructions}</p>
+              <div className= "allDescripition-container">
+                <div className="name-image-video-container">
+                  <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
+                  <div className= "recipeDetailTitle-btns">
+                    <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
+                    <div className= "only-btns">
+                      <button
+                        data-testid="share-btn"
+                        src={ shareIcon }
+                        onClick={ () => {
+                          copy(`http://localhost:3000${location.pathname}`);
+                          setWasCopied(true);
+                          const time = 2000;
+                          setTimeout(() => setWasCopied(false), time);
+                              } }
+                      >
+                        Compartilhar
+                      </button>
+                      { wasCopied && <p>Link copied!</p>}
+                      <button
+                        data-testid="favorite-btn"
+                        src={ isFavorite ? blackHeart : whiteHeart }
+                        onClick={ () => handleFavorite() }
+                      >
+                        Favoritar
+                      </button>
+                    </div>
                   </div>
-                </div>)}
-
-                {recommendations.length > 0 && (
-              <>
-                <h2>Recommended</h2>
-                <RecommendationCarousel
-                  recommendations={ recommendations }
+                <img
+                  className="recipeDetails-image"
+                  data-testid="recipe-photo"
+                  src={ drinkObject.strDrinkThumb }
+                  alt={ drinkObject.strDrink }
                 />
-              </>)}
+                {videoUrl && (
+                  <video controls data-testid="video">
+                    <source src={ drinkObject.strVideo } type="video/mp4" />
+                    <track
+                      kind="captions"
+                      label="English"
+                      srcLang="en"
+                      src={ drinkObject.strDrink }
+                    />
+                    Seu navegador não suporta o elemento de vídeo.
+                  </video>
+                )}
+              </div>
+              <div className= "text-details">
+                <h4>Category</h4>
+                <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
+                <p data-testid="recipe-category">{drinkObject.strCategory}</p>
+                <h4>Ingredients</h4>
+                {drinksIngredients.map((eachDrinkIngredient, index) => (
+                  <p
+                    data-testid={ `${index}-ingredient-name-and-measure` }
+                    key={ eachDrinkIngredient }
+                  >
+                    { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
+                  </p>
+                ))}
+                <h4>Instructions</h4>
+                <p data-testid="instructions">{drinkObject.strInstructions}</p>
+                </div>
+              </div>)}
+
+              {recommendations.length > 0 && (
+            <>
+              <h2>Recommended</h2>
+              <RecommendationCarousel
+                recommendations={ recommendations }
+              />
+            </>)}
         </div>
         <Footer />
     </div>

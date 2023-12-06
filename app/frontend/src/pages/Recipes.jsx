@@ -179,13 +179,13 @@ export default function Recipes() {
           >
             All
           </button>
-            {apiMealsCategoryData && apiDrinksCategoryData ? (
-            pathRenderCategorys()) : (<h4>Carregando...</h4>)}
+          {apiMealsCategoryData && apiDrinksCategoryData ? (
+          pathRenderCategorys()) : (<h4>Carregando...</h4>)}
         </div>
-        <div className="recipes-container">
+        {<div className="recipes-container">
           { apiMealsNameData && apiDrinksNameData
             ? (masterRender()) : (<h4>Carregando...</h4>)}
-        </div>
+        </div>}
       </div>
       <Footer />
     </div>

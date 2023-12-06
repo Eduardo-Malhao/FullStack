@@ -5,9 +5,6 @@ import Header from '../components/Header';
 import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
-/* import shareIcon from '../../src/images/shareIcon.png'; */
-import whiteHeart from '../../src/images/whiteHeartIcon.svg';
-import blackHeart from '../../src/images/blackHeartIcon.svg';
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 import Footer from '../components/Footer';
 import { IoShareSocial } from "react-icons/io5";

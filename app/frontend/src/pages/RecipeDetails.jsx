@@ -5,11 +5,13 @@ import Header from '../components/Header';
 import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
-import shareIcon from '../../src/images/shareIcon.png';
+/* import shareIcon from '../../src/images/shareIcon.png'; */
 import whiteHeart from '../../src/images/whiteHeartIcon.svg';
 import blackHeart from '../../src/images/blackHeartIcon.svg';
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 import Footer from '../components/Footer';
+import { IoShareSocial } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
 
 export default function RecipeDetails() {
   const location = useLocation();
@@ -128,20 +130,34 @@ export default function RecipeDetails() {
                     <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
                     <div className= "only-btns">
                       <button
-                        data-testid="favorite-btn"
-                        src={ isFavorite ? blackHeart : whiteHeart }
+                        className="favorite-btn"
                         onClick={ () => handleFavorite() }
                       >
-                        <img
-                          src={isFavorite ? blackHeart : whiteHeart}
-                          alt="Ícone de Favoritar"
-                          style={{ width: '20px', height: '20px', marginRight: '8px' }} 
-                        />
+                        { isFavorite? 
+                        <FaHeart
+                          style={{
+                            height: '25px',
+                            width: '25px',
+                            color:  "#af1d3d",
+                            backgroundColor : '#dbe2ec00',
+                            padding:  '0px',
+                            margin: '2px',
+                            }}
+                        /> :
+                        <FaHeart
+                          style={{
+                            height: '25px',
+                            width: '25px',
+                            color:  "#969ba1f1",
+                            backgroundColor : '#dbe2ec00',
+                            padding:  '0px',
+                            margin: '2px',
+                            }}
+                        />}
                       </button>
-                      { wasCopied && <p>Link copied!</p>}
                       <button
-                        data-testid="share-btn"
-                        src={ shareIcon }
+                        className="share-btn"
+                        src={ IoShareSocial }
                         onClick={ () => {
                           copy(`http://localhost:3000${location.pathname}`);
                           setWasCopied(true);
@@ -149,16 +165,22 @@ export default function RecipeDetails() {
                           setTimeout(() => setWasCopied(false), time);
                         } }
                       >
-                        <img
-                          src={shareIcon}
-                          alt="Ícone de Compartilhamento"
-                          style={{ width: '20px', height: '20px', marginRight: '0px'}} 
+                        <IoShareSocial
+                          style={{
+                            height: '30px',
+                            width: '30px',
+                            color:  "#969ba1f1",
+                            backgroundColor : '#dbe2ec00',
+                            padding:  '0px',
+                            margin: '0px',
+                            }}
                         />
+                         { wasCopied && <p>Link copied!</p>}
                       </button>
                     </div>
                 </div>
                 <img
-                  className="recipeDetails-image"
+                  className="recipeDetails-meal-image"
                   data-testid="recipe-photo"
                   src={ mealObject.strMealThumb }
                   alt={ mealObject.strMeal }
@@ -177,9 +199,9 @@ export default function RecipeDetails() {
                 )}
               </div>
               <div className= "text-details">
-                <h4>Category</h4>
+                <h4 className="each-detail">Category</h4>
                 <p data-testid="recipe-category">{mealObject.strCategory}</p>
-                <h4>Ingredients</h4>
+                <h4 className="each-detail">Ingredients</h4>
                 {mealsIngredients.map((eachMealIngredient, index) => (
                   <p
                     data-testid={ `${index}-ingredient-name-and-measure` }
@@ -188,11 +210,11 @@ export default function RecipeDetails() {
                     { `${eachMealIngredient} : ${mealsMeasures[index]}` }
                   </p>
                 ))}
-                <h4>Instructions</h4>
+                <h4 className="each-detail">Instructions</h4>
                 <p data-testid="instructions">{mealObject.strInstructions}</p>
                 {recommendations.length > 0 && (
                 <>
-                  <h2>Recommended</h2>
+                  <h2 className="each-detail">Recommended</h2>
                   <RecommendationCarousel
                     recommendations={ recommendations }
                   />
@@ -206,17 +228,35 @@ export default function RecipeDetails() {
                   <div className= "recipeDetailTitle-btns">
                     <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
                     <div className= "only-btns">
-                      { wasCopied && <p>Link copied!</p>}
                       <button
-                        data-testid="favorite-btn"
-                        src={ isFavorite ? blackHeart : whiteHeart }
+                        className="favorite-btn"
                         onClick={ () => handleFavorite() }
                       >
-                        Favoritar
+                        { isFavorite? 
+                        <FaHeart
+                          style={{
+                            height: '25px',
+                            width: '25px',
+                            color:  "#af1d3d",
+                            backgroundColor : '#dbe2ec00',
+                            padding:  '0px',
+                            margin: '2px',
+                            }}
+                        /> :
+                        <FaHeart
+                          style={{
+                            height: '25px',
+                            width: '25px',
+                            color:  "#969ba1f1",
+                            backgroundColor : '#dbe2ec00',
+                            padding:  '0px',
+                            margin: '2px',
+                            }}
+                        />}
                       </button>
                       <button
-                        data-testid="share-btn"
-                        src={ shareIcon }
+                        className="share-btn"
+                        src={ IoShareSocial }
                         onClick={ () => {
                           copy(`http://localhost:3000${location.pathname}`);
                           setWasCopied(true);
@@ -224,12 +264,22 @@ export default function RecipeDetails() {
                           setTimeout(() => setWasCopied(false), time);
                               } }
                       >
-                        Compartilhar
+                         <IoShareSocial
+                          style={{
+                            height: '30px',
+                            width: '30px',
+                            color:  "#969ba1f1",
+                            backgroundColor : '#dbe2ec00',
+                            padding:  '0px',
+                            margin: '0px',
+                            }}
+                        />
+                         { wasCopied && <p>Link copied!</p>}
                       </button>
                     </div>
                   </div>
                 <img
-                  className="recipeDetails-image"
+                  className="recipeDetails-drink-image"
                   data-testid="recipe-photo"
                   src={ drinkObject.strDrinkThumb }
                   alt={ drinkObject.strDrink }
@@ -248,10 +298,10 @@ export default function RecipeDetails() {
                 )}
               </div>
               <div className= "text-details">
-                <h4>Category</h4>
+                <h4 className="each-detail">Category</h4>
                 <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
                 <p data-testid="recipe-category">{drinkObject.strCategory}</p>
-                <h4>Ingredients</h4>
+                <h4 className="each-detail">Ingredients</h4>
                 {drinksIngredients.map((eachDrinkIngredient, index) => (
                   <p
                     data-testid={ `${index}-ingredient-name-and-measure` }
@@ -260,11 +310,11 @@ export default function RecipeDetails() {
                     { `${eachDrinkIngredient} : ${drinksMeasures[index]}` }
                   </p>
                 ))}
-                <h4>Instructions</h4>
+                <h4 className="each-detail">Instructions</h4>
                 <p data-testid="instructions">{drinkObject.strInstructions}</p>
                 {recommendations.length > 0 && (
                 <>
-                  <h2>Recommended</h2>
+                  <h2 className="each-detail">Recommended</h2>
                   <RecommendationCarousel
                     recommendations={ recommendations }
                   />

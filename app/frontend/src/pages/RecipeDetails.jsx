@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
-import shareIcon from '../../src/images/shareIcon.svg';
+import shareIcon from '../../src/images/shareIcon.png';
 import whiteHeart from '../../src/images/whiteHeartIcon.svg';
 import blackHeart from '../../src/images/blackHeartIcon.svg';
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
@@ -128,6 +128,18 @@ export default function RecipeDetails() {
                     <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
                     <div className= "only-btns">
                       <button
+                        data-testid="favorite-btn"
+                        src={ isFavorite ? blackHeart : whiteHeart }
+                        onClick={ () => handleFavorite() }
+                      >
+                        <img
+                          src={isFavorite ? blackHeart : whiteHeart}
+                          alt="Ícone de Favoritar"
+                          style={{ width: '20px', height: '20px', marginRight: '8px' }} 
+                        />
+                      </button>
+                      { wasCopied && <p>Link copied!</p>}
+                      <button
                         data-testid="share-btn"
                         src={ shareIcon }
                         onClick={ () => {
@@ -137,15 +149,11 @@ export default function RecipeDetails() {
                           setTimeout(() => setWasCopied(false), time);
                         } }
                       >
-                        Compartilhar
-                      </button>
-                      { wasCopied && <p>Link copied!</p>}
-                      <button
-                        data-testid="favorite-btn"
-                        src={ isFavorite ? blackHeart : whiteHeart }
-                        onClick={ () => handleFavorite() }
-                      >
-                        Favoritar
+                        <img
+                          src={shareIcon}
+                          alt="Ícone de Compartilhamento"
+                          style={{ width: '20px', height: '20px', marginRight: '0px'}} 
+                        />
                       </button>
                     </div>
                 </div>
@@ -198,6 +206,14 @@ export default function RecipeDetails() {
                   <div className= "recipeDetailTitle-btns">
                     <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
                     <div className= "only-btns">
+                      { wasCopied && <p>Link copied!</p>}
+                      <button
+                        data-testid="favorite-btn"
+                        src={ isFavorite ? blackHeart : whiteHeart }
+                        onClick={ () => handleFavorite() }
+                      >
+                        Favoritar
+                      </button>
                       <button
                         data-testid="share-btn"
                         src={ shareIcon }
@@ -209,14 +225,6 @@ export default function RecipeDetails() {
                               } }
                       >
                         Compartilhar
-                      </button>
-                      { wasCopied && <p>Link copied!</p>}
-                      <button
-                        data-testid="favorite-btn"
-                        src={ isFavorite ? blackHeart : whiteHeart }
-                        onClick={ () => handleFavorite() }
-                      >
-                        Favoritar
                       </button>
                     </div>
                   </div>

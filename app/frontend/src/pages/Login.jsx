@@ -4,6 +4,10 @@ import '../styles/login.css';
 import Header from '../components/Header';
 import logoImage from '../images/mystoragerecipepng.png';
 import Footer from '../components/Footer';
+import * as ReactIcons from 'react-icons'
+
+// vh = height;
+// vw = width;
 
 
 function Login() {
@@ -11,6 +15,7 @@ function Login() {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [emailLogin, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const minCaracter = 6;
@@ -22,6 +27,10 @@ function Login() {
       setButtonDisabled(true);
     }
   }, [emailLogin, password]);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const emailChange = ({ target: { value } }) => {
     setEmail(value);
@@ -68,7 +77,7 @@ function Login() {
             <label htmlFor="Senha">
               <input
                 className="input"
-                type="text"
+                type={ showPassword ? 'text' : 'password' }
                 id="Senha"
                 size="30"
                 name="passwordLogin"
@@ -76,6 +85,11 @@ function Login() {
                 onChange={ passwordChange }
               />
             </label>
+            <button type="button" onClick={togglePasswordVisibility}>
+                <FaEye
+                
+                />
+            </button>
           </div>
           <div  className="login-button-container">
             <button

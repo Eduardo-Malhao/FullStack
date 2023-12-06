@@ -200,10 +200,11 @@ export default function RecipeDetails() {
               </div>
               <div className= "text-details">
                 <h4 className="each-detail">Category</h4>
-                <p data-testid="recipe-category">{mealObject.strCategory}</p>
+                <p className="text-content">{mealObject.strCategory}</p>
                 <h4 className="each-detail">Ingredients</h4>
                 {mealsIngredients.map((eachMealIngredient, index) => (
                   <p
+                    className="text-content"
                     data-testid={ `${index}-ingredient-name-and-measure` }
                     key={ eachMealIngredient }
                   >
@@ -211,7 +212,7 @@ export default function RecipeDetails() {
                   </p>
                 ))}
                 <h4 className="each-detail">Instructions</h4>
-                <p data-testid="instructions">{mealObject.strInstructions}</p>
+                <p className="text-content">{mealObject.strInstructions}</p>
                 {recommendations.length > 0 && (
                 <>
                   <h2 className="each-detail">Recommended</h2>
@@ -299,11 +300,12 @@ export default function RecipeDetails() {
               </div>
               <div className= "text-details">
                 <h4 className="each-detail">Category</h4>
-                <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
+                <p className="text-content">{drinkObject.strAlcoholic}</p>
                 <p data-testid="recipe-category">{drinkObject.strCategory}</p>
                 <h4 className="each-detail">Ingredients</h4>
                 {drinksIngredients.map((eachDrinkIngredient, index) => (
                   <p
+                    className="text-content"
                     data-testid={ `${index}-ingredient-name-and-measure` }
                     key={ eachDrinkIngredient }
                   >
@@ -311,7 +313,7 @@ export default function RecipeDetails() {
                   </p>
                 ))}
                 <h4 className="each-detail">Instructions</h4>
-                <p data-testid="instructions">{drinkObject.strInstructions}</p>
+                <p className="text-content">{drinkObject.strInstructions}</p>
                 {recommendations.length > 0 && (
                 <>
                   <h2 className="each-detail">Recommended</h2>

@@ -2,14 +2,14 @@ import { useParams, useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect, useContext, useCallback } from 'react';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
-import SearchBar from '../components/SearchBar';
 import '../styles/recipeDetails.css';
 import RecommendationCarousel from '../components/RecommendationCarousel';
 import HeaderContext from '../context/HeaderContext';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeart from '../images/whiteHeartIcon.svg';
-import blackHeart from '../images/blackHeartIcon.svg';
+import shareIcon from '../../src/images/shareIcon.png';
+import whiteHeart from '../../src/images/whiteHeartIcon.svg';
+import blackHeart from '../../src/images/blackHeartIcon.svg';
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
+import Footer from '../components/Footer';
 
 export default function RecipeDetails() {
   const location = useLocation();
@@ -118,41 +118,53 @@ export default function RecipeDetails() {
 
   return (
     <div className="all-recipeDetails-page">
-        <div className="recipeDetail-page-container ">
+        <div className="recipeDetail-page-container">
           <Header />
-          <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
-          <button
-            data-testid="share-btn"
-            src={ shareIcon }
-            onClick={ () => {
-              copy(`http://localhost:3000${location.pathname}`);
-              setWasCopied(true);
-              const time = 2000;
-              setTimeout(() => setWasCopied(false), time);
-            } }
-          >
-            Compartilhar
-          </button>
-          { wasCopied && <p>Link copied!</p>}
-          <button
-            data-testid="favorite-btn"
-            src={ isFavorite ? blackHeart : whiteHeart }
-            onClick={ () => handleFavorite() }
-          >
-            Favoritar
-          </button>
-          <div>
-            { location.pathname === `/meals/${getId.id}` ? (
-              <div>
-                <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
-                 <img
+          { location.pathname === `/meals/${getId.id}` ? (
+            <div className= "allDescripition-container">
+              <div className= "name-image-video-container">
+                 <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
+                  <div className= "recipeDetailTitle-btns">
+                    <h2 data-testid="recipe-title">{mealObject.strMeal}</h2>
+                    <div className= "only-btns">
+                      <button
+                        data-testid="favorite-btn"
+                        src={ isFavorite ? blackHeart : whiteHeart }
+                        onClick={ () => handleFavorite() }
+                      >
+                        <img
+                          src={isFavorite ? blackHeart : whiteHeart}
+                          alt="Ícone de Favoritar"
+                          style={{ width: '20px', height: '20px', marginRight: '8px' }} 
+                        />
+                      </button>
+                      { wasCopied && <p>Link copied!</p>}
+                      <button
+                        data-testid="share-btn"
+                        src={ shareIcon }
+                        onClick={ () => {
+                          copy(`http://localhost:3000${location.pathname}`);
+                          setWasCopied(true);
+                          const time = 2000;
+                          setTimeout(() => setWasCopied(false), time);
+                        } }
+                      >
+                        <img
+                          src={shareIcon}
+                          alt="Ícone de Compartilhamento"
+                          style={{ width: '20px', height: '20px', marginRight: '0px'}} 
+                        />
+                      </button>
+                    </div>
+                </div>
+                <img
                   className="recipeDetails-image"
                   data-testid="recipe-photo"
                   src={ mealObject.strMealThumb }
                   alt={ mealObject.strMeal }
                 />
                 {videoUrl && (
-                  <video controls data-testid="video">
+                  <video controls data-testid="video" className= "recipeDetail-video">
                     <source src={ mealObject.strYoutube } type="video/mp4" />
                     <track
                       kind="captions"
@@ -163,6 +175,8 @@ export default function RecipeDetails() {
                     Seu navegador não suporta o elemento de vídeo.
                   </video>
                 )}
+              </div>
+              <div className= "text-details">
                 <h4>Category</h4>
                 <p data-testid="recipe-category">{mealObject.strCategory}</p>
                 <h4>Ingredients</h4>
@@ -176,28 +190,64 @@ export default function RecipeDetails() {
                 ))}
                 <h4>Instructions</h4>
                 <p data-testid="instructions">{mealObject.strInstructions}</p>
-              </div>)
-              : (
-                <div>
-                  <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
-                  <img
-                    className="recipeDetails-image"
-                    data-testid="recipe-photo"
-                    src={ drinkObject.strDrinkThumb }
-                    alt={ drinkObject.strDrink }
+                {recommendations.length > 0 && (
+                <>
+                  <h2>Recommended</h2>
+                  <RecommendationCarousel
+                    recommendations={ recommendations }
                   />
-                  {videoUrl && (
-                    <video controls data-testid="video">
-                      <source src={ drinkObject.strVideo } type="video/mp4" />
-                      <track
-                        kind="captions"
-                        label="English"
-                        srcLang="en"
-                        src={ drinkObject.strDrink }
-                      />
-                      Seu navegador não suporta o elemento de vídeo.
-                    </video>
-                  )}
+                </>)}
+              </div>
+            </div>)
+              : (
+              <div className= "allDescripition-container">
+                <div className="name-image-video-container">
+                  <h1 className="recipeDetail-title ">RECIPE DETAILS</h1>
+                  <div className= "recipeDetailTitle-btns">
+                    <h2 data-testid="recipe-title">{drinkObject.strDrink}</h2>
+                    <div className= "only-btns">
+                      { wasCopied && <p>Link copied!</p>}
+                      <button
+                        data-testid="favorite-btn"
+                        src={ isFavorite ? blackHeart : whiteHeart }
+                        onClick={ () => handleFavorite() }
+                      >
+                        Favoritar
+                      </button>
+                      <button
+                        data-testid="share-btn"
+                        src={ shareIcon }
+                        onClick={ () => {
+                          copy(`http://localhost:3000${location.pathname}`);
+                          setWasCopied(true);
+                          const time = 2000;
+                          setTimeout(() => setWasCopied(false), time);
+                              } }
+                      >
+                        Compartilhar
+                      </button>
+                    </div>
+                  </div>
+                <img
+                  className="recipeDetails-image"
+                  data-testid="recipe-photo"
+                  src={ drinkObject.strDrinkThumb }
+                  alt={ drinkObject.strDrink }
+                />
+                {videoUrl && (
+                  <video controls data-testid="video" className= "recipeDetail-video">
+                    <source src={ drinkObject.strVideo } type="video/mp4" />
+                    <track
+                      kind="captions"
+                      label="English"
+                      srcLang="en"
+                      src={ drinkObject.strDrink }
+                    />
+                    Seu navegador não suporta o elemento de vídeo.
+                  </video>
+                )}
+              </div>
+              <div className= "text-details">
                 <h4>Category</h4>
                 <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
                 <p data-testid="recipe-category">{drinkObject.strCategory}</p>
@@ -212,17 +262,18 @@ export default function RecipeDetails() {
                 ))}
                 <h4>Instructions</h4>
                 <p data-testid="instructions">{drinkObject.strInstructions}</p>
-              </div>)}
-                </div>
                 {recommendations.length > 0 && (
-          <>
-            <h2>Recommended</h2>
-            <RecommendationCarousel
-              recommendations={ recommendations }
-            />
-          </>
-                )}
+                <>
+                  <h2>Recommended</h2>
+                  <RecommendationCarousel
+                    recommendations={ recommendations }
+                  />
+                </>)}
+              </div>
+            </div>)}
+
         </div>
+        <Footer />
     </div>
   );
 }

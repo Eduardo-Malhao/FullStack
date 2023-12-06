@@ -39,7 +39,6 @@ function Login() {
 
   return (
     <div className="all-login-page">
-      <Header />
       <div className="login-page-container">
         <div className="logo-image-container">
           <img

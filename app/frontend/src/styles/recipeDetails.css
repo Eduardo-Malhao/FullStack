@@ -55,7 +55,7 @@
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  height: auto;
+  max-height: 95%;
   padding-top: 5%;
   background-color: #23a13e;
 }
@@ -65,7 +65,7 @@
   flex-shrink: 1;
   flex-direction: column;
   justify-content: space-around;
-  height: 70%;
+  max-height: 70%;
   width: 35%;
   padding: 0% 3% 0% 0%;
   background-color: aquamarine;
@@ -76,7 +76,7 @@
   justify-content: flex-start;
   flex-direction: column;
   padding-left: 3%;
-  max-height: 85%;
+  max-height: 90%;
   overflow-y: scroll;
   background-color: antiquewhite;
 }

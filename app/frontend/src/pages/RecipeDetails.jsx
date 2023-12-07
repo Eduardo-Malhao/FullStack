@@ -3,7 +3,7 @@ import { useState, useEffect, useContext, useCallback } from 'react';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
 import '../styles/recipeDetails.css';
-import RecommendationCarousel from '../components/RecommendationCarousel';
+import RecommendationCards from '../components/RecommendationCards';
 import HeaderContext from '../context/HeaderContext';
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 import Footer from '../components/Footer';
@@ -213,7 +213,7 @@ export default function RecipeDetails() {
                 {recommendations.length > 0 && (
                 <>
                   <h2 className="each-detail">Recommended</h2>
-                  <RecommendationCarousel
+                  <RecommendationCards
                     recommendations={ recommendations }
                   />
                 </>)}
@@ -314,7 +314,7 @@ export default function RecipeDetails() {
                 {recommendations.length > 0 && (
                 <>
                   <h2 className="each-detail">Recommended</h2>
-                  <RecommendationCarousel
+                  <RecommendationCards
                     recommendations={ recommendations }
                   />
                 </>)}

@@ -92,6 +92,7 @@ export default function Recipes() {
         </div>
       ));
     }
+
     return mealFromFetch.map((eachDrink, index) => (
       <div key={ eachDrink.idDrink } data-testid={ `${index}-recipe-card` }>
         <button
@@ -172,7 +173,7 @@ export default function Recipes() {
         <SearchBar />
         <div className="categories-container">
           <button
-          className="categories-btn-all"
+            className="categories-btn-all"
             data-testid="All-category-filter"
             type="button"
             onClick={ () => allRender() }

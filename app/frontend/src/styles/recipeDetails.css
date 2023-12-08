@@ -76,14 +76,15 @@
   justify-content: flex-start;
   flex-direction: column;
   padding-left: 3%;
-  max-height: 90%;
+  max-height: 96%;
   overflow-y: scroll;
   background-color: antiquewhite;
 }
 
 .text-details {
   color: #343635;
-  word-spacing: 0.4em;
+  word-spacing: 0.1em;
+  line-height: 1.4;
 }
 
 .each-detail {

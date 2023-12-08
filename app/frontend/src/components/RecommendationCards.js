@@ -3,6 +3,7 @@ import { useParams, useLocation, useHistory } from 'react-router-dom';
 import { useState, useEffect, useContext, useCallback } from 'react';
 import DrinksContext from '../context/DrinksContext';
 import MealsContext from '../context/MealsContext';
+import '../styles/recommendationCards.css';
 
 
 export default function RecommendationCards({ recommendations: propRecommendations = [] }) {
@@ -11,31 +12,44 @@ export default function RecommendationCards({ recommendations: propRecommendatio
     const history = useHistory();
     const { apiMealsNameData } = useContext(MealsContext);
     const { apiDrinksNameData } = useContext(DrinksContext);
+
+
+  useEffect(() => {
+    pathRenderRecommendationCards();
+  }, [apiDrinksNameData, apiMealsNameData, location.pathname]);
   
     function pathRenderRecommendationCards() {
       const four = 4;
       let data;
   
-      if (apiMealsNameData || apiDrinksNameData) {
-        data = location.pathname === '/meals' ? apiMealsNameData : apiDrinksNameData;
+      if (apiMealsNameData && apiDrinksNameData) {
+        const lowerCasePathname = location.pathname.toLowerCase();
+        data = lowerCasePathname.includes('/drinks') ? apiMealsNameData : apiDrinksNameData;
       }
   
-      return data && data.map((item, index) => index < four && (
+      return Array.isArray(data) && data.length > 0 && data.map((item, index) => index < four && (
         <div
-          key={ item.idMeal || item.idDrink }
-          data-testid={ `${index}-recipe-card` }
+            className="recommendation-container"
+            key={ item.idMeal || item.idDrink }
+            data-testid={ `${index}-recipe-card` }
         >
-          <button
-            onClick={ () => history.push(`${location.pathname}/${item.idMeal || item.idDrink}`) }
-            className="eachRecipe"
-          >
+            <button
+                className="eachRecommendation"
+                onClick={() => {
+                    const lowerCasePathname = location.pathname.toLowerCase();
+                    const newPathname = lowerCasePathname.includes('/meals') ? '/drinks' : '/meals';
+                    const newItemId = lowerCasePathname.includes('/meals') ? item.idDrink : item.idMeal;
+                    history.push(`${newPathname}/${newItemId}`);
+                  }}
+               
+            >
             <img
-              data-testid={ `${index}-card-img` }
-              src={ item.strMealThumb ?? item.strDrinkThumb }
-              alt={ item.strMeal ?? item.strDrink }
+                data-testid={ `${index}-card-img` }
+                src={ item.strMealThumb ?? item.strDrinkThumb }
+                alt={ item.strMeal ?? item.strDrink }
             />
-            <p data-testid={ `${index}-card-name` }>{item.strMeal || item.strDrink}</p>
-          </button>
+            {/* <p data-testid={ `${index}-card-name` }>{item.strMeal || item.strDrink}</p> */}
+            </button>
         </div>
       ));
     }

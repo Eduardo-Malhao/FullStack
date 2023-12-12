@@ -49,6 +49,12 @@ body {
   color: var(--cor03);
   font-family: var(--font-second);
 }
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
  
 
  

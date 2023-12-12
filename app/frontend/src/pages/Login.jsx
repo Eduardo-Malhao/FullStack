@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../styles/login.css';
 import logoImage from '../images/mystoragerecipepng.png';
 import Footer from '../components/Footer';
+import FullFooter from '../components/FullFooter';
 import { FaEye } from "react-icons/fa";
 import  { FaEyeSlash } from "react-icons/fa";
 
@@ -134,7 +135,8 @@ function Login() {
 
       </form>
 
-      <Footer/>
+      {/* <Footer/> */}
+      <FullFooter/>
     </main>
   );
 }

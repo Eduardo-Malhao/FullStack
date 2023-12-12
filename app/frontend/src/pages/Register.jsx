@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/register.css';
 import { useHistory } from 'react-router-dom';
+import Footer from '../components/Footer';
 import logoImage from '../images/mystoragerecipepng.png';
 import { FaEye } from "react-icons/fa";
 import  { FaEyeSlash } from "react-icons/fa";
@@ -136,6 +137,8 @@ function Register() {
         </div>
 
       </form>
+
+      <Footer />
     </main>
   );
 };

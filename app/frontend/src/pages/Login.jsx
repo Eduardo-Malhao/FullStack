@@ -1,39 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../styles/login.css';
-import Header from '../components/Header';
 import logoImage from '../images/mystoragerecipepng.png';
 import Footer from '../components/Footer';
-import * as ReactIcons from 'react-icons'
-
-// vh = height;
-// vw = width;
+import { FaEye } from "react-icons/fa";
+import  { FaEyeSlash } from "react-icons/fa";
 
 
 function Login() {
   const history = useHistory();
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [emailLogin, setEmail] = useState('');
+  const [email_username, setEmail_username] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [register, setRegister] = useState(false);
 
   useEffect(() => {
     const minCaracter = 6;
-    const emailValid = emailLogin.toLowerCase().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    const emailValid = email_username.toLowerCase().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     const passwordValid = password.length > minCaracter;
     if (emailValid && passwordValid) {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
     }
-  }, [emailLogin, password]);
+  }, [email_username, password]);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const toggleRegister = () => {
+    setRegister((register) => !register);
+  };
+
   const emailChange = ({ target: { value } }) => {
-    setEmail(value);
+    setEmail_username(value);
   };
 
   const passwordChange = ({ target: { value } }) => {
@@ -41,71 +43,101 @@ function Login() {
   };
 
   const submitForm = () => {
-    const userEmail = { email: emailLogin };
+    const userEmail = { email: email_username };
     localStorage.setItem('user', JSON.stringify(userEmail));
     history.push('/meals');
   };
 
   return (
-    <div className="all-login-page">
-      <div className="login-page-container">
-        <div className="logo-image-container">
-          <img
-            src={logoImage}
-            alt="Logo"
-            className="logo-full-image "
-          />
-        </div>
-        <form className="form-content">
-          <div className="input-container">
-            <h5>login</h5>
-            <label htmlFor="Email">
-              <input
-                className="input"
-                name="emailLogin"
-                id="Email"
-                type="email"
-                size="30"
-                placeholder="email"
-                value={ emailLogin }
-                onChange={ emailChange }
-              />
-            </label>
-          </div>
-          <div className="input-container">
-            <h5>password</h5>
-            <label htmlFor="Senha">
-              <input
-                className="input"
-                type={ showPassword ? 'text' : 'password' }
-                id="Senha"
-                size="30"
-                name="passwordLogin"
-                value={ password }
-                onChange={ passwordChange }
-              />
-            </label>
-            <button type="button" onClick={togglePasswordVisibility}>
-                <FaEye
-                
-                />
-            </button>
-          </div>
-          <div  className="login-button-container">
-            <button
-              className="login-button"
-              type="button"
-              name="buttonLogin"
-              disabled={ buttonDisabled }
-              onClick={ submitForm }
-            >
-              Enter
-            </button>
-          </div>
-        </form>
-        <Footer/>
+    <main
+			className="body"
+    >
+      <div
+        className="logo-container"
+      >
+        <img
+          src={logoImage}
+          alt="Logo"
+        />
       </div>
-    </div>
+
+      <form
+			className="form"
+			>
+				<div
+					className="input-container"
+				>
+					<h5>Login</h5>
+					<label htmlFor="Email or Username">
+						<input
+							className="input"
+							name="Username_Email"
+							type="text"
+							size="30"
+							placeholder="Username / Email"
+							value={ email_username }
+							onChange={ emailChange }
+						/>
+					</label>
+
+					<h5>Password</h5>
+					<label htmlFor="Password">
+            <div
+              className='password-container'
+            >
+
+						  <input
+						  	className="input"
+						  	type={ showPassword ? 'text' : 'password' }
+						  	size="30"
+						  	name="passwordLogin"
+                placeholder="Password"
+						  	value={ password }
+						  	onChange={ passwordChange }
+						  />
+					    <div
+					    	className='password-visibility'
+					    	onClick={togglePasswordVisibility}
+					    >
+					    	{showPassword ? <FaEye /> : <FaEyeSlash /> }
+					    </div>
+            </div>
+          </label>
+
+				</div>
+        
+				<div
+				className="login-button-container"
+				>
+          <button
+            className="login-button"
+            type="button"
+            name="buttonLogin"
+            disabled={ buttonDisabled }
+            onClick={ submitForm }
+          >
+            Enter
+          </button>
+        </div>
+
+        <div
+          className="register-container"
+        >
+          <p>
+            Don't have an account?
+          </p>
+          <p
+            className="register-button"
+            onClick={ toggleRegister }
+          >
+            Register
+          </p>
+        </div>
+
+      </form>
+
+      <Footer/>
+    </main>
   );
 }
 

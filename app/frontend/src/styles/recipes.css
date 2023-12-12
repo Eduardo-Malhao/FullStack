@@ -3,8 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0%;
+  padding: 0%;
   box-sizing: border-box;
 }
 
@@ -23,8 +23,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
+  width: 0%;
+  height: 0%;
 }
 
 .all-recipes-page{
@@ -58,13 +58,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: -552px;
+  align-items: center;
+  margin-top: -30%;
+  margin-left: -2%;
   color: white;
-  min-width: 35%;
-  height: 80px;
-  padding-top: 24px;
+  width: 30%;
+  height: 8%;
   text-align: center;
- /*  background-color: white; */
+ /*  background-color: rgb(216, 58, 58); */
 }
 
 .categories-btn-all {
@@ -72,16 +73,18 @@
   justify-content: center;
   align-items: center;
   color: white;
-  border-radius: 20px;
+  border-radius: 29px;
   border: 1px solid var(--cor02);
   outline-color: #516774;
-  width: 75px;
-  height: 35px;
+  width: 15%;
+  height: 40%;
   text-align: center;
   background-color: var(--cor02);
 }
 
 .eachCategory-btn {
+  display: flex;
+  align-items: center;
   justify-content: center;
   color: white;
   border-radius: 20px;
@@ -111,10 +114,9 @@
   width: 100%;
   height: 52%;
   margin: auto;
-  margin-top: 12%; 
+  margin-top: 13.5%; 
   padding-left: 30%;
   padding-right: 30%;
-  padding-top: 2%;
   padding-bottom: 2%;
   align-items: center;
   overflow-y: scroll;
@@ -126,12 +128,9 @@
   display: flex;
   flex-direction: row;
   align-items: center; /* Alinhar verticalmente no centro */
-  margin: 5px;
+  margin: 5%;
   margin-left: 15%;
-/*   border-top-left-radius: 0%; */
- /*  border-bottom-left-radius: 20%; */
   width: 70%;
-/*   border-color: #dbe2ec3a; */
   border-color: #a1232300;
   background-color: rgba(161, 150, 89, 0);
 }
@@ -142,12 +141,11 @@
   height: auto; /* Manter proporção original */
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-  /* margin-left: -10px; */
 }
 
 .eachRecipe img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 0px 20px 0px #a123239f;
+  transform: translateY(-2%);
+  box-shadow: 0px 0px 20px 0px #a1232385;
 }
 
 .eachRecipe p {

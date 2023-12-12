@@ -30,34 +30,36 @@
 
 .recommendation-container {
   display: flex;
-  justify-content: row;
-  width: 50%;
-  height: 10%;
-/*   margin-top: 12%; 
-  padding-left: 30%;
-  padding-right: 30%;
-  padding-top: 2%;
-  padding-bottom: 2%; */
+  justify-content: space-between;
+  width: 40%;
+  height: 20%;
   align-items: center;
   background-color: rgba(99, 72, 72, 0);
 }
 
 
-.eachRecommendation button {
-  display: flex;
-  flex-direction: row;
-  align-items: center; 
-  width: 100%;
-  max-height: 0%;
-  background-color: rgb(150, 133, 41);
+.recommendation-container button {
+  background-color: rgba(226, 193, 8, 0);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-color: #0e23e500;
+}
+
+.recommendation-container button:hover {
+  transform: translateY(-5px);
+
 }
 
 .eachRecommendation img {
   max-height: 50%;
-  max-width: 55%; /* Evitar que a imagem ultrapasse o container */
+  max-width: 85%; /* Evitar que a imagem ultrapasse o container */
   height: auto; /* Manter proporção original */
   border-radius: 50%;
   border-color: rgba(39, 156, 156, 0);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.eachRecommendation img:hover {
+  box-shadow: 0px 0px 20px 0px #a123239f; /* Aumenta a sombra quando o hover ocorre */
 }
 
 .eachRecipe p {
@@ -109,3 +111,6 @@
   /*   background-color: rgb(99, 72, 72); */
   }
 }
+
+
+

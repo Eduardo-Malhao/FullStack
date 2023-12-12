@@ -55,7 +55,7 @@
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  max-height: 95%;
+  height: 91.5%;
   padding-top: 5%;
   background-color: #23a13e;
 }
@@ -65,8 +65,9 @@
   flex-shrink: 1;
   flex-direction: column;
   justify-content: space-around;
-  max-height: 70%;
-  width: 35%;
+  
+  max-height: 85%;
+  width: 55%;
   padding: 0% 3% 0% 0%;
   background-color: aquamarine;
 }
@@ -76,7 +77,8 @@
   justify-content: flex-start;
   flex-direction: column;
   padding-left: 3%;
-  max-height: 96%;
+  min-height: 85%;
+  max-height: 95%;
   overflow-y: scroll;
   background-color: antiquewhite;
 }
@@ -121,13 +123,16 @@
 }
 
 .recipeDetails-meal-image {
-  height: 40%;
+  height: 50%;
   width: 100%;
 }
 
 .recipeDetails-drink-image {
-  height: 60%;
-  width: 70%;
+  height: 50%;
+  width: 100%;
+  padding-bottom: 50%;
+  padding-right: 10%;
+  margin-bottom: 80%;
 }
 
 .heart-input {
@@ -149,12 +154,6 @@
   border-color: #dbe2ec00;
 }
 
-.share-btn {
-  background-color: #dbe2ec00;
-  width: 70%;
-  height: 70%;
-  border-color: #dbe2ec00;
-}
 
 .recipeDetails-mediaContainer {
   align-items: center;

@@ -260,7 +260,7 @@ export default function RecipeDetails() {
                           setWasCopied(true);
                           const time = 2000;
                           setTimeout(() => setWasCopied(false), time);
-                              } }
+                        } }
                       >
                          <IoShareSocial
                           style={{

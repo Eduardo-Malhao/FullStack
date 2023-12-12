@@ -13,12 +13,11 @@ function Login() {
   const [email_username, setEmail_username] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [register, setRegister] = useState(false);
 
   useEffect(() => {
-    const minCaracter = 6;
+    const minCharacter = 6;
     const emailValid = email_username.toLowerCase().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    const passwordValid = password.length > minCaracter;
+    const passwordValid = password.length > minCharacter;
     if (emailValid && passwordValid) {
       setButtonDisabled(false);
     } else {
@@ -30,21 +29,20 @@ function Login() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const toggleRegister = () => {
-    setRegister((register) => !register);
-  };
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    if (name === 'email') {
+      setEmail_username(value);
+    } else if (name === 'passwordLogin') {
+      setPassword(value);
+    }
+  }
 
-  const emailChange = ({ target: { value } }) => {
-    setEmail_username(value);
-  };
-
-  const passwordChange = ({ target: { value } }) => {
-    setPassword(value);
-  };
+  const handleRegister = () => {
+    history.push('/register');
+  }
 
   const submitForm = () => {
-    const userEmail = { email: email_username };
-    localStorage.setItem('user', JSON.stringify(userEmail));
     history.push('/meals');
   };
 
@@ -76,7 +74,7 @@ function Login() {
 							size="30"
 							placeholder="Username / Email"
 							value={ email_username }
-							onChange={ emailChange }
+							onChange={ handleChange }
 						/>
 					</label>
 
@@ -90,10 +88,10 @@ function Login() {
 						  	className="input"
 						  	type={ showPassword ? 'text' : 'password' }
 						  	size="30"
-						  	name="passwordLogin"
+						  	name="password"
                 placeholder="Password"
 						  	value={ password }
-						  	onChange={ passwordChange }
+						  	onChange={ handleChange }
 						  />
 					    <div
 					    	className='password-visibility'
@@ -112,7 +110,7 @@ function Login() {
           <button
             className="login-button"
             type="button"
-            name="buttonLogin"
+            name="loginButton"
             disabled={ buttonDisabled }
             onClick={ submitForm }
           >
@@ -121,14 +119,14 @@ function Login() {
         </div>
 
         <div
-          className="register-container"
+          className="register-router-container"
         >
           <p>
             Don't have an account?
           </p>
           <p
-            className="register-button"
-            onClick={ toggleRegister }
+            className="register-router-button"
+            onClick={ handleRegister }
           >
             Register
           </p>

@@ -91,6 +91,16 @@
   height: 34px;
   text-align: center;
   background-color: var(--cor02);
+  transition: background-color 0.3s ease-out;
+}
+
+.eachCategory-btn:hover {
+  background-color: var(--cor04);
+  border-color: #0e23e500;
+}
+
+.eachCategory-btn:active {
+  background-color: #a12323;
 }
 
 .recipes-container {

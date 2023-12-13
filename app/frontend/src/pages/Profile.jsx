@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/profile.css';
+import FavoriteRecipes from './FavoriteRecipes';
 
 function Profile({ history }) {
   const [userEmail, setUserEmail] = useState('');
@@ -51,6 +52,7 @@ function Profile({ history }) {
           </Button>
         </div>
       </div>
+      <FavoriteRecipes />
       <Footer />
     </div>
   );

@@ -73,6 +73,7 @@ export default function RecipeDetails() {
     UseSetItem('favoriteRecipes', newFavoriteRecipes);
     setIsFavorite(!isRecipeFavorite);
   };
+
   useEffect(() => {
     const favoriteLocalStorage = UseGetItem('favoriteRecipes');
     if (!favoriteLocalStorage) return setIsFavorite(false);

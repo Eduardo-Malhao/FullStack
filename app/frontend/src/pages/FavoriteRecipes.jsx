@@ -1,55 +1,98 @@
 import { useEffect, useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import copy from 'clipboard-copy';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import favoriteBtn from '../images/blackHeartIcon.svg';
+import HeaderContext from '../context/HeaderContext';
+import React, { useContext } from 'react';
+import { IoShareSocial } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+
 
 function FavoriteRecipes() {
-  const [filterRecipes, setFilterRecipes] = useState([]);
+  const [filteredRecipes, setFilterRecipes] = useState([]);
   const [status, setStatus] = useState(false);
+  const { isFavorite, setIsFavorite } = useContext(HeaderContext);
+  const history = useHistory();
+  const location = useLocation();
 
-  const madeRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  useEffect(() => {
+    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    setFilterRecipes(favoriteRecipes);
+  }, []);
+
+  const handleFavorite = (id) => {
+    if (isFavorite) {
+      const updatedRecipes = filteredRecipes.filter((recipe) => recipe.id !== id);
+      setFilterRecipes(updatedRecipes);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
+    }
+  };
 
   const mealsFilter = () => {
-    const meals = madeRecipes.filter((recipe) => recipe.type === 'meal');
+    const meals = filteredRecipes.filter((recipe) => recipe.type === 'meal');
     setFilterRecipes(meals);
   };
 
   const drinksFilter = () => {
-    const drinks = madeRecipes.filter((recipe) => recipe.type === 'drink');
+    const drinks = filteredRecipes.filter((recipe) => recipe.type === 'drink');
     setFilterRecipes(drinks);
   };
 
-  const allFoodsFilter = () => {
-    setFilterRecipes(madeRecipes);
-  };
+  
+  function renderMealsCards() {
+    const twelve = 12;
 
-  useEffect(() => {
-    const madeRecipesJson = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    setFilterRecipes(madeRecipesJson);
-  }, []);
-  const deleteFavorite = (id) => {
-    const recItems = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const returnIndex = recItems.findIndex((item) => item.id === id);
-    recItems.splice(returnIndex, 1);
-    console.log(returnIndex);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(recItems));
-    const localRecipesJSON = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    console.log(localRecipesJSON);
-    setFilterRecipes(localRecipesJSON);
-  };
+    return filteredRecipes.map((item, index) => item.type === 'meals' && (
+      <div key={item.idMeal}>
+        <button
+          onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
+          className="eachRecipe"
+        >
+          <img
+            src={item.strMealThumb}
+            alt={item.strMeal}
+          />
+          <p>{item.strMeal}</p>
+        </button>
+      </div>
+    ));
+  }
+
+  function renderDrinksCards() {
+    const twelve = 12;
+
+    return filteredRecipes.map((item, index) => item.type === 'drinks' && (
+      <div key={item.idDrink}>
+        <button
+          onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
+          className="eachRecipe"
+        >
+          <img
+            src={item.strDrinkThumb}
+            alt={item.strDrink}
+          />
+          <p>{item.strDrink}</p>
+        </button>
+      </div>
+    ));
+  }
+
+  function renderAllCards() {
+   renderDrinksCards();
+   renderMealsCards();
+  }
 
   return (
     <section>
-      <Header />
       <nav>
         <button
           type="button"
           name="all"
           data-testid="filter-by-all-btn"
           value="all"
-          onClick={ () => allFoodsFilter() }
+          onClick={ () => renderAllCards() }
         >
           All
         </button>
@@ -57,91 +100,52 @@ function FavoriteRecipes() {
           type="button"
           name="meal"
           data-testid="filter-by-meal-btn"
-          onClick={ () => mealsFilter() }
+          onClick={ () => renderMealsCards() }
         >
           Meals
         </button>
         <button
           type="button"
           data-testid="filter-by-drink-btn"
-          onClick={ () => drinksFilter() }
+          onClick={ () => renderDrinksCards() }
         >
           Drinks
         </button>
       </nav>
       <div>
-
-        {filterRecipes.map((recipe, index) => (
+        {filteredRecipes.map((recipe, index) => (
           <div key={ recipe.id }>
-            <div>
-              <Link to={ `/${recipe.type}s/${recipe.id}` }>
-                <img
-                  data-testid={ `${index}-horizontal-image` }
-                  src={ recipe.image }
-                  alt={ recipe.name }
-                  className="img"
-                  width="10"
-                  height="10"
-                />
-              </Link>
-            </div>
-            <div>
-              <Link to={ `/${recipe.type}s/${recipe.id}` }>
-                <p
-                  data-testid={ `${index}-horizontal-name` }
-                >
-                  {`Name: ${recipe.name}`}
-                </p>
-              </Link>
-              <p
-                data-testid={ `${index}-horizontal-top-text` }
-              >
-                {`Category-nationality: ${recipe.nationality} - ${recipe.category}`}
-              </p>
-              {
-                recipe.doneDate !== undefined
-                  && (
-                    <p
-                      data-testid={ `${index}-horizontal-done-date` }
-                    >
-                      {`Done in :
-                  ${new Date(recipe.doneDate).getDate()}/${new Date(recipe.doneDate)
-                      .getMonth() + 1}/${new Date(recipe.doneDate).getFullYear()}`}
-                    </p>
-                  )
-              }
-              <p data-testid={ `${index}-horizontal-top-text` }>
-                {recipe.alcoholicOrNot}
-              </p>
-              <div>
-                <button
-                  type="button"
-                  onClick={ () => {
-                    copy(`http://localhost:3000/${recipe.type}s/${recipe.id}`);
-                    setStatus(true);
-                  } }
-                >
-                  <img
-                    data-testid={ `${index}-horizontal-share-btn` }
-                    src={ shareIcon }
-                    alt="share"
-                  />
-                </button>
-                <button
-                  type="button"
-                  onClick={ () => deleteFavorite(recipe.id) }
-                >
-                  <img
-                    data-testid={ `${index}-horizontal-favorite-btn` }
-                    src={ favoriteBtn }
-                    alt="favorite"
-                  />
-                </button>
-              </div>
-            </div>
+            <button
+              className="favorite-btn"
+              onClick={ () => handleFavorite(recipe.id) }
+            >
+              { isFavorite? 
+                <FaHeart
+                  style={{
+                    height: '17px',
+                    width: '17px',
+                    color:  "#af1d3d",
+                    backgroundColor : '#dbe2ec00',
+                    padding:  '0px',
+                    margin: '2px',
+                    }}
+                /> :
+                <FaHeart
+                  style={{
+                    height: '17px',
+                    width: '17px',
+                    color:  "#969ba1f1",
+                    backgroundColor : '#dbe2ec00',
+                    padding:  '0px',
+                    margin: '2px',
+                    }}
+              />}
+            </button>
           </div>
         ))}
-      </div>
+        {filteredRecipes ? (
+          renderAllCards()) : (<h4>Carregando...</h4>)}
+        </div>
       <h4>
         {
           !status ? '' : 'Link copied!'
@@ -152,5 +156,3 @@ function FavoriteRecipes() {
 }
 
 export default FavoriteRecipes;
-
-// Feito por Elaine e Arthur

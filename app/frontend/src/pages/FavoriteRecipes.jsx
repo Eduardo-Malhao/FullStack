@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import copy from 'clipboard-copy';
-import Header from '../components/Header';
-import shareIcon from '../images/shareIcon.svg';
-import favoriteBtn from '../images/blackHeartIcon.svg';
 import HeaderContext from '../context/HeaderContext';
 import React, { useContext } from 'react';
-import { IoShareSocial } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
-
+import '../styles/favoriteRecipes.css';
 
 function FavoriteRecipes() {
   const [filteredRecipes, setFilterRecipes] = useState([]);
@@ -48,7 +43,7 @@ function FavoriteRecipes() {
       <div key={item.idMeal}>
         <button
           onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
-          className="eachRecipe"
+          className="eachFavoriteRecipe"
         >
           <img
             src={item.strMealThumb}
@@ -67,7 +62,7 @@ function FavoriteRecipes() {
       <div key={item.idDrink}>
         <button
           onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
-          className="eachRecipe"
+          className="eachFavoriteRecipe"
         >
           <img
             src={item.strDrinkThumb}
@@ -85,8 +80,8 @@ function FavoriteRecipes() {
   }
 
   return (
-    <section>
-      <nav>
+    <section className="favorites-container">
+      <nav className="btn-container">
         <button
           type="button"
           name="all"
@@ -146,11 +141,6 @@ function FavoriteRecipes() {
         {filteredRecipes ? (
           renderAllCards()) : (<h4>Carregando...</h4>)}
         </div>
-      <h4>
-        {
-          !status ? '' : 'Link copied!'
-        }
-      </h4>
     </section>
   );
 }

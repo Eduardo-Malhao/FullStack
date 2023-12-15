@@ -25,23 +25,14 @@ function Profile({ history }) {
     <div className="all-profile-page">
       <Header />
       <div className="profile-container">
-        <p className="profile-p">Profile</p>
-        <h2
-          className="user-email-profile"
-          data-testid="profile-email"
-        >
-          { userEmail.email }
-        </h2>
-        <div className= "profile-btn-container">
-          <Button
-            className= "favorite-btn"
-            type="button"
-            data-testid="profile-favorite-btn"
-            as={ Link }
-            to="/favorite-recipes"
+        <aside className="sidebar-container"> 
+          <p className="profile-p">Profile</p>
+          <h2
+            className="user-email-profile"
+            data-testid="profile-email"
           >
-            Favorite Recipes
-          </Button>
+            { userEmail.email }
+          </h2>
           <Button
             className= "logout-btn"
             type="button"
@@ -50,9 +41,9 @@ function Profile({ history }) {
           >
             Logout
           </Button>
-        </div>
+        </aside>
+        <FavoriteRecipes />
       </div>
-      <FavoriteRecipes />
       <Footer />
     </div>
   );

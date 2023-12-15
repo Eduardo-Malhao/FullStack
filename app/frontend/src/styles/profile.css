@@ -38,18 +38,30 @@
     background-image: url("../images//PAPEL\ PAREDE\ FOLHAS.png"); 
     background-size: cover; 
     background-repeat: no-repeat; 
-  /*   background-color: rgb(219, 170, 158); */
+    background-color: rgb(219, 170, 158);
   }
 
   .profile-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
-    align-items: start;
-    width: 100%;
+    align-items: flex-start;
+    width: 70%;
     height: 70%; 
     font-size: 1.5em;
- /*    background-color: #83da49; */
+    background-color: #a6a0d8;
+  }
+
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    width: 20%;
+    height: 100%; 
+    padding: 2% 0% 2% 2%;
+    font-size: 1.5rem;
+    background-color: #b7d8a0;
   }
 
   .profile-p {
@@ -64,18 +76,6 @@
     margin-left: 15%;
     font-size: 0.9em;
     font-family: var(--font-recipes);
-  }
-
-  .profile-btn-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-    margin: 1% 15% 15% 15%;
-    width: 10%;
-    height: 12%; 
-    font-size: 0.8em;
- /*    background-color: #9ba4c5; */
   }
 		
 	/*estiliza o estado OVER*/
@@ -101,8 +101,9 @@
 	}
 
   .logout-btn {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 5%;
+    margin: 10% 0% 0% 15%;
     border-radius: 10%;
     background-color: var(--cor02);
     color: #DBE2EC;

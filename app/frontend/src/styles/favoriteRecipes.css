@@ -108,6 +108,7 @@
   flex-direction: column;
   width: 70%;
   height: 90%;
+  overflow: scroll;
   background-color: #899783;
 }
 

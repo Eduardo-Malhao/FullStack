@@ -14,29 +14,33 @@ function FavoriteRecipes() {
   useEffect(() => {
     const fetchData = async () => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-      console.log(favoriteRecipes);
       if (Array.isArray(favoriteRecipes)) {
         setAllFavoriteRecipes(favoriteRecipes);
       }
     };
-  
-    fetchData();
 
+    fetchData();
+  }, []); 
+
+
+  useEffect(() => {
     if (filteredRecipes.length === 0) {
       renderAllCards();
     } else {
       renderFilteredRecipes();
     }
-    
-  }, [allFavoriteRecipes]);
+  }, [filteredRecipes]);
   
   
   const handleFavorite = (id) => {
-    if (isFavorite) {
-      const updatedRecipes = allFavoriteRecipes.filter((recipe) => recipe.id !== id);
-      setAllFavoriteRecipes(updatedRecipes);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
-    }
+    const updatedRecipes = allFavoriteRecipes.filter((recipe) => recipe.id !== id);
+    setAllFavoriteRecipes(updatedRecipes);
+    
+    if (filteredRecipes.length > 0) {
+      const updatedFilteredRecipes = filteredRecipes.filter((recipe) => recipe.id !== id);
+      setFilteredRecipes(updatedFilteredRecipes);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFilteredRecipes));
+    } 
   };
 
   const mealsFilter = () => {

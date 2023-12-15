@@ -55,25 +55,25 @@ function FavoriteRecipes() {
 
 
   function renderFilteredRecipes() {
+    console.log(filteredRecipes);
     return filteredRecipes.map((item) => 
     item.type === 'drinks' ? (
       <div key={item.idDrink} className="eachFavoritecard">  
         <img
           onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
-          className="eachFavoriteRecipe"
-          src={item.strDrinkThumb}
+          src={item.image}
           alt={item.strDrink}
         />
-        <p>{item.strDrink}</p>
+        <p>{item.name}</p>
       </div>
     ) : 
     <div key={item.idMeal} className="eachFavoritecard">    
     <img
       onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
-      src={item.strMealThumb}
+      src={item.image}
       alt={item.strMeal}
     />
-    <p>{item.strMeal}</p>     
+    <p>{item.name}</p>     
   </div>
     );
   }
@@ -84,10 +84,10 @@ function FavoriteRecipes() {
         <img
           onClick={() => history.push(`${location.pathname}/${item.idDrink || item.idMeal}`)}
           className="eachFavoriteRecipe"
-          src={item.strDrinkThumb || item.strMealThumb}
+          src={item.image || item.image}
           alt={item.strDrink || item.strMealThumb}
         />
-        <p>{item.strDrink || item.strMeal}</p>
+        <p>{item.name || item.name}</p>
       </div>
     );
   }

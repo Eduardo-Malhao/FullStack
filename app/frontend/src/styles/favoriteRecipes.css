@@ -106,14 +106,43 @@
 .favorite-cards-container {
   display: flex;
   flex-direction: column;
-  width: 70%;
-  height: 90%;
+  justify-content: flex-start;
+  width: 30%;
+  height: 100%;
+  padding: 2% 0% 2% 3%;
   overflow: scroll;
   background-color: #899783;
 }
 
 .eachFavoritecard {
-  width: 50%;
-  height: 50%;
-  background-color: #a123a1;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Alinhar verticalmente no centro */
+  width: 100%;
+  border-color: #a1232300;
+  background-color: rgba(206, 180, 31, 0.863);
+}
+
+.eachFavoritecard img {
+  max-height: 55%;
+  max-width: 55%; /* Evitar que a imagem ultrapasse o container */
+  height: auto; /* Manter proporção original */
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.eachFavoritecard img:hover {
+  cursor: pointer;
+  transform: translateY(-2%);
+  box-shadow: 0px 0px 20px 0px #a1232385;
+}
+
+.eachFavoritecard p {
+  flex-wrap: wrap;
+  color: var(--cor02);
+  font-family: var(--font-recipes);
+  margin-left: 10%; /* Adicionar margem entre a imagem e o texto */
+  text-align: left; 
+  font-size: 1.3rem;
+/*   background-color: aqua; */
 }

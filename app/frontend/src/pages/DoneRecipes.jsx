@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+/* import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import clipboardCopy from 'clipboard-copy';
 import Header from '../components/Header';
@@ -164,4 +164,4 @@ function DoneRecipes() {
 
 export default DoneRecipes;
 
-// Feito por Elaine e Arthur
+ */

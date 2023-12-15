@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import HeaderContext from '../context/HeaderContext';
-import React, { useContext } from 'react';
 import { FaHeart } from "react-icons/fa";
 import '../styles/favoriteRecipes.css';
 
 function FavoriteRecipes() {
-  const [filteredRecipes, setFilterRecipes] = useState([]);
-  const [status, setStatus] = useState(false);
+  const [allFavoriteRecipes, setAllFavoriteRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
   const { isFavorite, setIsFavorite } = useContext(HeaderContext);
   const history = useHistory();
   const location = useLocation();
@@ -15,88 +14,91 @@ function FavoriteRecipes() {
   useEffect(() => {
     const fetchData = async () => {
       const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+      console.log(favoriteRecipes);
       if (Array.isArray(favoriteRecipes)) {
-        setFilterRecipes(favoriteRecipes);
+        setAllFavoriteRecipes(favoriteRecipes);
       }
     };
   
     fetchData();
-  }, []);
+
+    if (filteredRecipes.length === 0) {
+      renderAllCards();
+    } else {
+      renderFilteredRecipes();
+    }
+    
+  }, [allFavoriteRecipes]);
   
   
   const handleFavorite = (id) => {
     if (isFavorite) {
-      const updatedRecipes = filteredRecipes.filter((recipe) => recipe.id !== id);
-      setFilterRecipes(updatedRecipes);
+      const updatedRecipes = allFavoriteRecipes.filter((recipe) => recipe.id !== id);
+      setAllFavoriteRecipes(updatedRecipes);
       localStorage.setItem('favoriteRecipes', JSON.stringify(updatedRecipes));
     }
   };
 
   const mealsFilter = () => {
-    const meals = filteredRecipes.filter((recipe) => recipe.type === 'meal');
-    setFilterRecipes(meals);
+    const meals = allFavoriteRecipes.filter((recipe) => recipe.type === 'meal');
+    setFilteredRecipes(meals);
   };
 
   const drinksFilter = () => {
-    const drinks = filteredRecipes.filter((recipe) => recipe.type === 'drink');
-    setFilterRecipes(drinks);
+    const drinks = allFavoriteRecipes.filter((recipe) => recipe.type === 'drink');
+    setFilteredRecipes(drinks);
   };
 
-  
-  function renderMealsCards() {
-    const twelve = 12;
 
-    return filteredRecipes.map((item, index) => item.type === 'meals' && (
-      <div key={item.idMeal}>
-        <button
-          onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
-          className="eachFavoriteRecipe"
-        >
-          <img
-            src={item.strMealThumb}
-            alt={item.strMeal}
-          />
-          <p>{item.strMeal}</p>
-        </button>
-      </div>
-    ));
-  }
-
-  function renderDrinksCards() {
-    const twelve = 12;
-
-    return filteredRecipes.map((item, index) => item.type === 'drinks' && (
-      <div key={item.idDrink}>
-        <button
+  function renderFilteredRecipes() {
+    return filteredRecipes.map((item) => 
+    item.type === 'drinks' ? (
+      <div key={item.idDrink} className="eachFavoritecard">  
+        <img
           onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
           className="eachFavoriteRecipe"
-        >
-          <img
-            src={item.strDrinkThumb}
-            alt={item.strDrink}
-          />
-          <p>{item.strDrink}</p>
-        </button>
+          src={item.strDrinkThumb}
+          alt={item.strDrink}
+        />
+        <p>{item.strDrink}</p>
       </div>
-    ));
+    ) : 
+    <div key={item.idMeal} className="eachFavoritecard">    
+    <img
+      onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
+      src={item.strMealThumb}
+      alt={item.strMeal}
+    />
+    <p>{item.strMeal}</p>     
+  </div>
+    );
   }
 
   function renderAllCards() {
-   renderDrinksCards();
-   renderMealsCards();
+    return allFavoriteRecipes.map((item) => 
+      <div key={item.idDrink || item.idMeal} className="eachFavoritecard">  
+        <img
+          onClick={() => history.push(`${location.pathname}/${item.idDrink || item.idMeal}`)}
+          className="eachFavoriteRecipe"
+          src={item.strDrinkThumb || item.strMealThumb}
+          alt={item.strDrink || item.strMealThumb}
+        />
+        <p>{item.strDrink || item.strMeal}</p>
+      </div>
+    );
   }
 
   return (
-    <section className="favorites-container">
+    <body className="favorites-container">
       <nav className="tilte-container">
         <h1 className="myFavorites-title">My Favorites</h1>
-        <div className="btn-container">
+        <div className="favorite-category-btn-container">
           <button
             type="button"
             name="all"
-           className="eachFavoriteCategory-btn"
+            className="eachFavoriteCategory-btn"
             value="all"
-            onClick={ () => renderAllCards() }
+            onClick={ () => setFilteredRecipes([]) }
           >
             All
           </button>
@@ -104,55 +106,104 @@ function FavoriteRecipes() {
             type="button"
             name="meal"
             className="eachFavoriteCategory-btn"
-            onClick={ () => renderMealsCards() }
+            onClick={ () => mealsFilter() }
           >
             Meals
           </button>
           <button
             type="button"
             className="eachFavoriteCategory-btn"
-            onClick={ () => renderDrinksCards() }
+            onClick={ () => drinksFilter() }
           >
             Drinks
           </button>
         </div>
       </nav>
-      <div>
-        {filteredRecipes ? filteredRecipes.map((recipe, index) => (
-          <div key={ recipe.id }>
-            <button
-              className="favorite-btn"
-              onClick={ () => handleFavorite(recipe.id) }
-            >
-              { isFavorite? 
-                <FaHeart
-                  style={{
-                    height: '17px',
-                    width: '17px',
-                    color:  "#af1d3d",
-                    backgroundColor : '#dbe2ec00',
-                    padding:  '0px',
-                    margin: '2px',
-                    }}
-                /> :
-                <FaHeart
-                  style={{
-                    height: '17px',
-                    width: '17px',
-                    color:  "#969ba1f1",
-                    backgroundColor : '#dbe2ec00',
-                    padding:  '0px',
-                    margin: '2px',
-                    }}
-              />}
-            </button>
-          </div>
-        )) : (<h4>Carregando...</h4>)}
-        {filteredRecipes ? (
-          renderAllCards()) : (<h4>Carregando...</h4>)}
-        </div>
-    </section>
+      <article className="favorite-recipes-container">
+        <section className="favorite-cards-container">
+        {filteredRecipes.length > 0 ? renderFilteredRecipes() : renderAllCards()}
+
+        </section>
+        <section className="heart-btn-container">
+          {filteredRecipes.length > 0 ? filteredRecipes.map((recipe) => (
+            <div key={ recipe.id }>
+              <button
+                className="heart-btn"
+                onClick={ () => handleFavorite(recipe.id) }
+              >
+                { isFavorite?
+                  <FaHeart
+                    style={{
+                      height: '17px',
+                      width: '17px',
+                      color:  "#af1d3d",
+                      backgroundColor : '#dbe2ec00',
+                      padding:  '0px',
+                      margin: '2px',
+                      }}
+                  /> :
+                  <FaHeart
+                    style={{
+                      height: '17px',
+                      width: '17px',
+                      color:  "#969ba1f1",
+                      backgroundColor : '#dbe2ec00',
+                      padding:  '0px',
+                      margin: '2px',
+                      }}
+                />}
+              </button>
+            </div>
+          )) : allFavoriteRecipes.map((recipe) => (
+            <div key={ recipe.id }>
+              <button
+                className="heart-btn"
+                onClick={ () => handleFavorite(recipe.id) }
+              >
+                { isFavorite?
+                  <FaHeart
+                    style={{
+                      height: '17px',
+                      width: '17px',
+                      color:  "#af1d3d",
+                      backgroundColor : '#dbe2ec00',
+                      padding:  '0px',
+                      margin: '2px',
+                      }}
+                  /> :
+                  <FaHeart
+                    style={{
+                      height: '17px',
+                      width: '17px',
+                      color:  "#969ba1f1",
+                      backgroundColor : '#dbe2ec00',
+                      padding:  '0px',
+                      margin: '2px',
+                      }}
+                />}
+              </button>
+            </div>
+          )) }
+        </section>
+      </article>
+    </body>
   );
 }
 
 export default FavoriteRecipes;
+
+
+// *estados*
+// ALL:
+// sempre populado  atualizado (pag, remoção, add))
+// toggle (ao clicar btn all, limpa estado FILTRADOS)
+
+// FILTRADOS:
+// atualizado (pag, remoção, add)
+// ao clicar: limpa FILTRADOS => popula com meals/drinks (ver tempo)
+
+// *renderização*
+// condição: FILTRADOS ? renderiza FILTRADOS : renderiza ALL
+
+// *handleFavorite*
+// remoção/add dentro de FILTRADOS atualizar ALL e refazer o map dos FILTRADOS

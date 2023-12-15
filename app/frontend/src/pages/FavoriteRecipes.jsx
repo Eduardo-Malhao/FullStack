@@ -32,15 +32,19 @@ function FavoriteRecipes() {
   }, [filteredRecipes]);
   
   
+
   const handleFavorite = (id) => {
+    // Remove o item de allFavoriteRecipes
     const updatedRecipes = allFavoriteRecipes.filter((recipe) => recipe.id !== id);
     setAllFavoriteRecipes(updatedRecipes);
-    
-    if (filteredRecipes.length > 0) {
-      const updatedFilteredRecipes = filteredRecipes.filter((recipe) => recipe.id !== id);
-      setFilteredRecipes(updatedFilteredRecipes);
-      localStorage.setItem('favoriteRecipes', JSON.stringify(updatedFilteredRecipes));
-    } 
+  
+    // Remove o item de filteredRecipes, se estiver presente
+    const updatedFilteredRecipes = filteredRecipes.filter((recipe) => recipe.id !== id);
+    setFilteredRecipes(updatedFilteredRecipes);
+  
+    // Atualiza o armazenamento local
+    const updatedStorage = updatedFilteredRecipes.length > 0 ? updatedFilteredRecipes : updatedRecipes;
+    localStorage.setItem('favoriteRecipes', JSON.stringify(updatedStorage));
   };
 
   const mealsFilter = () => {
@@ -55,39 +59,40 @@ function FavoriteRecipes() {
 
 
   function renderFilteredRecipes() {
-    console.log(filteredRecipes);
-    return filteredRecipes.map((item) => 
-    item.type === 'drinks' ? (
-      <div key={item.idDrink} className="eachFavoritecard">  
-        <img
-          onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
-          src={item.image}
-          alt={item.strDrink}
-        />
-        <p>{item.name}</p>
-      </div>
-    ) : 
-    <div key={item.idMeal} className="eachFavoritecard">    
-    <img
-      onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
-      src={item.image}
-      alt={item.strMeal}
-    />
-    <p>{item.name}</p>     
-  </div>
+    return filteredRecipes.map((item) =>
+      item.type === 'drink' ? (
+        <div key={item.id} className="eachFavoritecard">
+          <img
+            onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
+            className="eachFavoriteRecipe"
+            src={item.image}
+            alt={item.strDrink}
+          />
+          <p>{item.strDrink}</p>
+        </div>
+      ) : (
+        <div key={item.id} className="eachFavoritecard">
+          <img
+            onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
+            src={item.image}
+            alt={item.strMeal}
+          />
+          <p>{item.strMeal}</p>
+        </div>
+      )
     );
   }
 
   function renderAllCards() {
     return allFavoriteRecipes.map((item) => 
-      <div key={item.idDrink || item.idMeal} className="eachFavoritecard">  
+      <div key={item.id} className="eachFavoritecard">  
         <img
           onClick={() => history.push(`${location.pathname}/${item.idDrink || item.idMeal}`)}
           className="eachFavoriteRecipe"
-          src={item.image || item.image}
-          alt={item.strDrink || item.strMealThumb}
+          src={item.image}
+          alt={item.name}
         />
-        <p>{item.name || item.name}</p>
+        <p>{item.name}</p>
       </div>
     );
   }

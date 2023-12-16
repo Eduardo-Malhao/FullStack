@@ -152,7 +152,7 @@
   flex-wrap: wrap;
   color: var(--cor02);
   font-family: var(--font-recipes);
-  margin-left: 10%; /* Adicionar margem entre a imagem e o texto */
+  margin-left: 10%; 
   text-align: left; 
   font-size: 130%;
 /*   background-color: aqua; */

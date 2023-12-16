@@ -38,9 +38,10 @@
 
 .tilte-container {
   display: flex;
+  flex-direction: row;
   justify-content: baseline;
-  width: 70%;
-  height: 13%;
+  width: 100%;
+  height: 63%;
   background-color: #a12323;
 }
 
@@ -49,12 +50,22 @@
   flex-direction: row;
   justify-content:center;
   align-items: center;
-  width: 40%;
+  width: 30%;
   color: var(--cor02);
   font-size: 2rem;
   font-family: var(--font-second);
   word-spacing: 0.1rem;
   background-color: #233aa1;
+}
+
+.favorite-category-btn-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 27%;
+  height: 100%;
+  overflow: scroll;
+  background-color: #cebf7c;
 }
 
 .eachFavoriteCategory-btn {
@@ -71,14 +82,6 @@
   background-color: var(--cor02);
   transition: background-color 0.3s ease-out;
 }
-.favorite-category-btn-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 27%;
-  height: 100%;
-  background-color: #cebf7c;
-}
 
 .heart-btn {
   background-color: #cebf7c00;
@@ -88,9 +91,10 @@
 .favorite-recipes-container {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   width: 100%;
   height: 90%;
-  background-color: #64596e;
+  background-color: #7f728b;
 }
 
 .heart-btn-container {
@@ -98,37 +102,46 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 3%;
+  width: 10%;
   height: 100%;
-  background-color: #6e6a59;
+  margin-right: 3%;
+  background-color: #81db9588;
 }
 
-.favorite-cards-container {
+/* .favorite-cards-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 30%;
-  height: 100%;
+  width: 100%;
+  height: 80%;
   padding: 2% 0% 2% 3%;
   overflow: scroll;
-  background-color: #899783;
+  background-color: #0d140a;
 }
-
+ */
 .eachFavoritecard {
   display: flex;
   flex-direction: row;
   align-items: center; /* Alinhar verticalmente no centro */
-  width: 100%;
+  width: 40%;
+  padding: 2%;
   border-color: #a1232300;
-  background-color: rgba(206, 180, 31, 0.863);
+  overflow-y: scroll;
+  background-color: rgba(200, 31, 206, 0.863);
 }
 
 .eachFavoritecard img {
-  max-height: 55%;
-  max-width: 55%; /* Evitar que a imagem ultrapasse o container */
+  max-height: 25%;
+  max-width: 25%; /* Evitar que a imagem ultrapasse o container */
   height: auto; /* Manter proporção original */
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.eachFavoritecard img:hover {
+  cursor: pointer;
+  transform: translateY(-2%);
+  box-shadow: 0px 0px 20px 0px #a1232385;
 }
 
 .eachFavoritecard img:hover {
@@ -143,6 +156,6 @@
   font-family: var(--font-recipes);
   margin-left: 10%; /* Adicionar margem entre a imagem e o texto */
   text-align: left; 
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 /*   background-color: aqua; */
 }

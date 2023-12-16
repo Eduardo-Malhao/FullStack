@@ -58,30 +58,30 @@ function FavoriteRecipes() {
   };
 
 
-  function renderFilteredRecipes() {
-    return filteredRecipes.map((item) =>
-      item.type === 'drink' ? (
-        <div key={item.id} className="eachFavoritecard">
-          <img
-            onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
-            className="eachFavoriteRecipe"
-            src={item.image}
-            alt={item.strDrink}
-          />
-          <p>{item.strDrink}</p>
-        </div>
-      ) : (
-        <div key={item.id} className="eachFavoritecard">
-          <img
-            onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
-            src={item.image}
-            alt={item.strMeal}
-          />
-          <p>{item.strMeal}</p>
-        </div>
-      )
-    );
-  }
+function renderFilteredRecipes() {
+  return filteredRecipes.map((item) =>
+    item.type === 'drink' ? (
+      <div key={item.id} className="eachFavoritecard">
+        <img
+          onClick={() => history.push(`${location.pathname}/${item.idDrink}`)}
+          className="eachFavoriteRecipe"
+          src={item.image}
+          alt={item.strDrink}
+        />
+        <p>{item.strDrink}</p>
+      </div>
+    ) : (
+      <div key={item.id} className="eachFavoritecard">
+        <img
+          onClick={() => history.push(`${location.pathname}/${item.idMeal}`)}
+          src={item.image}
+          alt={item.strMeal}
+        />
+        <p>{item.strMeal}</p>
+      </div>
+    )
+  );
+}
 
   function renderAllCards() {
     return allFavoriteRecipes.map((item) => 
@@ -130,69 +130,89 @@ function FavoriteRecipes() {
       </nav>
       <article className="favorite-recipes-container">
         <section className="favorite-cards-container">
-        {filteredRecipes.length > 0 ? renderFilteredRecipes() : renderAllCards()}
-
-        </section>
-        <section className="heart-btn-container">
-          {filteredRecipes.length > 0 ? filteredRecipes.map((recipe) => (
-            <div key={ recipe.id }>
-              <button
-                className="heart-btn"
-                onClick={ () => handleFavorite(recipe.id) }
-              >
-                { isFavorite?
-                  <FaHeart
-                    style={{
-                      height: '17px',
-                      width: '17px',
-                      color:  "#af1d3d",
-                      backgroundColor : '#dbe2ec00',
-                      padding:  '0px',
-                      margin: '2px',
-                      }}
-                  /> :
-                  <FaHeart
-                    style={{
-                      height: '17px',
-                      width: '17px',
-                      color:  "#969ba1f1",
-                      backgroundColor : '#dbe2ec00',
-                      padding:  '0px',
-                      margin: '2px',
-                      }}
-                />}
-              </button>
-            </div>
-          )) : allFavoriteRecipes.map((recipe) => (
-            <div key={ recipe.id }>
-              <button
-                className="heart-btn"
-                onClick={ () => handleFavorite(recipe.id) }
-              >
-                { isFavorite?
-                  <FaHeart
-                    style={{
-                      height: '17px',
-                      width: '17px',
-                      color:  "#af1d3d",
-                      backgroundColor : '#dbe2ec00',
-                      padding:  '0px',
-                      margin: '2px',
-                      }}
-                  /> :
-                  <FaHeart
-                    style={{
-                      height: '17px',
-                      width: '17px',
-                      color:  "#969ba1f1",
-                      backgroundColor : '#dbe2ec00',
-                      padding:  '0px',
-                      margin: '2px',
-                      }}
-                />}
-              </button>
-            </div>
-          )) }
+          {filteredRecipes.length > 0
+            ? filteredRecipes.map((recipe) => (
+                <div key={recipe.id} className="eachFavoritecard">
+                  <div className="heart-btn-container">
+                    <button
+                      className="heart-btn"
+                      onClick={() => handleFavorite(recipe.id)}
+                    >
+                      {isFavorite ? (
+                        <FaHeart
+                          style={{
+                            height: '17px',
+                            width: '17px',
+                            color: "#af1d3d",
+                            backgroundColor: '#dbe2ec00',
+                            padding: '0px',
+                            margin: '2px',
+                          }}
+                        />
+                      ) : (
+                        <FaHeart
+                          style={{
+                            height: '17px',
+                            width: '17px',
+                            color: "#969ba1f1",
+                            backgroundColor: '#dbe2ec00',
+                            padding: '0px',
+                            margin: '2px',
+                          }}
+                        />
+                      )}
+                    </button>
+                  </div>
+                  <img
+                    onClick={() => history.push(`${location.pathname}/${recipe.idDrink || recipe.idMeal}`)}
+                    className="eachFavoriteRecipe"
+                    src={recipe.image}
+                    alt={recipe.strDrink || recipe.strMeal}
+                  />
+                  <p>{recipe.name || recipe.strMeal}</p>
+                </div>
+              ))
+            : allFavoriteRecipes.map((recipe) => (
+                <div key={recipe.id} className="eachFavoritecard">
+                  <div className="heart-btn-container">
+                    <button
+                      className="heart-btn"
+                      onClick={() => handleFavorite(recipe.id)}
+                    >
+                      {isFavorite ? (
+                        <FaHeart
+                          style={{
+                            height: '17px',
+                            width: '17px',
+                            color: "#af1d3d",
+                            backgroundColor: '#dbe2ec00',
+                            padding: '0px',
+                            margin: '2px',
+                          }}
+                        />
+                      ) : (
+                        <FaHeart
+                          style={{
+                            height: '17px',
+                            width: '17px',
+                            color: "#969ba1f1",
+                            backgroundColor: '#dbe2ec00',
+                            padding: '0px',
+                            margin: '2px',
+                          }}
+                        />
+                      )}
+                    </button>
+                  </div>
+                  <img
+                    onClick={() => history.push(`${location.pathname}/${recipe.idDrink || recipe.idMeal}`)}
+                    className="eachFavoriteRecipe"
+                    src={recipe.image}
+                    alt={recipe.strDrink || recipe.strMeal}
+                  />
+                  <p>{recipe.name || recipe.strMeal}</p>
+                </div>
+              ))}
         </section>
       </article>
     </body>

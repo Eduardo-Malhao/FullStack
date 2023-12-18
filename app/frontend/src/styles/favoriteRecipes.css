@@ -39,10 +39,10 @@
 .tilte-container {
   display: flex;
   flex-direction: row;
-  justify-content: baseline;
-  width: 100%;
-  height: 63%;
-  background-color: #a12323;
+  justify-content: start;
+  max-width: 100%;
+  height: 10%;
+  background-color: #af454536;
 }
 
 .myFavorites-title {
@@ -55,17 +55,17 @@
   font-size: 2rem;
   font-family: var(--font-second);
   word-spacing: 0.1rem;
-  background-color: #233aa1;
+/*   background-color: #233aa1; */
 }
 
 .favorite-category-btn-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 27%;
+  width: 20%;
   height: 100%;
   overflow: scroll;
-  background-color: #cebf7c;
+/*   background-color: #cebf7c; */
 }
 
 .eachFavoriteCategory-btn {
@@ -79,22 +79,13 @@
   width: 47px;
   height: 34px;
   text-align: center;
-  background-color: var(--cor02);
   transition: background-color 0.3s ease-out;
+  background-color: var(--cor02);
 }
 
 .heart-btn {
   background-color: #cebf7c00;
   border-color: #cebf7c00;
-}
-
-.favorite-recipes-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-  height: 90%;
-  background-color: #7f728b;
 }
 
 .heart-btn-container {
@@ -103,39 +94,39 @@
   justify-content: flex-start;
   align-items: center;
   width: 10%;
-  height: 100%;
   margin-right: 3%;
-  background-color: #81db9588;
+/*   background-color: #81db9588; */
 }
 
-/* .favorite-cards-container {
+.favorite-cards-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-wrap: wrap; /* Permite que os itens se movam para a próxima linha quando não houver espaço */
+  justify-content: space-between;
   width: 100%;
-  height: 80%;
-  padding: 2% 0% 2% 3%;
+  height: 92%;
+  padding: 2% 0% 2% 2%;
   overflow: scroll;
-  background-color: #0d140a;
+ /*  background-color: #0d140a; */
 }
- */
+
 .eachFavoritecard {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Alinhar verticalmente no centro */
-  width: 40%;
-  padding: 2%;
-  border-color: #a1232300;
-  overflow-y: scroll;
-  background-color: rgba(200, 31, 206, 0.863);
+  align-items: center;
+  flex: 0 0 calc(30% - 3%); /* Adjust the width and gap accordingly */
+  box-sizing: border-box;
+  margin: 1%; 
+  height: 20%;
+  box-sizing: border-box; 
+  background-color: rgba(213, 216, 236, 0.137);
 }
 
 .eachFavoritecard img {
-  max-height: 25%;
-  max-width: 25%; /* Evitar que a imagem ultrapasse o container */
+  max-height: 65%;
+  max-width: 65%; /* Evitar que a imagem ultrapasse o container */
   height: auto; /* Manter proporção original */
   border-radius: 50%;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+ /*  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3); */
 }
 
 .eachFavoritecard img:hover {
@@ -147,7 +138,7 @@
 .eachFavoritecard img:hover {
   cursor: pointer;
   transform: translateY(-2%);
-  box-shadow: 0px 0px 20px 0px #a1232385;
+/*   box-shadow: 0px 0px 20px 0px #a1232385; */
 }
 
 .eachFavoritecard p {

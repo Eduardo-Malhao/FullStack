@@ -1,7 +1,7 @@
 import express from 'express';
 import router from './router/index';
 import supabase from './config/supabaseClient';
-// .
+
 class App {
   public app: express.Express;
 

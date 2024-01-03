@@ -32,9 +32,9 @@ function Login() {
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    if (name === 'email') {
+    if (name === 'username_Email') {
       setEmail_username(value);
-    } else if (name === 'passwordLogin') {
+    } else if (name === 'password') {
       setPassword(value);
     }
   }
@@ -70,7 +70,7 @@ function Login() {
 					<label htmlFor="Email or Username">
 						<input
 							className="input"
-							name="Username_Email"
+							name="username_Email"
 							type="text"
 							size="30"
 							placeholder="Username / Email"

@@ -11,6 +11,9 @@ function FullFooter() {
   const eduLinkedin = 'https://www.linkedin.com/in/eduardo-malhao/';
   const eduGitHub = 'https://github.com/Eduardo-Malhao';
   const eduEmail = 'eduardo.malhao@outlook.com';
+  const liviaLinkedin = 'https://www.linkedin.com/in/eduardo-malhao/';
+  const liviaGitHub = 'https://github.com/Eduardo-Malhao';
+  const liviaEmail = 'eduardo.malhao@outlook.com';
 
   const handleClickEdu = (e) => {
     if (e.target.alt === 'Linkedin') {

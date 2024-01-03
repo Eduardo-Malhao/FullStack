@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Recipes from './pages/Recipes';
 import Login from './pages/Login';
-import Register from './pages/Register';
 import Profile from './pages/Profile';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
@@ -14,7 +13,6 @@ function App() {
     <div>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route path="/register" component={ Register } />
         <Route path="/meals/:id/in-progress" component={ RecipeInProgress } />
         <Route path="/drinks/:id/in-progress" component={ RecipeInProgress } />
         <Route path="/meals/:id" component={ RecipeDetails } />

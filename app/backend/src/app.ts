@@ -1,6 +1,5 @@
 import express from 'express';
 import router from './router/index';
-import supabase from './config/supabaseClient';
 
 class App {
   public app: express.Express;
@@ -27,7 +26,6 @@ class App {
 
   public start(PORT: string | number): void {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
-    console.log(supabase);  
   }
 }
 

@@ -20,8 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--cor01);
-}
+  background-color: #DBE2EC;}
 
 .logo-container {
   height: 40%;
@@ -36,7 +35,7 @@
   padding-top: 3%;
   padding-bottom: 4%;
   margin-bottom: 3%;
-  background-color: #DBE2EC;
+  /* background-color: #DBE2EC; */
 }
 
 .input {
@@ -46,6 +45,7 @@
   outline-color: #A8D1E7;
   text-align: center;
   height: 10vh;
+  width: 20vw;
   margin-top: 4%;
   margin-bottom: 3%;
 }
@@ -73,7 +73,7 @@ input::placeholder {
   padding: 1%;
 }
 
-.login-button-container {
+.register-button-container {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -81,7 +81,7 @@ input::placeholder {
   margin-bottom: 3%;
 }
 
-.login-button {
+.register-button {
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.269);
   font-size: 15px;
   border-radius: 20px;
@@ -91,22 +91,22 @@ input::placeholder {
   width: 20vw;
 }
 
-.login-button:hover {
+.register-button:hover {
   cursor: pointer;
   color: #fbfbfb;
 }
 
-.register-router-container {
+.login-router-container {
   display: inline;
 }
 
-.register-router-button {
+.login-router-button {
   position: absolute;
   color: #0E23E5;
   text-decoration: underline;
 }
 
-.register-router-button:hover {
+.login-router-button:hover {
   cursor: pointer;
   color: #1fc4f7;
 }

@@ -24,7 +24,7 @@ body {
 }
 
 .footer-container {
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
   display: flex;
@@ -33,6 +33,7 @@ body {
   align-items: center;
   height: 10%;
   z-index: 1000;
+  background-color: #F8F8FF;
 }
 
 .foot-line {
@@ -47,6 +48,12 @@ body {
   padding: 0.1%;
   color: var(--cor03);
   font-family: var(--font-second);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
  
 

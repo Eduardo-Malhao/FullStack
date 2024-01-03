@@ -8,7 +8,7 @@
       "esModuleInterop": true,     // Habilitar interoperabilidade entre módulos ES6 e CommonJS
       "sourceMap": true            // Gerar arquivos de mapa de origem
     },
-    "include": ["src/**/*.ts", "src/config/supabaseClient.ts"],   // Arquivos a serem incluídos na compilação
+    "include": ["src/**/*.ts"],   // Arquivos a serem incluídos na compilação
     "exclude": ["node_modules"]   // Diretórios a serem excluídos da compilação
   }
   

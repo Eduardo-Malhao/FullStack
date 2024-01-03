@@ -5,8 +5,8 @@ import FreeAPIMealsSequelize from '../database/models/FreeAPIMealsSequelize';
 import FreeAPIDrinksSequelize from '../database/models/FreeAPIDrinksSequelize';
 
 export default class UsersModel {
-	private model = Model;
-	
+  private model = Model;
+
 	public async favorite(ids: IBodyFavorites)
 	: Promise<IFavorites> {
 		

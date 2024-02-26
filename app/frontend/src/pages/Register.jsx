@@ -6,6 +6,7 @@ import logoImage from '../images/mystoragerecipepng.png';
 import { FaEye } from "react-icons/fa";
 import  { FaEyeSlash } from "react-icons/fa";
 
+const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0cG96aXdteXZqaWhoc2ZvbXltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDMxMDE4MzIsImV4cCI6MjAxODY3NzgzMn0.QjRayszrJ4C22dFFXK4aCfQfOqv-RSYDW9Ny5zmgBEc'
 function Register() {
   const history = useHistory();
   const [formData, setFormData] = useState({
@@ -23,10 +24,29 @@ function Register() {
     }));
   };
 
-  const handleSubmit = () => {
-    // e.preventDefault();
-    // passar a info pro db e criar o user
-    // history.push('/');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch('https://rtpoziwmyvjihhsfomym.supabase.co/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': key
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        console.log(response);
+        throw new Error('Erro ao enviar solicitação de registro');
+      }
+
+      const responseData = await response.json();
+      console.log('Resposta do servidor:', responseData);
+
+    } catch (error) {
+      console.error('Erro ao enviar solicitação de registro:', error.message);
+    }
+    history.push('/');
   };
 
   const handleLogin = () => {
@@ -116,7 +136,7 @@ function Register() {
           <button 
             type="button"
             className="register-button"
-            onClick={ handleSubmit() }
+            onClick={ (event) => handleSubmit(event) }
           >
             Register
           </button>

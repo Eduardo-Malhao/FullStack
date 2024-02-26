@@ -128,7 +128,7 @@ function renderFilteredRecipes() {
           </button>
         </div>
       </nav>
-     
+  
         <section className="favorite-cards-container">
           {filteredRecipes.length > 0
             ? filteredRecipes.map((recipe) => (
@@ -214,7 +214,7 @@ function renderFilteredRecipes() {
                 </div>
               ))}
         </section>
-     
+
     </body>
   );
 }

@@ -44,7 +44,7 @@ function Profile({ history }) {
         </aside>
         <FavoriteRecipes />
       </div>
-      <Footer />
+     {/*  <Footer /> */}
     </div>
   );
 }

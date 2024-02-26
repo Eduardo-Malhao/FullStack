@@ -89,7 +89,7 @@ function Login() {
             </button>
           </div>
         </form>
-        <Footer/>
+    {/*     <Footer/> */}
       </div>
     </div>
   );

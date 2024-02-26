@@ -323,7 +323,7 @@ export default function RecipeDetails() {
             </div>)}
 
         </div>
-        <Footer />
+     {/*    <Footer /> */}
     </div>
   );
 }

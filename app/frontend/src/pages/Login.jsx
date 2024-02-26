@@ -135,7 +135,6 @@ function Login() {
 
       </form>
 
-      {/* <Footer/> */}
       <FullFooter/>
     </main>
   );

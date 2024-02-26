@@ -7,12 +7,32 @@ export default function MealsProvider({ children }) {
   const [apiMealsCategoryData, setApiMealsCategoryData] = useState(undefined);
 
   useEffect(() => {
+
     const apiMealsNameCall = async () => {
-      const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-      const response = await fetch(url);
-      const { meals } = await response.json();
-      setApiMealsNameData(meals);
-    };
+      const url = 'https://rtpoziwmyvjihhsfomym.supabase.co/rest/v1/meals';
+      
+      const options = {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+          }
+      };
+  
+      try {
+          const response = await fetch(url, options);
+          const { meals } = await response.json();
+          setApiMealsNameData(meals);
+      } catch (error) {
+          console.error('Erro ao buscar dados da API:', error);
+      }
+  };
+
+    // const apiMealsNameCall = async () => {
+    //   const url = 'https://rtpoziwmyvjihhsfomym.supabase.co/rest/v1/meals';
+    //   const response = await fetch(url);
+    //   const { meals } = await response.json();
+    //   setApiMealsNameData(meals);
+    // };
     const apiMealsCategoryCall = async () => {
       const url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
       const response = await fetch(url);

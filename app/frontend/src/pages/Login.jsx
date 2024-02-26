@@ -48,16 +48,60 @@ function Login() {
   };
 
   return (
-    <main
-			className="body"
-    >
-      <div
-        className="logo-container"
-      >
-        <img
-          src={logoImage}
-          alt="Logo"
-        />
+
+    <div className="all-login-page">
+      <div className="login-page-container">
+        <div className="logo-image-container">
+          <img
+            src={logoImage}
+            alt="Logo"
+            className="logo-full-image "
+          />
+        </div>
+        <form className="form-content">
+          <div className="input-container">
+            <h5>login</h5>
+            <label htmlFor="Email">
+              <input
+                className="input"
+                name="emailLogin"
+                id="Email"
+                type="email"
+                size="30"
+                placeholder="email"
+                value={ emailLogin }
+                onChange={ emailChange }
+              />
+            </label>
+          </div>
+          <div className="input-container">
+            <h5>password</h5>
+            <label htmlFor="Senha">
+              <input
+                className="input"
+                type="text"
+                id="Senha"
+                size="30"
+                name="passwordLogin"
+                value={ password }
+                onChange={ passwordChange }
+              />
+            </label>
+          </div>
+          <div  className="login-button-container">
+            <button
+              className="login-button"
+              type="button"
+              name="buttonLogin"
+              disabled={ buttonDisabled }
+              onClick={ submitForm }
+            >
+              Enter
+            </button>
+          </div>
+        </form>
+    {/*     <Footer/> */}
+
       </div>
 
       <form

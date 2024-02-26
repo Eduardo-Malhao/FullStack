@@ -3,11 +3,8 @@ import { useState, useEffect, useContext, useCallback } from 'react';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
 import '../styles/recipeDetails.css';
-import RecommendationCarousel from '../components/RecommendationCarousel';
+import RecommendationCards from '../components/RecommendationCards';
 import HeaderContext from '../context/HeaderContext';
-/* import shareIcon from '../../src/images/shareIcon.png'; */
-import whiteHeart from '../../src/images/whiteHeartIcon.svg';
-import blackHeart from '../../src/images/blackHeartIcon.svg';
 import { UseGetItem, UseSetItem } from '../hooks/UseLocalStorage';
 import Footer from '../components/Footer';
 import { IoShareSocial } from "react-icons/io5";
@@ -76,6 +73,7 @@ export default function RecipeDetails() {
     UseSetItem('favoriteRecipes', newFavoriteRecipes);
     setIsFavorite(!isRecipeFavorite);
   };
+
   useEffect(() => {
     const favoriteLocalStorage = UseGetItem('favoriteRecipes');
     if (!favoriteLocalStorage) return setIsFavorite(false);
@@ -200,10 +198,11 @@ export default function RecipeDetails() {
               </div>
               <div className= "text-details">
                 <h4 className="each-detail">Category</h4>
-                <p data-testid="recipe-category">{mealObject.strCategory}</p>
+                <p className="text-content">{mealObject.strCategory}</p>
                 <h4 className="each-detail">Ingredients</h4>
                 {mealsIngredients.map((eachMealIngredient, index) => (
                   <p
+                    className="text-content"
                     data-testid={ `${index}-ingredient-name-and-measure` }
                     key={ eachMealIngredient }
                   >
@@ -211,11 +210,11 @@ export default function RecipeDetails() {
                   </p>
                 ))}
                 <h4 className="each-detail">Instructions</h4>
-                <p data-testid="instructions">{mealObject.strInstructions}</p>
+                <p className="text-content">{mealObject.strInstructions}</p>
                 {recommendations.length > 0 && (
                 <>
                   <h2 className="each-detail">Recommended</h2>
-                  <RecommendationCarousel
+                  <RecommendationCards
                     recommendations={ recommendations }
                   />
                 </>)}
@@ -262,7 +261,7 @@ export default function RecipeDetails() {
                           setWasCopied(true);
                           const time = 2000;
                           setTimeout(() => setWasCopied(false), time);
-                              } }
+                        } }
                       >
                          <IoShareSocial
                           style={{
@@ -299,11 +298,12 @@ export default function RecipeDetails() {
               </div>
               <div className= "text-details">
                 <h4 className="each-detail">Category</h4>
-                <p data-testid="recipe-category">{drinkObject.strAlcoholic}</p>
+                <p className="text-content">{drinkObject.strAlcoholic}</p>
                 <p data-testid="recipe-category">{drinkObject.strCategory}</p>
                 <h4 className="each-detail">Ingredients</h4>
                 {drinksIngredients.map((eachDrinkIngredient, index) => (
                   <p
+                    className="text-content"
                     data-testid={ `${index}-ingredient-name-and-measure` }
                     key={ eachDrinkIngredient }
                   >
@@ -311,11 +311,11 @@ export default function RecipeDetails() {
                   </p>
                 ))}
                 <h4 className="each-detail">Instructions</h4>
-                <p data-testid="instructions">{drinkObject.strInstructions}</p>
+                <p className="text-content">{drinkObject.strInstructions}</p>
                 {recommendations.length > 0 && (
                 <>
                   <h2 className="each-detail">Recommended</h2>
-                  <RecommendationCarousel
+                  <RecommendationCards
                     recommendations={ recommendations }
                   />
                 </>)}
@@ -323,7 +323,7 @@ export default function RecipeDetails() {
             </div>)}
 
         </div>
-        <Footer />
+     {/*    <Footer /> */}
     </div>
   );
 }

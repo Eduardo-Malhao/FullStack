@@ -23,6 +23,7 @@
   background-color: var(--cor01);
 }
 
+
 .logo-container {
   height: 40%;
   margin-bottom: 3%;
@@ -39,6 +40,7 @@
   background-color: #DBE2EC;
 }
 
+
 .input {
   color: #7d7979;
   border-radius: 20px;
@@ -48,6 +50,7 @@
   height: 10vh;
   margin-top: 4%;
   margin-bottom: 3%;
+
 }
 
 .input-container {
@@ -79,6 +82,7 @@ input::placeholder {
   text-align: center;
   margin-top: 4%;
   margin-bottom: 3%;
+
 }
 
 .login-button {
@@ -89,6 +93,7 @@ input::placeholder {
   background-color: #dad8d9cb;
   height: 10vh;
   width: 20vw;
+
 }
 
 .login-button:hover {

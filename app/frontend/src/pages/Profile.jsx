@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/profile.css';
+import FavoriteRecipes from './FavoriteRecipes';
 
 function Profile({ history }) {
   const [userEmail, setUserEmail] = useState('');
@@ -24,23 +25,14 @@ function Profile({ history }) {
     <div className="all-profile-page">
       <Header />
       <div className="profile-container">
-        <p className="profile-p">Profile</p>
-        <h2
-          className="user-email-profile"
-          data-testid="profile-email"
-        >
-          { userEmail.email }
-        </h2>
-        <div className= "profile-btn-container">
-          <Button
-            className= "favorite-btn"
-            type="button"
-            data-testid="profile-favorite-btn"
-            as={ Link }
-            to="/favorite-recipes"
+        <aside className="sidebar-container"> 
+          <p className="profile-p">Profile</p>
+          <h2
+            className="user-email-profile"
+            data-testid="profile-email"
           >
-            Favorite Recipes
-          </Button>
+            { userEmail.email }
+          </h2>
           <Button
             className= "logout-btn"
             type="button"
@@ -49,9 +41,10 @@ function Profile({ history }) {
           >
             Logout
           </Button>
-        </div>
+        </aside>
+        <FavoriteRecipes />
       </div>
-      <Footer />
+     {/*  <Footer /> */}
     </div>
   );
 }

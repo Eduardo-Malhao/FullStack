@@ -15,7 +15,7 @@ export default function Header() {
     <header className="container-header">    
       <div className="nav-container">
         <div className="nav">
-          <Link to="/" data-testid="link-to-search" className="a">HOME</Link>
+          {/* <Link to="/" data-testid="link-to-search" className="a">HOME</Link> */}
           <Link to="/meals" data-testid="link-to-search" className="a">MEALS</Link>
           <Link to="/drinks" data-testid="link-to-search" className="a">DRINKS</Link>
           <Link to="/profile" data-testid="link-to-search" className="a">PROFILE</Link>

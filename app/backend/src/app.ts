@@ -27,7 +27,7 @@ class App {
 
   public start(PORT: string | number): void {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
-    console.log(supabase);  
+    console.log(supabase);
   }
 }
 

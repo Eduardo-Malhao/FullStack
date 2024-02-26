@@ -1,22 +1,36 @@
-import { Op } from 'sequelize';
 import Model from '../database/models/User';
 import { IUsers } from '../interfaces/User/IUsers';
 import { ILogin } from '../interfaces/User/ILogin';
+import supabase from '../config/supabaseClient';
 
 export default class UsersModel {
   private model = Model;
 
     public async createUser(user: IUsers)
-    : Promise<IUsers> {
-      const response = await this.model.create({
-        email: user.email,
-        password: user.password,
-        username: user.username,
-        role: user.role,
-      });
+    : Promise<any> {
+      const response = await supabase
+      .from('users')
+        .insert([{
+          email: user.email,
+          username: user.username,
+          password: user.password,
+          role: user.role
+        }])
             
       return response;
     }
+
+    // public async createUser(user: IUsers)
+    // : Promise<IUsers> {
+    //   const response = await this.model.create({
+    //     email: user.email,
+    //     password: user.password,
+    //     username: user.username,
+    //     role: user.role,
+    //   });
+            
+    //   return response;
+    // }
 
     public async findByName(user: IUsers | ILogin)
     : Promise<IUsers | null> {

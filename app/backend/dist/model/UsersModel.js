@@ -13,21 +13,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const User_1 = __importDefault(require("../database/models/User"));
+const supabaseClient_1 = __importDefault(require("../config/supabaseClient"));
 class UsersModel {
     constructor() {
         this.model = User_1.default;
     }
     createUser(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield this.model.create({
-                email: user.email,
-                password: user.password,
-                username: user.username,
-                role: user.role,
-            });
+            const response = yield supabaseClient_1.default
+                .from('users')
+                .insert([{
+                    email: user.email,
+                    username: user.username,
+                    password: user.password,
+                    role: user.role
+                }]);
             return response;
         });
     }
+    // public async createUser(user: IUsers)
+    // : Promise<IUsers> {
+    //   const response = await this.model.create({
+    //     email: user.email,
+    //     password: user.password,
+    //     username: user.username,
+    //     role: user.role,
+    //   });
+    //   return response;
+    // }
     findByName(user) {
         return __awaiter(this, void 0, void 0, function* () {
             const response = yield this.model.findOne({ where: { username: user.username } });

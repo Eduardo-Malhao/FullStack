@@ -9,6 +9,8 @@ export default class UsersControllers {
     constructor() { this.service = new Service() }
 
     public async register(req: Request, res: Response) {
+        console.log('aqui');
+        
         const body = UserDto.BodyToUser(req.body);
         
         const adminEmailRegex = /@admin\.com$/i;

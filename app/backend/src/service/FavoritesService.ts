@@ -17,7 +17,7 @@ export default class FavoritesService {
       const isFavorite: boolean = FavoriteChecker.checkFavorite(getAllFavoritesIds, ids.meal_id, ids.drink_id);
       
       if (isFavorite) {
-        const response = await this.model.unfavorite(ids);
+        await this.model.unfavorite(ids);
         return { status: 'SUCCESS', data: 'Desfavoritado' };
       }
       if(ids.drink_id) {

@@ -6,8 +6,9 @@ export default class MealsModel {
   private model = Model;
 
     async findAll()
-        : Promise<IMeals[]> {
+        : Promise<IMeals[]> {        
             const response = await this.model.findAll();
+            
             return response;
         }
 

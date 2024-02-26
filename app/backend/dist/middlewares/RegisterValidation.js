@@ -35,4 +35,4 @@ class RegisterValidation {
     }
 }
 exports.default = RegisterValidation;
-//# sourceMappingURL=RegisterValidaion.js.map
+//# sourceMappingURL=RegisterValidation.js.map

@@ -9,7 +9,6 @@ import {
 import User from './User';
 import FreeAPIMealsSequelize from './FreeAPIMealsSequelize';
 import FreeAPIDrinksSequelize from './FreeAPIDrinksSequelize';
-import { IFavorites } from '../../interfaces/IFavorites';
 
   class Favorites extends Model<
     InferAttributes<any>,

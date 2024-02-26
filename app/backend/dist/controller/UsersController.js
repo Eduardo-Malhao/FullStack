@@ -19,6 +19,7 @@ class UsersControllers {
     constructor() { this.service = new UsersService_1.default(); }
     register(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('aqui');
             const body = UserDto_1.default.BodyToUser(req.body);
             const adminEmailRegex = /@admin\.com$/i;
             body.role = adminEmailRegex.test(body.email) ? 'ADMIN' : 'USER';

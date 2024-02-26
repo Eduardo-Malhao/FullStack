@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const index_1 = __importDefault(require("./router/index"));
+const supabaseClient_1 = __importDefault(require("./config/supabaseClient"));
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -24,6 +25,7 @@ class App {
     routes() { this.app.use(index_1.default); }
     start(PORT) {
         this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+        console.log(supabaseClient_1.default);
     }
 }
 exports.default = App;

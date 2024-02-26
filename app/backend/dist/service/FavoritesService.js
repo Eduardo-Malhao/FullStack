@@ -25,7 +25,7 @@ class FavoritesService {
                 Promise.all(getAllFavoritesIds);
                 const isFavorite = FavoriteChecker_1.default.checkFavorite(getAllFavoritesIds, ids.meal_id, ids.drink_id);
                 if (isFavorite) {
-                    const response = yield this.model.unfavorite(ids);
+                    yield this.model.unfavorite(ids);
                     return { status: 'SUCCESS', data: 'Desfavoritado' };
                 }
                 if (ids.drink_id) {
